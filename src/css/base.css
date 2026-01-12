@@ -1,0 +1,29 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.dark-bg {
+    background: linear-gradient(to bottom, #000, #0c0c0c);
+}
+
+.text-center {
+    text-align: center;
+}

@@ -1,0 +1,41 @@
+@media (max-width: 992px) {
+    .split-view {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 10px;
+    }
+
+    .price-value {
+        font-size: 1.8rem;
+    }
+
+    .gallery-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .price-box {
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .valuation-images {
+        flex-direction: column;
+    }
+
+    .valuation-images img {
+        width: 100%;
+    }
+}

@@ -1,0 +1,12 @@
+:root {
+    font-size: clamp(15px, 1.1vw, 18px);
+
+    --bg-color: #000000;
+    --card-bg: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-gold: #c09d54;
+    --accent-hover: #d4af37;
+    --font-main: 'Noto Sans Armenian', sans-serif;
+    --transition: all 0.3s ease;
+}
