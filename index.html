@@ -11,6 +11,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./src/css/main.css">
     <script src="./src/js/app.js" defer></script>
+    <script src="./src/js/gallery.js" defer></script>
+
 
 </head>
 
@@ -29,7 +31,7 @@
     </nav>
 
     <!-- Section 1: Hero -->
-    <section id="hero" class="hero-section">
+    <section id="hero" class="section hero-section">
         <div class="hero-content">
             <h1 class="hero-title">P R O S P E C T 2 4</h1>
             <p class="hero-subtitle">ԱՆՇԱՐԺ ԳՈՒՅՔԻ ԶԱՐԳԱՑՄԱՆ ՆԱԽԱԳԾԵՐԻ ԻՐԱԿԱՆԱՑՈՒՄ</p>
@@ -37,45 +39,78 @@
     </section>
 
     <!-- Section 2: Components -->
-    <section id="components" class="section dark-bg">
-        <div class="container">
-            <div class="header-block">
-                <h2 class="section-title">ՆԵՐԴՐՈՒՄԱՅԻՆ ՓԱԹԵԹԻ ԲԱՂԱԴՐԻՉՆԵՐ</h2>
-            </div>
+    <div class="component-display">
+        <div class="component-image-wrapper">
+            <img id="mainPlanImg" src="https://picsum.photos/id/1031/1200/700?grayscale" alt="Architectural Plan"
+                class="main-plan-img" loading="lazy" />
 
-            <p class="location-text">Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք</p>
 
-            <div class="component-display">
-                <div class="component-image-wrapper">
-                    <img src="https://picsum.photos/id/1031/800/500?grayscale" alt="Architectural Plan"
-                        class="main-plan-img">
-                    <div class="image-caption">
-                        <div class="doc-row">
-                            <button class="doc-item" type="button" onclick="viewPDF('files/9 ՃՀԱ էսքիզ.pdf', 'Սխեմա')">
-                                <span>Էսքիզային առաջադրանք</span>
-                            </button>
+            <button class="main-arrow prev" aria-label="Previous image">‹</button>
+            <button class="main-arrow next" aria-label="Next image">›</button>
 
-                            <a class="doc-download" href="files/9 ՃՀԱ էսքիզ.pdf" download
-                                onclick="event.stopPropagation()" aria-label="Скачать PDF">
-                                <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </a>
-                        </div>
 
-                    </div>
-                </div>
 
-                <div class="gallery-strip">
-                    <img src="https://picsum.photos/id/1048/200/300?grayscale" alt="Modern Building 1">
-                    <img src="https://picsum.photos/id/1057/200/300?grayscale" alt="Modern Building 2">
-                    <img src="https://picsum.photos/id/1068/200/300?grayscale" alt="Modern Building 3">
-                    <img src="https://picsum.photos/id/1071/200/300?grayscale" alt="Modern Building 4">
+            <div class="image-caption">
+                <div class="doc-row">
+                    <button class="doc-item" type="button" onclick="viewPDF('files/9 ՃՀԱ էսքիզ.pdf', 'Սխեմա')">
+                        <span>Էսքիզային առաջադրանք</span>
+                    </button>
+
+                    <a class="doc-download" href="files/9 ՃՀԱ էսքիզ.pdf" download onclick="event.stopPropagation()"
+                        aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- THUMBNAILS GALLERY -->
+        <div class="gallery-wrapper">
+
+            <button class="gallery-arrow prev" aria-label="Previous">‹</button>
+
+            <div class="gallery-strip" id="galleryStrip">
+                <div class="gallery-track">
+
+                    <img class="thumb is-active" src="https://picsum.photos/id/1048/300/300?grayscale"
+                        data-full="https://picsum.photos/id/1048/1200/700?grayscale" alt="Modern Building 1"
+                        aria-selected="true" loading="lazy" />
+
+                    <img class="thumb" src="https://picsum.photos/id/1057/300/300?grayscale"
+                        data-full="https://picsum.photos/id/1057/1200/700?grayscale" alt="Modern Building 2"
+                        aria-selected="false" loading="lazy" />
+
+                    <img class="thumb" src="https://picsum.photos/id/1068/300/300?grayscale"
+                        data-full="https://picsum.photos/id/1068/1200/700?grayscale" alt="Modern Building 3"
+                        aria-selected="false" loading="lazy" />
+
+                    <img class="thumb" src="https://picsum.photos/id/1071/300/300?grayscale"
+                        data-full="https://picsum.photos/id/1071/1200/700?grayscale" alt="Modern Building 4"
+                        aria-selected="false" loading="lazy" />
+
+                    <img class="thumb" src="https://picsum.photos/id/1031/300/300?grayscale"
+                        data-full="https://picsum.photos/id/1031/1200/700?grayscale" alt="Modern Building 5"
+                        aria-selected="false" loading="lazy" />
+
+                    <img class="thumb" src="https://picsum.photos/id/1043/300/300?grayscale"
+                        data-full="https://picsum.photos/id/1043/1200/700?grayscale" alt="Modern Building 6"
+                        aria-selected="false" loading="lazy" />
+
+                </div>
+            </div>
+
+            <button class="gallery-arrow next" aria-label="Next">›</button>
+
+        </div>
+
+
+
+
+    </div>
+
 
     <!-- Section 3: Details & Documents -->
     <section id="details" class="section">
