@@ -33,13 +33,18 @@
     <!-- Section 1: Hero -->
     <section id="hero" class="section hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">P R O S P E C T 2 4</h1>
+            <h1 class="hero-title">PROSPECT 24</h1>
             <p class="hero-subtitle">ԱՆՇԱՐԺ ԳՈՒՅՔԻ ԶԱՐԳԱՑՄԱՆ ՆԱԽԱԳԾԵՐԻ ԻՐԱԿԱՆԱՑՈՒՄ</p>
         </div>
     </section>
 
     <!-- Section 2: Components -->
-    <div class="component-display">
+    <div class="component-display" id="components">
+        <div class="header-block">
+            <h2 class="section-title">ՆԵՐԴՐՈՒՄԱՅԻՆ ՓԱԹԵԹԻ ԲԱՂԱԴՐԻՉՆԵՐ</h2>
+        </div>
+        <p class="location-text">Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք</p>
+
         <div class="component-image-wrapper">
             <img id="mainPlanImg" src="https://picsum.photos/id/1031/1200/700?grayscale" alt="Architectural Plan"
                 class="main-plan-img" loading="lazy" />
@@ -70,7 +75,19 @@
         <!-- THUMBNAILS GALLERY -->
         <div class="gallery-wrapper">
 
-            <button class="gallery-arrow prev" aria-label="Previous">‹</button>
+            <button class="gallery-arrow prev" aria-label="Previous"><svg width="169px" height="169px"
+                    viewBox="-19.04 0 75.804 75.804" xmlns="http://www.w3.org/2000/svg" fill="#d1d1d1" stroke="#d1d1d1"
+                    transform="matrix(-1, 0, 0, 1, 0, 0)">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <g id="Group_65" data-name="Group 65" transform="translate(-831.568 -384.448)">
+                            <path id="Path_57" data-name="Path 57"
+                                d="M833.068,460.252a1.5,1.5,0,0,1-1.061-2.561l33.557-33.56a2.53,2.53,0,0,0,0-3.564l-33.557-33.558a1.5,1.5,0,0,1,2.122-2.121l33.556,33.558a5.53,5.53,0,0,1,0,7.807l-33.557,33.56A1.5,1.5,0,0,1,833.068,460.252Z"
+                                fill="#d1d1d1"></path>
+                        </g>
+                    </g>
+                </svg></button>
 
             <div class="gallery-strip" id="galleryStrip">
                 <div class="gallery-track">
@@ -102,7 +119,19 @@
                 </div>
             </div>
 
-            <button class="gallery-arrow next" aria-label="Next">›</button>
+            <button class="gallery-arrow next" aria-label="Next"><svg width="169px" height="169px"
+                    viewBox="-19.04 0 75.804 75.804" xmlns="http://www.w3.org/2000/svg" fill="#d1d1d1" stroke="#d1d1d1"
+                    transform="matrix(1, 0, 0, 1, 0, 0)">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <g id="Group_65" data-name="Group 65" transform="translate(-831.568 -384.448)">
+                            <path id="Path_57" data-name="Path 57"
+                                d="M833.068,460.252a1.5,1.5,0,0,1-1.061-2.561l33.557-33.56a2.53,2.53,0,0,0,0-3.564l-33.557-33.558a1.5,1.5,0,0,1,2.122-2.121l33.556,33.558a5.53,5.53,0,0,1,0,7.807l-33.557,33.56A1.5,1.5,0,0,1,833.068,460.252Z"
+                                fill="#d1d1d1"></path>
+                        </g>
+                    </g>
+                </svg></button>
 
         </div>
 
@@ -116,6 +145,7 @@
     <section id="details" class="section">
         <div class="container split-view">
             <div class="text-content">
+                <p>ՄԱՐԶ ԼՈՌԻ, ՀԱՄԱՅՆՔ ՎԱՆԱՁՈՐ ՎԱՆԱՁՈՐ Ք. ԲԱՆԱԿԻ ՓՈՂՈՑ</p>
                 <div class="download-btns">
                     <a href="files/10 տեղեկատվություն.docx" download class="btn-download-alt">Ներբեռնել տեղեկատվությունը
                         (.docx)</a>
@@ -150,9 +180,17 @@
 
                     <a class="doc-download" href="files/1վկայական.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>
@@ -164,9 +202,17 @@
 
                     <a class="doc-download" href="files/2 հողմասի հատակագծ.pdf" download
                         onclick="event.stopPropagation()" aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>
@@ -179,9 +225,17 @@
 
                     <a class="doc-download" href="files/2 հողմասի հատակագծ.pdf" download
                         onclick="event.stopPropagation()" aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>
@@ -193,9 +247,17 @@
 
                     <a class="doc-download" href="files/4 Սեյսմիկ Վանաձոր.PDF" download
                         onclick="event.stopPropagation()" aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>
@@ -207,9 +269,17 @@
 
                     <a class="doc-download" href="files/9 ՃՀԱ էսքիզ.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>
@@ -221,9 +291,17 @@
 
                     <a class="doc-download" href="files/6 Վեոլիա.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>
@@ -235,9 +313,17 @@
 
                     <a class="doc-download" href="files/7 ՀԷՑ.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>
@@ -249,9 +335,17 @@
 
                     <a class="doc-download" href="files/8Գազպրոմ.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>
@@ -263,9 +357,17 @@
 
                     <a class="doc-download" href="files/9 ՃՀԱ էսքիզ.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>
@@ -278,9 +380,17 @@
 
                     <a class="doc-download" href="files/12 Բիզնես հաշվարկ/Prospect 24_Vanadzor_Banak 8.pdf" download
                         onclick="event.stopPropagation()" aria-label="Скачать PDF">
-                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
                         </svg>
                     </a>
                 </div>

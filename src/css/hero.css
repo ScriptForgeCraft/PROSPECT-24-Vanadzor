@@ -14,14 +14,13 @@
     letter-spacing: 20px;
     margin-bottom: 20px;
     color: var(--accent-gold);
-    animation: fadeInDown 1.5s ease;
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     letter-spacing: 3px;
     max-width: 800px;
-    margin: 0 auto;
-    animation: fadeInUp 1.5s ease 0.5s both;
+    text-align: left;
+
 }
