@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@300;400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./src/css/globals.css" />
     <link rel="stylesheet" href="./src/css/main.css">
     <script src="./src/js/app.js" defer></script>
 
@@ -48,10 +47,24 @@
 
             <div class="component-display">
                 <div class="component-image-wrapper">
-                    <div class="label-tag">09</div>
                     <img src="https://picsum.photos/id/1031/800/500?grayscale" alt="Architectural Plan"
                         class="main-plan-img">
-                    <div class="image-caption">Էսքիզային առաջադրանք</div>
+                    <div class="image-caption">
+                        <div class="doc-row">
+                            <button class="doc-item" type="button" onclick="viewPDF('files/9 ՃՀԱ էսքիզ.pdf', 'Սխեմա')">
+                                <span>Էսքիզային առաջադրանք</span>
+                            </button>
+
+                            <a class="doc-download" href="files/9 ՃՀԱ էսքիզ.pdf" download
+                                onclick="event.stopPropagation()" aria-label="Скачать PDF">
+                                <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="gallery-strip">
@@ -68,7 +81,10 @@
     <section id="details" class="section">
         <div class="container split-view">
             <div class="text-content">
-                <div class="label-box">10</div>
+                <div class="download-btns">
+                    <a href="files/10 տեղեկատվություն.docx" download class="btn-download-alt">Ներբեռնել տեղեկատվությունը
+                        (.docx)</a>
+                </div>
                 <div class="content-block">
                     <p>1․ Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8-4 հիվանդանոցային համալիր մասնաշենքը առկա
                         է ենթակայան, որը վերազինվելու է և սպասարկելու է Բանակի փողոց 8/11 հասցեի գույքերին։</p>
@@ -88,48 +104,156 @@
                         <li>Ստորգետնյա ավտոկայանատեղի 212 մեքենայի համար՝ 8030մ2։</li>
                     </ul>
                 </div>
-                <div class="download-btns">
-                    <a href="files/10 տեղեկատվություն.docx" download class="btn-download-alt">Ներբեռնել տեղեկատվությունը
-                        (.docx)</a>
-                </div>
             </div>
 
             <div class="document-list">
-                <button class="doc-item" onclick="viewPDF('files/1վկայական.pdf', 'Վկայական')">
-                    <span>Վկայական</span>
-                </button>
-                <button class="doc-item" onclick="viewPDF('files/2 հողմասի հատակագծ.pdf', 'Սխեմա')">
-                    <span>Սխեմա</span>
-                </button>
-                <button class="doc-item" onclick="viewPDF('files/2 հողմասի հատակագծ.pdf', 'Հատակագծեր')">
-                    <span>Հատակագծեր</span>
-                </button>
-                <button class="doc-item" onclick="viewPDF('files/4 Սեյսմիկ Վանաձոր.PDF', 'Սեյսմիկ')">
-                    <span>Սեյսմիկ</span>
-                </button>
-                <!-- Missing 05 in provided files, linking to Sketch 09 as alternative or leaving clickable placeholder -->
-                <button class="doc-item" onclick="viewPDF('files/9 ՃՀԱ էսքիզ.pdf', 'Գեոլոգիա')">
-                    <span>Գեոլոգիա</span>
-                </button>
-                <button class="doc-item" onclick="viewPDF('files/6 Վեոլա.pdf', 'Վեոլիա ջուր')">
-                    <span>Վեոլիա ջուր</span>
-                </button>
-                <button class="doc-item" onclick="viewPDF('files/7 ՀԷՑ.pdf', 'ՀԷՑ')">
-                    <span>ՀԷՑ</span>
-                </button>
-                <button class="doc-item" onclick="viewPDF('files/8Գազպրոմ.pdf', 'Գազպրոմ')">
-                    <span>Գազպրոմ</span>
-                </button>
-                <button class="doc-item" onclick="viewPDF('files/9 ՃՀԱ էսքիզ.pdf', 'ՃՀԱ')">
-                    <span>ՃՀԱ</span>
-                </button>
-                <button class="doc-item"
-                    onclick="viewPDF('files/12 Բիզնես հաշվարկ/Prospect 24_Vanadzor_Banak 8.pdf', 'Բիզնես հաշվարկ')">
-                    <span>Բիզնես հաշվարկ</span>
-                </button>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button" onclick="viewPDF('files/1վկայական.pdf', 'Վկայական')">
+                        <span>Վկայական</span>
+                    </button>
+
+                    <a class="doc-download" href="files/1վկայական.pdf" download onclick="event.stopPropagation()"
+                        aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button" onclick="viewPDF('files/2 հողմասի հատակագծ.pdf', 'Սխեմա')">
+                        <span>Սխեմա</span>
+                    </button>
+
+                    <a class="doc-download" href="files/2 հողմասի հատակագծ.pdf" download
+                        onclick="event.stopPropagation()" aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button"
+                        onclick="viewPDF('files/2 հողմասի հատակագծ.pdf', 'Հատակագծեր')">
+                        <span>Հատակագծեր</span>
+                    </button>
+
+                    <a class="doc-download" href="files/2 հողմասի հատակագծ.pdf" download
+                        onclick="event.stopPropagation()" aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button" onclick="viewPDF('files/4 Սեյսմիկ Վանաձոր.PDF', 'Սեյսմիկ')">
+                        <span>Սեյսմիկ</span>
+                    </button>
+
+                    <a class="doc-download" href="files/4 Սեյսմիկ Վանաձոր.PDF" download
+                        onclick="event.stopPropagation()" aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button" onclick="viewPDF('files/9 ՃՀԱ էսքիզ.pdf', 'Գեոլոգիա')">
+                        <span>Գեոլոգիա</span>
+                    </button>
+
+                    <a class="doc-download" href="files/9 ՃՀԱ էսքիզ.pdf" download onclick="event.stopPropagation()"
+                        aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button" onclick="viewPDF('files/6 Վեոլիա.pdf', 'Վեոլիա ջուր')">
+                        <span>Վեոլիա ջուր</span>
+                    </button>
+
+                    <a class="doc-download" href="files/6 Վեոլիա.pdf" download onclick="event.stopPropagation()"
+                        aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button" onclick="viewPDF('files/7 ՀԷՑ.pdf', 'ՀԷՑ')">
+                        <span>ՀԷՑ</span>
+                    </button>
+
+                    <a class="doc-download" href="files/7 ՀԷՑ.pdf" download onclick="event.stopPropagation()"
+                        aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button" onclick="viewPDF('files/8Գազպրոմ.pdf', 'Գազպրոմ')">
+                        <span>Գազպրոմ</span>
+                    </button>
+
+                    <a class="doc-download" href="files/8Գազպրոմ.pdf" download onclick="event.stopPropagation()"
+                        aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button" onclick="viewPDF('files/9 ՃՀԱ էսքիզ.pdf', 'ՃՀԱ')">
+                        <span>ՃՀԱ</span>
+                    </button>
+
+                    <a class="doc-download" href="files/9 ՃՀԱ էսքիզ.pdf" download onclick="event.stopPropagation()"
+                        aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="doc-row">
+                    <button class="doc-item" type="button"
+                        onclick="viewPDF('files/12 Բիզնես հաշվարկ/Prospect 24_Vanadzor_Banak 8.pdf', 'Բիզնես հաշվարկ')">
+                        <span>Բիզնես հաշվարկ</span>
+                    </button>
+
+                    <a class="doc-download" href="files/12 Բիզնես հաշվարկ/Prospect 24_Vanadzor_Banak 8.pdf" download
+                        onclick="event.stopPropagation()" aria-label="Скачать PDF">
+                        <svg class="download-ico" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
             </div>
-        </div>
+
     </section>
+    </div>
 
     <!-- Section 4: Valuation -->
     <section id="valuation" class="section dark-bg">
