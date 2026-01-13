@@ -9,9 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@300;400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./src/css/main.css">
-    <script src="./src/js/pdfViewer.js" defer></script>
-    <script type="module" src="/src/js/gallery.js" defer></script>
+    <script type="module" src="/src/js/main.js"></script>
+
 
 
 </head>
@@ -52,7 +51,7 @@
             <!-- MAIN IMAGE -->
             <div class="component-image-wrapper">
 
-                <img id="mainPlanImg" class="main-plan-img" src="/src/images/full/1.webp" alt="Architectural Plan" />
+                <img id="mainPlanImg" class="main-plan-img" src="./images/full/1.webp" alt="Architectural Plan" />
 
                 <button class="main-arrow prev" aria-label="Previous image">‹</button>
                 <button class="main-arrow next" aria-label="Next image">›</button>
@@ -64,7 +63,9 @@
                             <span>Էսքիզային առաջադրանք</span>
                         </button>
 
-                        <a class="doc-download" href="https://drive.google.com/uc?id=11Cv-kejB1d1Gd4JFQl6_eYo__18cJwNs&export=download" download onclick="event.stopPropagation()">
+                        <a class="doc-download"
+                            href="https://drive.google.com/uc?id=11Cv-kejB1d1Gd4JFQl6_eYo__18cJwNs&export=download"
+                            download onclick="event.stopPropagation()">
                             <svg class="download-ico" viewBox="0 0 24 24">
                                 <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -83,28 +84,28 @@
                     <div class="gallery-track swiper-wrapper">
 
                         <div class="swiper-slide">
-                            <img class="thumb is-active" src="/src/images/thumbs/2.webp"
-                                data-full="/src/images/full/2.webp" />
+                            <img class="thumb is-active" src="./images/thumbs/2.webp"
+                                data-full="./images/full/2.webp" />
                         </div>
 
                         <div class="swiper-slide">
-                            <img class="thumb" src="/src/images/thumbs/3.webp" data-full="/src/images/full/3.webp" />
+                            <img class="thumb" src="./images/thumbs/3.webp" data-full="./images/full/3.webp" />
                         </div>
 
                         <div class="swiper-slide">
-                            <img class="thumb" src="/src/images/thumbs/4.webp" data-full="/src/images/full/4.webp" />
+                            <img class="thumb" src="./images/thumbs/4.webp" data-full="./images/full/4.webp" />
                         </div>
 
                         <div class="swiper-slide">
-                            <img class="thumb" src="/src/images/thumbs/5.webp" data-full="/src/images/full/5.webp" />
+                            <img class="thumb" src="./images/thumbs/5.webp" data-full="./images/full/5.webp" />
                         </div>
 
                         <div class="swiper-slide">
-                            <img class="thumb" src="/src/images/thumbs/6.webp" data-full="/src/images/full/6.webp" />
+                            <img class="thumb" src="./images/thumbs/6.webp" data-full="./images/full/6.webp" />
                         </div>
 
                         <div class="swiper-slide">
-                            <img class="thumb" src="/src/images/thumbs/7.webp" data-full="/src/images/full/7.webp" />
+                            <img class="thumb" src="./images/thumbs/7.webp" data-full="./images/full/7.webp" />
                         </div>
 
                     </div>
@@ -143,7 +144,8 @@
                     </ul>
                 </div>
                 <div class="download-btns">
-                    <a href="files/10 տեղեկատվություն.pdf" download class="btn-download-alt">Ներբեռնել տեղեկատվությունը
+                    <a href="./files/10 տեղեկատվություն.pdf" download class="btn-download-alt">Ներբեռնել
+                        տեղեկատվությունը
                         (.pdf)</a>
                 </div>
             </div>
@@ -151,11 +153,11 @@
             <div class="document-list">
 
                 <div class="doc-row">
-                    <button class="doc-item" type="button" onclick="viewPDF('files/1վկայական.pdf', 'Վկայական')">
+                    <button class="doc-item" type="button" onclick="viewPDF('./files/1վկայական.pdf', 'Վկայական')">
                         <span>Վկայական</span>
                     </button>
 
-                    <a class="doc-download" href="files/1վկայական.pdf" download onclick="event.stopPropagation()"
+                    <a class="doc-download" href="./files/1վկայական.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -173,11 +175,11 @@
                 </div>
 
                 <div class="doc-row">
-                    <button class="doc-item" type="button" onclick="viewPDF('files/2 հողմասի հատակագծ.pdf', 'Սխեմա')">
+                    <button class="doc-item" type="button" onclick="viewPDF('./files/2 հողմասի հատակագծ.pdf', 'Սխեմա')">
                         <span>Սխեմա</span>
                     </button>
 
-                    <a class="doc-download" href="files/2 հողմասի հատակագծ.pdf" download
+                    <a class="doc-download" href="./files/2 հողմասի հատակագծ.pdf" download
                         onclick="event.stopPropagation()" aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -196,11 +198,11 @@
 
                 <div class="doc-row">
                     <button class="doc-item" type="button"
-                        onclick="viewPDF('files/2 հողմասի հատակագծ.pdf', 'Հատակագծեր')">
+                        onclick="viewPDF('./files/2 հողմասի հատակագծ.pdf', 'Հատակագծեր')">
                         <span>Հատակագծեր</span>
                     </button>
 
-                    <a class="doc-download" href="files/2 հողմասի հատակագծ.pdf" download
+                    <a class="doc-download" href="./files/2 հողմասի հատակագծ.pdf" download
                         onclick="event.stopPropagation()" aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -218,11 +220,12 @@
                 </div>
 
                 <div class="doc-row">
-                    <button class="doc-item" type="button" onclick="viewPDF('files/4 Սեյսմիկ Վանաձոր.PDF', 'Սեյսմիկ')">
+                    <button class="doc-item" type="button"
+                        onclick="viewPDF('./files/4 Սեյսմիկ Վանաձոր.PDF', 'Սեյսմիկ')">
                         <span>Սեյսմիկ</span>
                     </button>
 
-                    <a class="doc-download" href="files/4 Սեյսմիկ Վանաձոր.PDF" download
+                    <a class="doc-download" href="./files/4 Սեյսմիկ Վանաձոր.PDF" download
                         onclick="event.stopPropagation()" aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -240,11 +243,11 @@
                 </div>
 
                 <div class="doc-row">
-                    <button class="doc-item" type="button" onclick="viewPDF('files/9 ՃՀԱ էսքիզ.pdf', 'Գեոլոգիա')">
+                    <button class="doc-item" type="button" onclick="viewPDF('./files/9 ՃՀԱ էսքիզ.pdf', 'Գեոլոգիա')">
                         <span>Գեոլոգիա</span>
                     </button>
 
-                    <a class="doc-download" href="files/9 ՃՀԱ էսքիզ.pdf" download onclick="event.stopPropagation()"
+                    <a class="doc-download" href="./files/9 ՃՀԱ էսքիզ.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -262,11 +265,11 @@
                 </div>
 
                 <div class="doc-row">
-                    <button class="doc-item" type="button" onclick="viewPDF('files/6 Վեոլիա.pdf', 'Վեոլիա ջուր')">
+                    <button class="doc-item" type="button" onclick="viewPDF('./files/6 Վեոլիա.pdf', 'Վեոլիա ջուր')">
                         <span>Վեոլիա ջուր</span>
                     </button>
 
-                    <a class="doc-download" href="files/6 Վեոլիա.pdf" download onclick="event.stopPropagation()"
+                    <a class="doc-download" href="./files/6 Վեոլիա.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -284,11 +287,11 @@
                 </div>
 
                 <div class="doc-row">
-                    <button class="doc-item" type="button" onclick="viewPDF('files/7 ՀԷՑ.pdf', 'ՀԷՑ')">
+                    <button class="doc-item" type="button" onclick="viewPDF('./files/7 ՀԷՑ.pdf', 'ՀԷՑ')">
                         <span>ՀԷՑ</span>
                     </button>
 
-                    <a class="doc-download" href="files/7 ՀԷՑ.pdf" download onclick="event.stopPropagation()"
+                    <a class="doc-download" href="./files/7 ՀԷՑ.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -306,11 +309,11 @@
                 </div>
 
                 <div class="doc-row">
-                    <button class="doc-item" type="button" onclick="viewPDF('files/8Գազպրոմ.pdf', 'Գազպրոմ')">
+                    <button class="doc-item" type="button" onclick="viewPDF('./files/8Գազպրոմ.pdf', 'Գազպրոմ')">
                         <span>Գազպրոմ</span>
                     </button>
 
-                    <a class="doc-download" href="files/8Գազպրոմ.pdf" download onclick="event.stopPropagation()"
+                    <a class="doc-download" href="./files/8Գազպրոմ.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -328,11 +331,11 @@
                 </div>
 
                 <div class="doc-row">
-                    <button class="doc-item" type="button" onclick="viewPDF('files/9 ՃՀԱ էսքիզ.pdf', 'ՃՀԱ')">
+                    <button class="doc-item" type="button" onclick="viewPDF('./files/9 ՃՀԱ էսքիզ.pdf', 'ՃՀԱ')">
                         <span>ՃՀԱ</span>
                     </button>
 
-                    <a class="doc-download" href="files/9 ՃՀԱ էսքիզ.pdf" download onclick="event.stopPropagation()"
+                    <a class="doc-download" href="./files/9 ՃՀԱ էսքիզ.pdf" download onclick="event.stopPropagation()"
                         aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -351,11 +354,11 @@
 
                 <div class="doc-row">
                     <button class="doc-item" type="button"
-                        onclick="viewPDF('files/12 Բիզնես հաշվարկ/Prospect 24_Vanadzor_Banak 8.pdf', 'Բիզնես հաշվարկ')">
+                        onclick="viewPDF('./files/12 Բիզնես հաշվարկ/Prospect 24_Vanadzor_Banak 8.pdf', 'Բիզնես հաշվարկ')">
                         <span>Բիզնես հաշվարկ</span>
                     </button>
 
-                    <a class="doc-download" href="files/12 Բիզնես հաշվարկ/Prospect 24_Vanadzor_Banak 8.pdf" download
+                    <a class="doc-download" href="./files/12 Բիզնես հաշվարկ/Prospect 24_Vanadzor_Banak 8.pdf" download
                         onclick="event.stopPropagation()" aria-label="Скачать PDF">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
