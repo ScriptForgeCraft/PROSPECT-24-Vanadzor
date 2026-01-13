@@ -9,12 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-
+    "swiper": "^12.0.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
-    
     "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "vite": "^6.4.1"
   }
 }

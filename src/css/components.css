@@ -28,7 +28,16 @@
     height: 420px;
     object-fit: cover;
     display: block;
+
+    opacity: 1;
+    transition: opacity 0.1s ease;
+    will-change: opacity;
 }
+
+.main-plan-img.is-fading {
+    opacity: 0;
+}
+
 
 /* =========================
    CAPTION
@@ -73,7 +82,7 @@
 .gallery-track {
     display: flex;
     gap: 12px;
-    transition: transform 0.35s ease;
+
 }
 
 /* =========================
@@ -180,11 +189,6 @@
     opacity: 1;
 }
 
-.main-arrow:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-    border-color: rgba(255, 255, 255, 0.18);
-}
 
 .main-arrow:hover {
     background: rgba(0, 0, 0, 0.65);
@@ -199,7 +203,7 @@
 
 .gallery-arrow:disabled {
     opacity: 0.35;
-    cursor: not-allowed;
+
     border-color: rgba(255, 255, 255, 0.18);
 }
 
@@ -237,4 +241,12 @@
     .gallery-strip .thumb {
         height: 100px;
     }
+}
+
+.swiper {
+    overflow: hidden;
+}
+
+.swiper-slide {
+    flex-shrink: 0;
 }

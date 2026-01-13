@@ -1,136 +1,137 @@
+import Swiper from "swiper";
+import "swiper/css";
+
 (() => {
     const mainImg = document.getElementById("mainPlanImg");
-    const track = document.querySelector(".gallery-track");
+    if (!mainImg) return;
 
-    const thumbsPrevBtn = document.querySelector(".gallery-arrow.prev");
-    const thumbsNextBtn = document.querySelector(".gallery-arrow.next");
+    const thumbs = Array.from(document.querySelectorAll(".thumb"));
+    if (!thumbs.length) return;
 
-    const mainPrevBtn = document.querySelector(".main-arrow.prev");
-    const mainNextBtn = document.querySelector(".main-arrow.next");
-
-    if (!mainImg || !track) return;
-
-    const thumbs = Array.from(track.querySelectorAll(".thumb"));
-    if (thumbs.length === 0) {
-        if (thumbsPrevBtn) thumbsPrevBtn.disabled = true;
-        if (thumbsNextBtn) thumbsNextBtn.disabled = true;
-        if (mainPrevBtn) mainPrevBtn.disabled = true;
-        if (mainNextBtn) mainNextBtn.disabled = true;
-        return;
-    }
+    const btnThumbPrev = document.querySelector(".gallery-arrow.prev");
+    const btnThumbNext = document.querySelector(".gallery-arrow.next");
+    const btnMainPrev = document.querySelector(".main-arrow.prev");
+    const btnMainNext = document.querySelector(".main-arrow.next");
 
     let activeIndex = thumbs.findIndex(t => t.classList.contains("is-active"));
     if (activeIndex < 0) activeIndex = 0;
 
-    let scrollIndex = 0;
-    const visible = 4;
-    const gap = 12;
+    let pendingIndex = null;
+    let isFading = false;
 
-    const getStep = () => {
-        const first = thumbs[0];
-        return first ? first.offsetWidth + gap : 0;
-    };
+    const swiper = new Swiper(".gallery-strip.swiper", {
+        slidesPerView: 4,
+        spaceBetween: 12,
+        speed: 400,
+        grabCursor: true,
+        navigation: {
+            nextEl: ".gallery-arrow.next",
+            prevEl: ".gallery-arrow.prev",
+        },
+        breakpoints: {
+            0: { slidesPerView: 2 },
+            768: { slidesPerView: 4 },
+        },
+        on: {
+            slideChange: updateThumbArrows
+        }
+    });
 
-    const getMaxScroll = () => Math.max(thumbs.length - visible, 0);
+    function setActiveThumb(index) {
+        thumbs.forEach(t => t.classList.remove("is-active"));
+        thumbs[index]?.classList.add("is-active");
+    }
 
-    const setActive = (nextActive) => {
-        activeIndex = (nextActive + thumbs.length) % thumbs.length;
+    function preloadImage(src) {
+        if (!src) return;
+        const img = new Image();
+        img.src = src;
+    }
 
-        const thumb = thumbs[activeIndex];
-        mainImg.src = thumb.dataset.full || thumb.src;
-        mainImg.alt = thumb.alt || "";
+    function preloadNeighbors(index) {
+        preloadImage(thumbs[index - 1]?.dataset.full);
+        preloadImage(thumbs[index + 1]?.dataset.full);
+    }
 
-        thumbs.forEach(t => {
-            t.classList.remove("is-active");
-            t.setAttribute("aria-selected", "false");
-        });
+    function updateThumbArrows() {
+        const isBeginning = swiper.isBeginning;
+        const isEnd = swiper.isEnd;
 
-        thumb.classList.add("is-active");
-        thumb.setAttribute("aria-selected", "true");
-    };
+        if (btnThumbPrev) btnThumbPrev.disabled = isBeginning;
+        if (btnThumbNext) btnThumbNext.disabled = isEnd;
+    }
 
-    const updateTrack = () => {
-        const step = getStep();
-        track.style.transform = `translateX(${-scrollIndex * step}px)`;
-    };
 
-    const updateDisabled = () => {
-        const maxScroll = getMaxScroll();
+    function applyImage(index) {
+        const prevIndex = activeIndex;
+        activeIndex = index;
 
-        if (thumbsPrevBtn) thumbsPrevBtn.disabled = scrollIndex <= 0;
-        if (thumbsNextBtn) thumbsNextBtn.disabled = scrollIndex >= maxScroll;
+        const fullSrc = thumbs[index]?.dataset.full || thumbs[index]?.src;
+        if (!fullSrc) return;
 
-        if (mainPrevBtn) mainPrevBtn.disabled = thumbs.length <= 1;
-        if (mainNextBtn) mainNextBtn.disabled = thumbs.length <= 1;
-    };
+        mainImg.src = fullSrc;
+        setActiveThumb(index);
+        preloadNeighbors(index);
 
-    const ensureActiveVisible = () => {
-        const maxScroll = getMaxScroll();
+        const isLoopJump =
+            (prevIndex === thumbs.length - 1 && index === 0) ||
+            (prevIndex === 0 && index === thumbs.length - 1);
 
-        if (activeIndex < scrollIndex) {
-            scrollIndex = activeIndex;
-        } else if (activeIndex > scrollIndex + visible - 1) {
-            scrollIndex = activeIndex - (visible - 1);
+        if (isLoopJump) {
+            swiper.slideTo(index, 0, false);
+        } else {
+            swiper.slideTo(index, 300);
         }
 
-        scrollIndex = Math.min(Math.max(scrollIndex, 0), maxScroll);
-    };
+        updateThumbArrows();
+    }
 
+    function requestSwitch(index) {
+        const normalized = (index + thumbs.length) % thumbs.length;
+        pendingIndex = normalized;
 
+        if (isFading) return;
+        isFading = true;
 
-    setActive(activeIndex);
-    ensureActiveVisible();
-    updateTrack();
-    updateDisabled();
+        mainImg.classList.add("is-fading");
 
+        setTimeout(() => {
+            const nextIndex = pendingIndex;
+            pendingIndex = null;
 
-    track.addEventListener("click", (e) => {
-        const thumb = e.target.closest(".thumb");
-        if (!thumb) return;
+            applyImage(nextIndex);
 
-        const idx = thumbs.indexOf(thumb);
-        if (idx < 0) return;
+            requestAnimationFrame(() => {
+                mainImg.classList.remove("is-fading");
+                isFading = false;
 
-        setActive(idx);
-        ensureActiveVisible();
-        updateTrack();
-        updateDisabled();
+                if (pendingIndex !== null) requestSwitch(pendingIndex);
+            });
+        }, 10);
+    }
+
+    thumbs.forEach((thumb, i) => {
+        thumb.addEventListener("click", () => requestSwitch(i));
     });
 
-
-    mainNextBtn?.addEventListener("click", () => {
-        setActive(activeIndex + 1);
-        ensureActiveVisible();
-        updateTrack();
-        updateDisabled();
+    btnMainNext?.addEventListener("click", () => {
+        requestSwitch((activeIndex + 1) % thumbs.length);
     });
 
-    mainPrevBtn?.addEventListener("click", () => {
-        setActive(activeIndex - 1);
-        ensureActiveVisible();
-        updateTrack();
-        updateDisabled();
+    btnMainPrev?.addEventListener("click", () => {
+        requestSwitch((activeIndex - 1 + thumbs.length) % thumbs.length);
     });
 
-
-
-    thumbsNextBtn?.addEventListener("click", () => {
-        const maxScroll = getMaxScroll();
-        scrollIndex = Math.min(scrollIndex + 1, maxScroll);
-        updateTrack();
-        updateDisabled();
+    btnThumbNext?.addEventListener("click", () => {
+        swiper.slideNext();
+        updateThumbArrows();
     });
 
-    thumbsPrevBtn?.addEventListener("click", () => {
-        scrollIndex = Math.max(scrollIndex - 1, 0);
-        updateTrack();
-        updateDisabled();
+    btnThumbPrev?.addEventListener("click", () => {
+        swiper.slidePrev();
+        updateThumbArrows();
     });
 
-
-    window.addEventListener("resize", () => {
-        ensureActiveVisible();
-        updateTrack();
-        updateDisabled();
-    });
+    applyImage(activeIndex);
+    updateThumbArrows();
 })();

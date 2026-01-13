@@ -2,6 +2,11 @@ html {
     scroll-behavior: smooth;
 }
 
+.bg {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
@@ -11,21 +16,21 @@ body {
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: min(1400px, 100%);
+    margin-inline: auto;
+    padding-inline: clamp(16px, 2vw, 24px);
 }
 
 .section {
+    min-height: 100svh;
     padding: 100px 0;
     border: 1px solid rgba(255, 255, 255, 0.103);
     border-left: none;
     border-right: none;
+
 }
 
-.dark-bg {
-    background: linear-gradient(to bottom, #000, #0c0c0c);
-}
+ 
 
 .text-center {
     text-align: center;

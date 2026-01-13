@@ -1,93 +1,63 @@
+/* =========================
+   LAYOUT
+   ========================= */
+
 .split-view {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 60px;
-    align-items: start;
-    
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 48px;
+  align-items: start;
 }
-.content-block{
-  margin-top: 30px;
+
+@media (max-width: 900px) {
+  .split-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   LEFT CONTENT
+   ========================= */
+
+.content-block {
+  margin-top: 24px;
+  max-width: 720px;
 }
 
 .content-block p {
-    margin-bottom: 20px;
-    font-size: 1rem;
-    color: var(--text-secondary);
+  margin-bottom: 18px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
 }
 
 .content-block ul {
-    list-style: none;
+  list-style: none;
+  padding-left: 0;
 }
 
 .content-block li {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    color: var(--text-secondary);
+  margin-bottom: 10px;
+  color: var(--text-secondary);
 }
 
-.download-btns {
-    margin-top: 30px;
-}
-
-.btn-download-alt {
-    display: inline-block;
-    padding: 12px 24px;
-    background: transparent;
-    border: 1px solid var(--accent-gold);
-    color: var(--accent-gold);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: var(--transition);
-}
-
-.btn-download-alt:hover {
-    background: var(--accent-gold);
-    color: #000;
-}
+/* =========================
+   RIGHT PANEL
+   ========================= */
 
 .document-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.doc-item {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: var(--text-primary);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: var(--transition);
-    text-align: left;
-}
-
-.doc-item:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: var(--accent-gold);
-    transform: translateX(5px);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.document-list {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
+
+/* =========================
+   DOCUMENT ITEM
+   ========================= */
 
 .doc-row {
   display: flex;
@@ -97,21 +67,57 @@
 
 .doc-item {
   flex: 1;
-  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  padding: 14px 16px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  text-align: left;
+}
+
+.doc-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-gold);
 }
 
 .doc-download {
   width: 42px;
   height: 42px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  text-decoration: none;
-  border-radius: 8px;
+  color: var(--text-secondary);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .doc-download:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--accent-gold);
+}
+
+
+.information {
+  margin-top: 20px;
+
+}
+
+.download-btns {
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px;
+  display: inline-block;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.04);
+  transition: all 0.3s ease;
+
+  &:hover {
+
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+  }
 }
