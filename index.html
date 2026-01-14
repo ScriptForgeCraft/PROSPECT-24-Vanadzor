@@ -51,7 +51,7 @@
             <div class="component-image-wrapper">
 
                 <img id="mainPlanImg" class="main-plan-img" src="./images/full/1.webp" alt="Architectural Plan" />
-
+                <button class="zoom-btn" type="button" aria-label="Увеличить">⤢</button>
                 <button class="main-arrow prev" aria-label="Previous image">‹</button>
                 <button class="main-arrow next" aria-label="Next image">›</button>
 
@@ -407,6 +407,17 @@
             <div class="modal-body">
                 <iframe id="pdf-frame" src="" frameborder="0"></iframe>
             </div>
+        </div>
+    </div>
+
+
+    <!-- Zoom Overlay -->
+    <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true">
+        <div class="zoom-container">
+            <button class="zoom-close" type="button" aria-label="Закрыть">✕</button>
+            <img class="zoom-image" id="zoomImage" alt="Zoom view" />
+            <button class="zoom-arrow prev" type="button" aria-label="Назад">‹</button>
+            <button class="zoom-arrow next" type="button" aria-label="Вперёд">›</button>
         </div>
     </div>
 

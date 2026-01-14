@@ -13,6 +13,13 @@ import "swiper/css";
     const btnMainPrev = document.querySelector(".main-arrow.prev");
     const btnMainNext = document.querySelector(".main-arrow.next");
 
+    const zoomOverlay = document.getElementById("zoomOverlay");
+    const zoomImage = document.getElementById("zoomImage");
+    const zoomClose = zoomOverlay?.querySelector(".zoom-close");
+    const zoomPrev = zoomOverlay?.querySelector(".zoom-arrow.prev");
+    const zoomNext = zoomOverlay?.querySelector(".zoom-arrow.next");
+    const zoomBtn = document.querySelector(".zoom-btn");
+
     let activeIndex = thumbs.findIndex(t => t.classList.contains("is-active"));
     if (activeIndex < 0) activeIndex = 0;
 
@@ -54,13 +61,33 @@ import "swiper/css";
     }
 
     function updateThumbArrows() {
-        const isBeginning = swiper.isBeginning;
-        const isEnd = swiper.isEnd;
-
-        if (btnThumbPrev) btnThumbPrev.disabled = isBeginning;
-        if (btnThumbNext) btnThumbNext.disabled = isEnd;
+        if (btnThumbPrev) btnThumbPrev.disabled = swiper.isBeginning;
+        if (btnThumbNext) btnThumbNext.disabled = swiper.isEnd;
     }
 
+    function isZoomOpen() {
+        return !!zoomOverlay && zoomOverlay.classList.contains("is-open");
+    }
+
+    function openZoom() {
+        if (!zoomOverlay || !zoomImage) return;
+
+        zoomImage.src = mainImg.src;
+
+        zoomOverlay.classList.add("is-open");
+        zoomOverlay.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeZoom() {
+        if (!zoomOverlay) return;
+
+        zoomOverlay.classList.remove("is-open");
+        zoomOverlay.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+    }
 
     function applyImage(index) {
         const prevIndex = activeIndex;
@@ -70,6 +97,11 @@ import "swiper/css";
         if (!fullSrc) return;
 
         mainImg.src = fullSrc;
+
+        if (isZoomOpen() && zoomImage) {
+            zoomImage.src = fullSrc;
+        }
+
         setActiveThumb(index);
         preloadNeighbors(index);
 
@@ -131,6 +163,60 @@ import "swiper/css";
         swiper.slidePrev();
         updateThumbArrows();
     });
+
+    zoomBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openZoom();
+    });
+
+    zoomClose?.addEventListener("click", closeZoom);
+
+    zoomOverlay?.addEventListener("click", (e) => {
+        if (e.target === zoomOverlay) closeZoom();
+    });
+
+    zoomNext?.addEventListener("click", () => requestSwitch(activeIndex + 1));
+    zoomPrev?.addEventListener("click", () => requestSwitch(activeIndex - 1));
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && isZoomOpen()) {
+            closeZoom();
+        }
+        if (isZoomOpen() && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
+            if (e.key === "ArrowRight") requestSwitch(activeIndex + 1);
+            if (e.key === "ArrowLeft") requestSwitch(activeIndex - 1);
+        }
+    });
+
+    let startX = 0;
+    let isDragging = false;
+    const SWIPE_THRESHOLD = 40;
+
+    function onPointerDown(e) {
+        if (!isZoomOpen()) return;
+        isDragging = true;
+        startX = e.clientX ?? (e.touches?.[0]?.clientX ?? 0);
+    }
+
+    function onPointerUp(e) {
+        if (!isZoomOpen() || !isDragging) return;
+        isDragging = false;
+
+        const endX = e.clientX ?? (e.changedTouches?.[0]?.clientX ?? 0);
+        const dx = endX - startX;
+
+        if (Math.abs(dx) < SWIPE_THRESHOLD) return;
+
+        if (dx < 0) requestSwitch(activeIndex + 1);
+        else requestSwitch(activeIndex - 1);
+    }
+
+    zoomImage?.addEventListener("mousedown", onPointerDown);
+    zoomImage?.addEventListener("mouseup", onPointerUp);
+
+    zoomImage?.addEventListener("touchstart", onPointerDown, { passive: true });
+    zoomImage?.addEventListener("touchend", onPointerUp);
 
     applyImage(activeIndex);
     updateThumbArrows();
