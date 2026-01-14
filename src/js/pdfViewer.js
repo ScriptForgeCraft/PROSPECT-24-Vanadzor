@@ -21,7 +21,7 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     const modal = document.getElementById('pdf-modal');
     if (event.target === modal) {
         closeModal();
