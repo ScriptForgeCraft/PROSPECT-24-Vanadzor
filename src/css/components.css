@@ -3,7 +3,6 @@
 ========================= */
 
 .component-display {
-
     max-width: 1200px;
     min-height: 100svh;
     margin: 0 auto;
@@ -12,7 +11,9 @@
     justify-content: center;
     gap: 32px;
 }
-
+.section.bg{
+    padding: 0;
+}
 /* =========================
    MAIN IMAGE
 ========================= */
@@ -77,6 +78,7 @@
     background: linear-gradient(to right,
             rgba(0, 0, 0, 0),
             rgba(0, 0, 0, 0.85));
+    z-index: 1000;
 }
 
 .gallery-track {
@@ -114,6 +116,7 @@
 
 .gallery-strip .thumb:focus-visible {
     outline: none;
+
     border-color: var(--accent-gold);
 }
 
@@ -143,7 +146,7 @@
 
 .gallery-arrow:hover {
     background: rgba(255, 255, 255, 0.12);
-    border-color: var(--accent-gold);
+    border-color: var(--accent-hover);
 }
 
 
@@ -192,7 +195,7 @@
 
 .main-arrow:hover {
     background: rgba(0, 0, 0, 0.65);
-    border-color: var(--accent-gold);
+    border-color: var(--accent-hover);
 }
 
 
@@ -251,4 +254,6 @@
     flex-shrink: 0;
 }
 
- 
+
+
+  

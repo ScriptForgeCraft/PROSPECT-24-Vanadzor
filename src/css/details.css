@@ -79,7 +79,7 @@
 
 .doc-item:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: var(--accent-gold);
+  border-color: var(--accent-hover);
 }
 
 .doc-download {
@@ -95,7 +95,7 @@
 
 .doc-download:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: var(--accent-gold);
+  color: var(--accent-hover);
 }
 
 
@@ -113,9 +113,7 @@
   margin-top: 20px;
   background-color: rgba(255, 255, 255, 0.04);
   transition: all 0.3s ease;
-
   &:hover {
-
     background: rgba(255, 255, 255, 0.08);
     border-color: var(--accent-gold);
     color: var(--accent-gold);
