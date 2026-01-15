@@ -2,7 +2,7 @@
     font-size: clamp(15px, 1.1vw, 18px);
 
     --bg-color: #000000;
-    --card-bg:#080808;
+    --card-bg:#080808db;
     --text-primary: #ffffff;
     --text-secondary: #d5d5d5;
     --accent-gold: #82690F;

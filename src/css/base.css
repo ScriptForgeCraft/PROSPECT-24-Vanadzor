@@ -3,7 +3,7 @@ html {
 }
 
 .bg {
-    background-image: url('../images/background.jpg');
+    background-image: url('../images/background.jpg')  ;
     background-size: cover;
 }
 
@@ -23,7 +23,7 @@ body {
 
 .section {
     min-height: 100svh;
-    padding: 100px 0;
+    padding: 100px 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.103);
     border-left: none;
     border-right: none;
