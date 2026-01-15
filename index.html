@@ -16,17 +16,44 @@
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">PROSPECT 24</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Գլխավոր</a></li>
+    <header class="main-header">
+        <div class="main-header__inner">
+            <!-- LOGO -->
+            <a href="#hero" class="main-header__logo">
+                <div class="logo">
+                    <img src="/public/images/Prospect24-logo.png" alt="Logo">
+                </div>
+            </a>
+
+
+            <!-- Desktop NAV -->
+            <nav class="main-header__nav" aria-label="Հիմնական նավիգացիա">
+                <ul>
+                    <li><a href="#components">Փաթեթի բաղադրիչներ</a></li>
+                    <li><a href="#details">Նկարագրություն</a></li>
+                    <li><a href="#valuation">Գնահատում</a></li>
+                </ul>
+            </nav>
+
+            <!-- BURGER BUTTON -->
+            <button class="burger-btn" aria-label="Բացել մենյուն">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+        <nav class="mobile-menu" aria-label="Բջջային նավիգացիա">
+            <ul>
                 <li><a href="#components">Փաթեթի բաղադրիչներ</a></li>
                 <li><a href="#details">Նկարագրություն</a></li>
                 <li><a href="#valuation">Գնահատում</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+
+    </header>
 
     <!-- Section 1: Hero -->
     <section id="hero" class="section hero-section bg">
@@ -37,7 +64,7 @@
     </section>
 
     <!-- Section 2: Components -->
-    <section id="components" class="section bg" >
+    <section id="components" class="section bg">
         <div class="component-display">
             <div class="header-block">
                 <h2 class="section-title">ՆԵՐԴՐՈՒՄԱՅԻՆ ՓԱԹԵԹԻ ԲԱՂԱԴՐԻՉՆԵՐ</h2>
