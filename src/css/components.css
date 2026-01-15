@@ -24,6 +24,7 @@
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background-color: var(--card-bg);
+    border-radius: 12px;
 }
 
 .main-plan-img {
@@ -129,21 +130,16 @@
 .gallery-arrow {
     width: 34px;
     height: 34px;
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.06);
     color: var(--text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     cursor: pointer;
-    font-size: 18px;
+    font-size: 36px;
+    font-weight: lighter;
     line-height: 1;
-
     transition: background 0.25s ease, border-color 0.25s ease;
+    border-radius: 50%;
 }
 
 .gallery-arrow:hover {
@@ -184,6 +180,7 @@
 
 .main-arrow.prev {
     left: 16px;
+
 }
 
 .main-arrow.next {
@@ -208,7 +205,6 @@
 
 .gallery-arrow:disabled {
     opacity: 0.35;
-
     border-color: rgba(255, 255, 255, 0.18);
 }
 
@@ -220,15 +216,17 @@
    ZOOM OVERLAY
 ========================= */
 
- 
+
 .zoom-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, .7);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 9999;
+
 }
 
 .zoom-overlay.is-open {
@@ -252,6 +250,7 @@
     max-height: 100svh;
     object-fit: contain;
     display: block;
+
 }
 
 .zoom-close {
@@ -275,12 +274,11 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.9);
+    background: none;
     border: none;
     font-size: 28px;
     width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    height: 100%;
     cursor: pointer;
 
     &:hover {
@@ -290,6 +288,7 @@
 
 .zoom-arrow.prev {
     left: -40px;
+
 }
 
 .zoom-arrow.next {
@@ -298,14 +297,6 @@
 
 
 .zoom-btn {
-    position: absolute;
-    right: 12px;
-    bottom: 92px;
-    background: rgba(0, 0, 0, .6);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 10px;
     cursor: pointer;
 }
 
