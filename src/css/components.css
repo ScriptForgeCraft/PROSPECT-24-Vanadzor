@@ -242,7 +242,7 @@
 }
 
 .zoom-image {
-    min-width: 70svw;
+    min-width: 80svw;
     min-height: 70svh;
     max-width: 100svw;
     max-height: 100svh;
