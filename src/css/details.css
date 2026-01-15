@@ -41,12 +41,33 @@
   color: var(--text-secondary);
 }
 
+.content-block .bold-white {
+  font-weight: 700;
+  color: white;
+
+
+}
+
+.block {
+  border: 1px solid rgb(49, 49, 49);
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--card-bg);
+
+  & ul {
+    margin-left: 10px;
+    line-height: 1.5;
+  }
+
+
+}
+
 /* =========================
    RIGHT PANEL
    ========================= */
 
 .document-list {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card-bg);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 18px;
@@ -66,21 +87,29 @@
 }
 
 .doc-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
   flex: 1;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-primary);
-  padding: 14px 16px;
+
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
   text-align: left;
-}
 
+
+
+}
 .doc-item:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: var(--accent-hover);
 }
+
+ 
 
 .doc-download {
   width: 42px;
@@ -111,11 +140,30 @@
   padding: 18px;
   display: inline-block;
   margin-top: 20px;
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: var(--card-bg);
   transition: all 0.3s ease;
+
   &:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: var(--accent-gold);
     color: var(--accent-gold);
   }
+}
+
+.doc-row svg {
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.611);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-hover);
+    color: white;
+  }
+
 }
