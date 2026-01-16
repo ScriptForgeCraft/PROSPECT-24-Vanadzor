@@ -1,7 +1,7 @@
 /* =========================
    COMPONENTS (Gallery Block)
 ========================= */
- 
+
 
 .component-display {
     max-width: 60%;
@@ -9,6 +9,14 @@
     flex-direction: column;
     justify-content: center;
     gap: 32px;
+    & .doc-row{
+        padding: 5px;
+        
+    }
+    & .doc-item{
+        border-radius: 2px;
+        padding: 10px;
+    }
 }
 
 
@@ -337,5 +345,3 @@
 .swiper-slide {
     flex-shrink: 0;
 }
-
- 
