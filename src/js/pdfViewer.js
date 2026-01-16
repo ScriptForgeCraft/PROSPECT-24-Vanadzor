@@ -4,14 +4,18 @@ function viewPDF(filePath, title) {
     const titleEl = document.getElementById('modal-title');
     const downloadLink = document.getElementById('download-link');
     const header = document.querySelector(".main-header");
+    const isGoogleDrive = (url) => url.includes('drive.google.com');
 
     titleEl.textContent = title;
     iframe.src = filePath;
-    downloadLink.href = filePath;
 
     header.classList.add("main-header--hidden");
 
-
+    if (isGoogleDrive(filePath)) {
+        downloadLink.style.display = 'none';
+    } else {
+        downloadLink.style.display = 'inline-block';
+    }
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
