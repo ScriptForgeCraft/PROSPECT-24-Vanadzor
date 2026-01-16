@@ -240,8 +240,6 @@
     position: relative;
     max-width: 100svw;
     max-height: 100svh;
-    background: #000;
-    border-radius: 12px;
     padding: 16px;
     box-sizing: border-box;
 }
