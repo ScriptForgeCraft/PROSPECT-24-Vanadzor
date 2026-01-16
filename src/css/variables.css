@@ -2,11 +2,11 @@
     font-size: clamp(15px, 1.1vw, 18px);
 
     --bg-color: #000000;
-    --card-bg:#080808db;
+    --card-bg: #080808a2;
     --text-primary: #ffffff;
     --text-secondary: #d5d5d5;
     --accent-gold: #82690F;
-    --accent-hover:#DADBEF;
+    --accent-hover: #DADBEF;
     --font-main: 'Noto Sans Armenian', sans-serif;
     --transition: all 0.3s ease;
 }
