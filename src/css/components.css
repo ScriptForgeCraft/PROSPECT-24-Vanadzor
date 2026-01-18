@@ -2,22 +2,61 @@
    COMPONENTS (Gallery Block)
 ========================= */
 
-
 .component-display {
-    max-width: 60%;
+    max-width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 32px;
-    & .doc-row{
-        padding: 5px;
-        
+
+}
+
+.component-image-wrapper {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    border: none;
+}
+
+.image-caption {
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.caption-bg {
+    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.811);
+    padding: 10px;
+
+
+    & .doc-item {
+        border-radius: 6px;
+        background-color: #ffffff31;
+        padding: 2px 8px;
+        transition: all .6s ease;
+        border: none;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.393);
+            color: rgb(255, 255, 255);
+        }
     }
-    & .doc-item{
-        border-radius: 2px;
-        padding: 10px;
+
+    & button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    & .doc-item svg {
+        color: white;
     }
 }
+
 
 
 /* =========================
@@ -28,17 +67,25 @@
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background-color: var(--card-bg);
+
 }
 
 .main-plan-img {
     width: 100%;
-    height: 420px;
+    height: 60svh;
     object-fit: cover;
     display: block;
-
+    border-radius: 0 0 8px 8px;
     opacity: 1;
-    transition: opacity 0.1s ease;
+    transition: opacity 8s ease;
     will-change: opacity;
+
+    transition: ease-in-out .6s;
+
+    &:hover {
+        transform: scale(1.04);
+    }
+
 }
 
 .main-plan-img.is-fading {
@@ -46,14 +93,6 @@
 }
 
 
-/* =========================
-   CAPTION
-========================= */
-
-.image-caption {
-    padding: 14px 16px;
-    background: rgba(255, 255, 255, 0.04);
-}
 
 /* ======================================================
    GALLERY (SLIDER VERSION — 4 ITEMS + ARROWS)
@@ -62,7 +101,6 @@
 .gallery-wrapper {
     display: flex;
     align-items: center;
-    gap: 12px;
     position: relative;
 }
 
@@ -83,13 +121,13 @@
     pointer-events: none;
     background: linear-gradient(to right,
             rgba(0, 0, 0, 0),
-            rgba(0, 0, 0, 0.85));
+            rgba(0, 0, 0, 0.425));
     z-index: 1000;
 }
 
 .gallery-track {
     display: flex;
-    gap: 12px;
+    gap: 4px;
 
 }
 
@@ -109,6 +147,7 @@
 
     filter: grayscale(1);
     transition: filter 0.25s ease, border-color 0.25s ease;
+
 }
 
 .gallery-strip .thumb:hover {
@@ -148,6 +187,7 @@
 .gallery-arrow:hover {
     background: rgba(255, 255, 255, 0.12);
     border-color: var(--accent-hover);
+
 }
 
 
@@ -325,6 +365,7 @@
 @media (max-width: 480px) {
     .component-display {
         gap: 24px;
+        padding: 0;
     }
 
     .main-plan-img {
