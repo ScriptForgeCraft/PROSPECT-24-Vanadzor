@@ -13,6 +13,23 @@ html {
   background-position: center;
 }
 
+.metal-text {
+
+  background-image: url("/images/metal-text-bg.jpg");
+  background-size: cover;
+  background-position: center;
+
+  color: transparent;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+}
+
+
+
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
