@@ -1,12 +1,16 @@
 .hero-section {
   border-bottom: 1px solid rgba(255, 255, 255, 0.103);
+
 }
 
 .hero-title {
   font-size: 5rem;
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: 20px;
   color: var(--accent-gold);
+  letter-spacing: 2rem;
+ 
+
 }
 
 .hero-subtitle {
@@ -22,4 +26,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+
 }

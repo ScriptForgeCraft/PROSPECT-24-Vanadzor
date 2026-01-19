@@ -25,7 +25,7 @@
 .main-header__logo img {
   height: 40px;
   max-height: 40px;
-  width: auto;
+  width: 100%;
 }
 
 /* ============================================
@@ -82,14 +82,17 @@
 
 .burger-btn.active span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
+  background-color: white;
 }
 
 .burger-btn.active span:nth-child(2) {
+  background-color: white;
   opacity: 0;
 }
 
 .burger-btn.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+  background-color: white;
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* ============================================
@@ -109,10 +112,12 @@
   border-left: 1px solid rgba(203, 180, 136, 0.2);
   transition: right 0.35s ease;
   z-index: 2400;
+
 }
 
 .mobile-menu.open {
   right: 0;
+
 }
 
 .mobile-menu ul {
@@ -164,7 +169,6 @@ body.no-scroll {
 
   .main-header__logo img {
     height: 32px;
-    max-width: 120px;
   }
 
   .burger-btn {
@@ -172,10 +176,12 @@ body.no-scroll {
     height: 20px;
     gap: 5px;
     margin-right: 10px;
+
   }
 
   .burger-btn span {
     height: 2px;
+
   }
 
   .mobile-menu a {

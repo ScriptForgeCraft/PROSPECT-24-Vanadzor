@@ -1,43 +1,54 @@
+/* ==============================
+   MEDIA QUERY: до 992px (tablet)
+   ============================== */
 @media (max-width: 992px) {
-    .split-view {
-        grid-template-columns: 1fr;
-    }
 
+    /* -------- HERO BLOCK -------- */
     .hero-title {
         font-size: 3rem;
         letter-spacing: 10px;
     }
 
+    /* -------- SPLIT VIEW / GRID -------- */
+    .split-view {
+        grid-template-columns: 1fr;
+    }
+
+    /* -------- PRICE SECTION -------- */
     .price-value {
         font-size: 1.8rem;
     }
 
+    /* -------- GALLERY / IMAGES -------- */
     .gallery-strip {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    /* -------- COMPONENT DISPLAY -------- */
+    .component-display {
+        max-width: 90%;
+    }
+
 }
 
+/* ==============================
+   MEDIA QUERY: до 600px (mobile)
+   ============================== */
 @media (max-width: 600px) {
 
+    /* -------- NAVIGATION -------- */
     .nav-links {
         display: none;
     }
 
+    /* -------- HERO BLOCK -------- */
     .hero-title {
-        font-size: 2rem;
-    }
-
-    .price-box {
-        padding: 20px;
-        flex-direction: column;
+        font-size: rem;
     }
 
     .hero-content {
         display: flex;
         flex-direction: column;
-
-
-
     }
 
     .hero-subtitle {
@@ -46,12 +57,15 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-
     }
 
+    /* -------- PRICE BOX -------- */
+    .price-box {
+        padding: 20px;
+        flex-direction: column;
+    }
 
-
-
+    /* -------- VALUATION / IMAGES -------- */
     .valuation-images {
         flex-direction: column;
     }
@@ -59,4 +73,5 @@
     .valuation-images img {
         width: 100%;
     }
+
 }
