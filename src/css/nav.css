@@ -8,7 +8,7 @@
   width: 100%;
   z-index: 2000;
   padding: .5rem 4.5rem;
-  background: #fafafa;
+  background: white;
   transition: transform 0.35s ease;
 }
 
@@ -23,8 +23,8 @@
 }
 
 .main-header__logo img {
-  height: 40px;
-  max-height: 40px;
+  height: 60px;
+ 
   width: 100%;
 }
 
