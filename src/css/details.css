@@ -8,11 +8,6 @@
   align-items: center;
 }
 
-@media (max-width: 900px) {
-  .split-view {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* =========================
    LEFT CONTENT

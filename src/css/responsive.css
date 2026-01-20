@@ -1,77 +1,178 @@
-/* ==============================
-   MEDIA QUERY: до 992px (tablet)
-   ============================== */
+/* ============================================
+   RESPONSIVE.CSS
+   ============================================ */
+
+/* ============================================
+   NAVBAR / HEADER
+   ============================================ */
+
 @media (max-width: 992px) {
+  .main-header {
+    padding: 0.8rem 2rem;
+  }
 
-    /* -------- HERO BLOCK -------- */
-    .hero-title {
-        font-size: 3rem;
-        letter-spacing: 10px;
-    }
+  .main-header__nav {
+    display: none;
+  }
 
-    /* -------- SPLIT VIEW / GRID -------- */
-    .split-view {
-        grid-template-columns: 1fr;
-    }
-
-    /* -------- PRICE SECTION -------- */
-    .price-value {
-        font-size: 1.8rem;
-    }
-
-    /* -------- GALLERY / IMAGES -------- */
-    .gallery-strip {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* -------- COMPONENT DISPLAY -------- */
-    .component-display {
-        max-width: 90%;
-    }
-
+  .burger-btn {
+    display: flex;
+  }
 }
 
-/* ==============================
-   MEDIA QUERY: до 600px (mobile)
-   ============================== */
 @media (max-width: 600px) {
+  .main-header {
+    padding: 0.6rem 1rem;
+  }
 
-    /* -------- NAVIGATION -------- */
-    .nav-links {
-        display: none;
-    }
+  .main-header__logo img {
+    height: 32px;
+  }
 
-    /* -------- HERO BLOCK -------- */
-    .hero-title {
-        font-size: rem;
-    }
+  .burger-btn {
+    width: 26px;
+    height: 20px;
+    gap: 5px;
+    margin-right: 10px;
+  }
 
-    .hero-content {
-        display: flex;
-        flex-direction: column;
-    }
+  .burger-btn span {
+    height: 2px;
+  }
 
-    .hero-subtitle {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
+  .mobile-menu a {
+    font-size: 1.4rem;
+  }
 
-    /* -------- PRICE BOX -------- */
-    .price-box {
-        padding: 20px;
-        flex-direction: column;
-    }
+  .nav-links {
+    display: none;
+  }
+}
 
-    /* -------- VALUATION / IMAGES -------- */
-    .valuation-images {
-        flex-direction: column;
-    }
+/* ============================================
+   HERO SECTION
+   ============================================ */
 
-    .valuation-images img {
-        width: 100%;
-    }
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 3rem;
+    letter-spacing: 10px;
+  }
+}
 
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 2rem;  
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ============================================
+   SPLIT VIEW / GRID LAYOUT
+   ============================================ */
+
+@media (max-width: 992px) {
+  .split-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .split-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================
+   PRICE / VALUATION
+   ============================================ */
+
+@media (max-width: 992px) {
+  .price-value {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .price-box {
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .valuation-images {
+    flex-direction: column;
+  }
+
+  .valuation-images img {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   GALLERY
+   ============================================ */
+
+@media (max-width: 992px) {
+  .gallery-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-strip .thumb {
+    flex: 0 0 calc(50% - 6px);
+    height: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-strip .thumb {
+    height: 100px;
+  }
+}
+
+/* ============================================
+   COMPONENT DISPLAY / PLAN
+   ============================================ */
+
+@media (max-width: 992px) {
+  .component-display {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .main-plan-img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .component-display {
+    gap: 24px;
+    padding: 0;
+  }
+
+  .main-plan-img {
+    height: 240px;
+  }
 }

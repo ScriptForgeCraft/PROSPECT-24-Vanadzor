@@ -341,41 +341,7 @@
     cursor: pointer;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 
-@media (max-width: 768px) {
-    .main-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 18px;
-    }
-
-    .main-plan-img {
-        height: 300px;
-    }
-
-    .gallery-strip .thumb {
-        flex: 0 0 calc(50% - 6px);
-        height: 110px;
-    }
-}
-
-@media (max-width: 480px) {
-    .component-display {
-        gap: 24px;
-        padding: 0;
-    }
-
-    .main-plan-img {
-        height: 240px;
-    }
-
-    .gallery-strip .thumb {
-        height: 100px;
-    }
-}
 
 .swiper {
     overflow: hidden;
