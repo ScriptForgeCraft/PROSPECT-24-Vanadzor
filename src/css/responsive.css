@@ -87,9 +87,13 @@
    SPLIT VIEW / GRID LAYOUT
    ============================================ */
 
-@media (max-width: 992px) {
+@media (max-width: 1080px) {
     .split-view {
         grid-template-columns: 1fr;
+    }
+
+    .block {
+        width: 100%;
     }
 }
 
@@ -99,6 +103,16 @@
     }
 }
 
+@media (max-width: 600px) {
+    .size-block {
+        padding: 10px;
+    }
+
+    .size-block ul {
+        grid-template-columns: 1fr;
+    }
+
+}
 
 /* ============================================
    PRICE / VALUATION
