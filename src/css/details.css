@@ -1,11 +1,21 @@
 /* =========================
    LAYOUT
    ========================= */
-
+#details {
+  background-image: url('https://jooinn.com/images/stone-grunge-texture-5.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .split-view {
   display: grid;
   grid-template-columns: 1fr 400px;
+  gap: 4rem;
+  justify-content: center;
   align-items: center;
+  background: linear-gradient(45deg, #17181eed 0%, #0f0f0ff1 100%);
+  padding: 24px;
+  border-radius: 12px;
 }
 
 
@@ -14,13 +24,13 @@
    ========================= */
 
 .content-block {
-  margin-top: 24px;
-  max-width: 720px;
+  display: grid;
+  gap: 20px;
 }
 
 .content-block p {
   margin-bottom: 18px;
-  font-size: 16px;
+  font-size: .9rem;
   line-height: 1.7;
   color: var(--text-secondary);
 }
@@ -36,7 +46,8 @@
 }
 
 .content-block .bold-white {
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 1.1rem;
   color: white;
 
 
@@ -46,15 +57,75 @@
   border: 1px solid rgb(49, 49, 49);
   padding: 20px;
   border-radius: 12px;
-  background: var(--card-bg);
+  background: linear-gradient(45deg, #0c0c0c98 0%, #42424278 100%);
 
   & ul {
     margin-left: 10px;
     line-height: 1.5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 10px;
   }
+
+  & ul li {
+    font-size: .8rem;
+    line-height: 1.4;
+
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, #343434 0%, #262626 100%);
+    border-radius: 6px;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+
+
+.document-content {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.document-content .document-header,
+.doc-row-all-download {
+  background-color: #1A1A1A;
+  padding: 20px;
 
 
 }
+
+.doc-row-all-download {
+  padding: 13px;
+
+}
+
+.doc-row-all {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 0 rgba(79, 79, 79, 0.856);
+  transition: background 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-hover);
+    color: white;
+  }
+
+}
+
+
+
+
 
 /* =========================
    RIGHT PANEL
@@ -62,13 +133,10 @@
 
 .document-list {
   background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  padding: 18px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-
+  gap: 8px;
   max-height: 90svh;
   overflow-y: auto;
   scrollbar-width: thin;
@@ -109,7 +177,7 @@
   justify-content: space-between;
   padding: 5px 10px;
   flex: 1;
-  background: rgb(24, 24, 24);
+  background: #131313;
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-primary);
 
@@ -120,22 +188,23 @@
 
 
 }
+
 .doc-item::after {
-    content: "👁 Դիտել";            
-    position: absolute;             
-    right: 66px;                    
-    top: 50%;                       
-    transform: translateY(-50%) translateX(10px); 
-    opacity: 0;                      
-    font-size: 0.85em;               
-    color: var(--accent-hover);     
-    transition: opacity 0.3s ease, transform 0.3s ease; 
-    pointer-events: none;           
+  content: "👁 Դիտել";
+  position: absolute;
+  right: 66px;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  opacity: 0;
+  font-size: 0.85em;
+  color: var(--accent-hover);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
 }
 
 .doc-item:hover::after {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0); 
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 
 .doc-item:hover {
@@ -143,29 +212,10 @@
   border-color: var(--accent-hover);
 }
 
-.doc-row-all-download {
-  padding: 10px;
-  box-shadow: 0 4px 0 0 rgba(255, 255, 255, 0.396);
- 
-}
 
 
 
-.doc-row-all {
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--accent-hover);
-    color:white;
-  }
-}
 
 .doc-download {
   width: 42px;
@@ -184,26 +234,17 @@
 }
 
 
-.information {
-  margin-top: 20px;
-
+.info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
+
 .download-btns {
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 18px;
-  display: inline-block;
-  margin-top: 20px;
-  background-color: var(--card-bg);
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--accent-gold);
-    color: var(--accent-gold);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .doc-row svg {
@@ -223,4 +264,8 @@
   }
 
 }
- 
+
+.h3-bold-white {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
