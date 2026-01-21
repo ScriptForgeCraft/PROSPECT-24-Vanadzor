@@ -4,9 +4,7 @@ html {
 
 .bg {
   min-height: 100vh;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.748) 0%, rgba(0, 0, 0, 0.473) 100%),
-    url("/images/background.jpg");
+  background-image: url("/images/background.jpg");
 
   background-attachment: fixed;
   background-size: cover;
@@ -23,8 +21,6 @@ html {
   -webkit-text-fill-color: transparent;
   font-size: 1rem;
 }
-
-
 
 body {
   background-color: var(--bg-color);
