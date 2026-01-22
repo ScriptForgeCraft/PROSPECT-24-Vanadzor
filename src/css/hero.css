@@ -1,49 +1,56 @@
- .hero-content {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+.hero-logo img {
+  width: 200px;
+  margin-bottom: 1rem;
+  user-select: none;
+  -webkit-user-drag: none;
+}
 
- }
-
- .hero-logo img {
-   width: 200px;
-   margin-bottom: 1rem;
-   user-select: none;
-   -webkit-user-drag: none;
- }
-
- section.hero-section.bg-yerevan {
-   min-height: 70vh;
- }
+section.hero-section.bg-yerevan {
+  min-height: 70vh;
+}
 
 
- .bg-yerevan {
+.bg-yerevan {
 
-   background-image: url('/images/Yerevan.webp');
-   background-size: cover;
-   background-position: top;
-   background-repeat: no-repeat;
-   background-attachment: fixed;
-   margin-top: 3.2rem;
- }
+  background-image: url('/images/Yerevan.webp');
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin-top: 3.2rem;
+}
 
- .hero-text {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   line-height: 0;
 
- }
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: right;
 
- .hero-title {
-   display: flex;
-   justify-content: center;
-   font-size: 2.4rem;
-   width: 40vw;
-   text-align: center;
-   line-height: 1;
-   text-shadow: 0 0 10px rgba(255, 255, 255, 0.425);
- }
+}
 
- 
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: center;
+
+  line-height: 0;
+
+}
+
+.hero-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.4rem;
+  width: 40vw;
+  text-align: left;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.425);
+  padding: 0 1rem;
+}
+
+.hero-section {
+  display: flex;
+}
