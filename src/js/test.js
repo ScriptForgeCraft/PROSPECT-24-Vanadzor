@@ -5,10 +5,16 @@ function addEventListeners() {
         const section = document.getElementById(id);
         if (!section) return;
 
+        section.style.position = "relative";
+
         const controls = document.createElement("div");
+        controls.style.position = "absolute";
+        controls.style.bottom = "10px";
+        controls.style.right = "10px";
         controls.style.display = "flex";
         controls.style.flexDirection = "column";
         controls.style.gap = "5px";
+        controls.style.zIndex = "100";
 
         const fileInput = document.createElement("input");
         fileInput.type = "file";
@@ -36,7 +42,7 @@ function addEventListeners() {
 
         grayscaleInput.addEventListener("input", updateStyles);
 
-        controls.append("File:", fileInput, "Grayscale:", grayscaleInput);
+        controls.append(fileInput, grayscaleInput);
         section.appendChild(controls);
     });
 }
