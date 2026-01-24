@@ -1,5 +1,5 @@
 function addEventListeners() {
-    const sectionIds = ["hero", "components", "details", "valuation"];
+    const sectionIds = ["hero", "bg"];
 
     sectionIds.forEach(id => {
         const section = document.getElementById(id);
