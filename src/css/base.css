@@ -1,7 +1,12 @@
 html {
   scroll-behavior: smooth;
 }
-
+.background {
+  background-image: url("/images/componentsBG.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
