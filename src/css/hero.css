@@ -1,56 +1,24 @@
-.hero-logo img {
-  width: 200px;
-  margin-bottom: 1rem;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-section.hero-section.bg-yerevan {
-  min-height: 70vh;
-}
-
-
-.bg-yerevan {
-
-  background-image: url('/images/bg.jpeg');
+.hero-section {
+  min-height: 83vh;
+  background-image: url("/images/bg.jpeg");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  margin-top: 3.2rem;
+  display: flex;
 }
-
 
 .hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: right;
-
-}
-
-.hero-text {
-  display: flex;
-  flex-direction: column;
-  align-items: right;
-  justify-content: center;
-
-  line-height: 0;
-
 }
 
 .hero-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.4rem;
-  width: 40vw;
+  font-size: 2.2rem;
+  width: 50vw;
   text-align: left;
   line-height: 1;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.425);
-  padding: 0 1rem;
-}
-
-.hero-section {
-  display: flex;
+  padding: 0 5vw;
 }

@@ -2,26 +2,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.bg {
-  min-height: 100vh;
-  background-image: url("/images/background.jpg");
-
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
-
-.text-image {
-  background-image: url("/images/metal-text-bg.jpg");
-  background-size: contain;
-  background-position: center;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 1rem;
-}
-
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
@@ -31,8 +11,6 @@ body {
 
 .container {
   width: min(1500px, 90%);
-  margin-inline: auto;
-  padding-inline: clamp(16px, 2vw, 24px);
 }
 
 .section {
