@@ -25,7 +25,7 @@
 
  .caption-bg {
    backdrop-filter: blur(6px);
-   background: rgba(40, 46, 87, 0.7);
+   background:#1e293bda;
    padding: 10px;
 
    & .doc-item {
