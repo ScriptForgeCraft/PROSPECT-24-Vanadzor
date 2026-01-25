@@ -1,24 +1,45 @@
 .hero-section {
-  min-height: 83vh;
+  margin-top: 20vh;
+  min-height: 60vh;
   background-image: url("/images/bg.webp");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
   display: flex;
+  position: relative;
+  overflow: hidden;
 }
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #e6e6e6;
+  clip-path: polygon(0 0,
+      53% 0,
+      45% 101%,
+      0 100%);
+  z-index: 1;
+}
+
 
 .hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: right;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-title {
   font-size: 2.2rem;
-  width: 50vw;
   text-align: left;
   line-height: 1;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.425);
+  width: 50vw;
+
+  background: linear-gradient(135deg, #4e1414 0%, #032096 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   padding: 0 5vw;
 }

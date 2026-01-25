@@ -1,12 +1,19 @@
-.price-box {
-  display: inline-flex;
+.valuation-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 30px;
-  background: rgba(255, 255, 255, 0.03);
+  gap: 24px;
+  padding: 24px;
+}
+
+
+.price-box {
+  background: rgba(34, 34, 67, 0.248);
   padding: 30px 60px;
   border-radius: 10px;
-  margin: 40px 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
+
 }
 
 .price-value {
@@ -19,13 +26,8 @@
   display: flex;
   gap: 20px;
   justify-content: center;
-  margin-top: 40px;
 }
 
 .valuation-images img {
-  width: 45%;
-  max-height: 500px;
   object-fit: cover;
 }
-
-
