@@ -73,13 +73,13 @@
    ========================= */
 
  .document-list {
- 
+
    background: var(--card-bg);
    padding: 8px;
    display: flex;
    flex-direction: column;
-   gap: 8px;
    max-height: 65svh;
+   gap: 1px;
    overflow-y: auto;
    scrollbar-width: thin;
    scrollbar-color: rgba(255, 255, 255, 0.89) transparent;
