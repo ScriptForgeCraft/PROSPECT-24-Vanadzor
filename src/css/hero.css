@@ -44,7 +44,9 @@
   width: 50vw;
 
   background: linear-gradient(135deg, #34445E 0%, #032096 100%);
+  background-clip: text;
   -webkit-background-clip: text;
+  color: transparent;
   -webkit-text-fill-color: transparent;
   padding: 0 5vw;
 }
