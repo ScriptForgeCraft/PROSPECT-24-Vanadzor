@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-  background: linear-gradient(45deg, #1E2330 0%, #161c2af0 100%);
+  background: linear-gradient(45deg, #253242d1 0%, #161c2adf 100%);
   border-radius: 8px;
   width: min(1500px, 90%);
   margin: 0 auto;

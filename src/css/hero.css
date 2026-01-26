@@ -1,5 +1,4 @@
 .hero-section {
-  margin-top: 20vh;
   min-height: 60vh;
   background-image: url("/images/bg.webp");
   background-size: cover;
@@ -10,11 +9,17 @@
   overflow: hidden;
 }
 
+.hero-logo {
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+}
+
 .hero-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: #e6e6e6;
+  background-color: #ffffff;
   clip-path: polygon(0 0,
       53% 0,
       45% 101%,
@@ -34,11 +39,11 @@
 
 .hero-title {
   font-size: 2.2rem;
-  text-align: left;
+  text-align: center;
   line-height: 1;
   width: 50vw;
 
-  background: linear-gradient(135deg, #4e1414 0%, #032096 100%);
+  background: linear-gradient(135deg, #34445E 0%, #032096 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 0 5vw;
