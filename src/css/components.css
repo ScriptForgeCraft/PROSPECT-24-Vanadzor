@@ -2,12 +2,13 @@
    COMPONENTS (Gallery Block)
 ========================= */
 
- .component-display {
+.component-display {
    display: flex;
    flex-direction: column;
    justify-content: center;
    gap: 10px;
    padding: 24px;
+   margin: 0 auto;
  }
 
  .component-image-wrapper {
