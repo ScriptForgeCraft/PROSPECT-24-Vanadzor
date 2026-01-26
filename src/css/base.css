@@ -37,7 +37,8 @@ body {
 
 .header-block {
   color: rgb(238, 238, 238);
-  background: linear-gradient(45deg, #1e2330d8 0%, #161c2a64 100%);
+  background: linear-gradient(180deg, #161c2ab0  0%, #161c2a00 100%);
+  box-shadow: 0px 4px 4px rgba(24, 24, 24, 0.148);
 
   line-height: 1.2;
   padding: 8px 30px;
