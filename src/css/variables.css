@@ -1,5 +1,4 @@
 :root {
-    font-size: clamp(15px, 1.1vw, 18px);
     --card-bg: #151922b9;
     --text-primary: #ffffff;
     --text-secondary: #ffffff;
