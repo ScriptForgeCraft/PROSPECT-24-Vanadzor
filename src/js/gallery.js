@@ -30,20 +30,16 @@ import "swiper/css/free-mode";
     let isFading = false;
 
     const swiper = new Swiper(".gallery-strip.swiper", {
-        
         modules: [FreeMode],
-        
         slidesPerView: 4,
         spaceBetween: 12,
         speed: 400,
         grabCursor: true,
-        
         freeMode: {
             enabled: true,
-            sticky: false,   
-            momentum: true,  
+            sticky: false,
+            momentum: true,
         },
-
         breakpoints: {
             0: { slidesPerView: 2.5 },
             768: { slidesPerView: 5 },
@@ -52,7 +48,6 @@ import "swiper/css/free-mode";
             slideChange: updateThumbArrows
         }
     });
-
 
     function setActiveThumb(index) {
         thumbs.forEach(t => t.classList.remove("is-active"));
@@ -102,23 +97,13 @@ import "swiper/css/free-mode";
         if (!fullSrc) return;
 
         mainImg.src = fullSrc;
-
-        if (isZoomOpen() && zoomImage) {
-            zoomImage.src = fullSrc;
-        }
+        if (isZoomOpen() && zoomImage) zoomImage.src = fullSrc;
 
         setActiveThumb(index);
         preloadNeighbors(index);
 
-        const isLoopJump =
-            (prevIndex === thumbs.length - 1 && index === 0) ||
-            (prevIndex === 0 && index === thumbs.length - 1);
-
-        if (isLoopJump) {
-            swiper.slideTo(index, 0, false);
-        } else {
-            swiper.slideTo(index, 300);
-        }
+        const isLoopJump = (prevIndex === thumbs.length - 1 && index === 0) || (prevIndex === 0 && index === thumbs.length - 1);
+        isLoopJump ? swiper.slideTo(index, 0, false) : swiper.slideTo(index, 300);
 
         updateThumbArrows();
     }
@@ -126,17 +111,14 @@ import "swiper/css/free-mode";
     function requestSwitch(index) {
         const normalized = (index + thumbs.length) % thumbs.length;
         pendingIndex = normalized;
-
         if (isFading) return;
         isFading = true;
-
         mainImg.classList.add("is-fading");
 
         setTimeout(() => {
             const nextIndex = pendingIndex;
             pendingIndex = null;
             applyImage(nextIndex);
-
             requestAnimationFrame(() => {
                 mainImg.classList.remove("is-fading");
                 isFading = false;
@@ -146,50 +128,60 @@ import "swiper/css/free-mode";
     }
 
 
-    thumbs.forEach((thumb, i) => {
-        thumb.addEventListener("click", () => requestSwitch(i));
-    });
+    thumbs.forEach((thumb, i) => thumb.addEventListener("click", () => requestSwitch(i)));
 
-    btnMainNext?.addEventListener("click", () => {
-        requestSwitch((activeIndex + 1) % thumbs.length);
-    });
+    btnMainNext?.addEventListener("click", () => requestSwitch(activeIndex + 1));
+    btnMainPrev?.addEventListener("click", () => requestSwitch(activeIndex - 1));
 
-    btnMainPrev?.addEventListener("click", () => {
-        requestSwitch((activeIndex - 1 + thumbs.length) % thumbs.length);
-    });
+    btnThumbNext?.addEventListener("click", () => { swiper.slideNext(); updateThumbArrows(); });
+    btnThumbPrev?.addEventListener("click", () => { swiper.slidePrev(); updateThumbArrows(); });
 
-    btnThumbNext?.addEventListener("click", () => {
-        swiper.slideNext();
-        updateThumbArrows();
-    });
-
-    btnThumbPrev?.addEventListener("click", () => {
-        swiper.slidePrev();
-        updateThumbArrows();
-    });
-
-    zoomBtn?.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        openZoom();
-    });
-
+    zoomBtn?.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); openZoom(); });
     zoomClose?.addEventListener("click", closeZoom);
 
     zoomOverlay?.addEventListener("click", (e) => {
-        if (e.target === zoomOverlay) closeZoom();
+        if (e.target === zoomOverlay || e.target.id === "zoomOverlay") closeZoom();
     });
 
-    zoomNext?.addEventListener("click", () => requestSwitch(activeIndex + 1));
-    zoomPrev?.addEventListener("click", () => requestSwitch(activeIndex - 1));
+    zoomNext?.addEventListener("click", (e) => { e.stopPropagation(); requestSwitch(activeIndex + 1); });
+    zoomPrev?.addEventListener("click", (e) => { e.stopPropagation(); requestSwitch(activeIndex - 1); });
 
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && isZoomOpen()) closeZoom();
-        if (isZoomOpen()) {
-            if (e.key === "ArrowRight") requestSwitch(activeIndex + 1);
-            if (e.key === "ArrowLeft") requestSwitch(activeIndex - 1);
-        }
+        if (!isZoomOpen()) return;
+        if (e.key === "Escape") closeZoom();
+        if (e.key === "ArrowRight") requestSwitch(activeIndex + 1);
+        if (e.key === "ArrowLeft") requestSwitch(activeIndex - 1);
     });
+
+    let startX = 0;
+    let isDragging = false;
+    const SWIPE_THRESHOLD = 40;
+
+    function onPointerDown(e) {
+        isDragging = true;
+        startX = e.clientX ?? (e.touches?.[0]?.clientX ?? 0);
+    }
+
+    function onPointerUp(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        const endX = e.clientX ?? (e.changedTouches?.[0]?.clientX ?? 0);
+        const dx = endX - startX;
+
+        if (Math.abs(dx) < SWIPE_THRESHOLD) return;
+        if (dx < 0) requestSwitch(activeIndex + 1);
+        else requestSwitch(activeIndex - 1);
+    }
+
+    mainImg.addEventListener("mousedown", onPointerDown);
+    mainImg.addEventListener("mouseup", onPointerUp);
+    mainImg.addEventListener("touchstart", onPointerDown, { passive: true });
+    mainImg.addEventListener("touchend", onPointerUp);
+
+    zoomImage?.addEventListener("mousedown", onPointerDown);
+    zoomImage?.addEventListener("mouseup", onPointerUp);
+    zoomImage?.addEventListener("touchstart", onPointerDown, { passive: true });
+    zoomImage?.addEventListener("touchend", onPointerUp);
 
     applyImage(activeIndex);
     updateThumbArrows();
