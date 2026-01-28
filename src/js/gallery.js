@@ -1,5 +1,8 @@
 import Swiper from "swiper";
+import { FreeMode } from "swiper/modules";
+
 import "swiper/css";
+import "swiper/css/free-mode";
 
 (() => {
     const mainImg = document.getElementById("mainPlanImg");
@@ -27,22 +30,29 @@ import "swiper/css";
     let isFading = false;
 
     const swiper = new Swiper(".gallery-strip.swiper", {
+        
+        modules: [FreeMode],
+        
         slidesPerView: 4,
         spaceBetween: 12,
         speed: 400,
         grabCursor: true,
-        navigation: {
-            nextEl: ".gallery-arrow.next",
-            prevEl: ".gallery-arrow.prev",
+        
+        freeMode: {
+            enabled: true,
+            sticky: false,   
+            momentum: true,  
         },
+
         breakpoints: {
-            0: { slidesPerView: 2 },
-            768: { slidesPerView: 4 },
+            0: { slidesPerView: 2.5 },
+            768: { slidesPerView: 5 },
         },
         on: {
             slideChange: updateThumbArrows
         }
     });
+
 
     function setActiveThumb(index) {
         thumbs.forEach(t => t.classList.remove("is-active"));
@@ -71,21 +81,16 @@ import "swiper/css";
 
     function openZoom() {
         if (!zoomOverlay || !zoomImage) return;
-
         zoomImage.src = mainImg.src;
-
         zoomOverlay.classList.add("is-open");
         zoomOverlay.setAttribute("aria-hidden", "false");
-
         document.body.style.overflow = "hidden";
     }
 
     function closeZoom() {
         if (!zoomOverlay) return;
-
         zoomOverlay.classList.remove("is-open");
         zoomOverlay.setAttribute("aria-hidden", "true");
-
         document.body.style.overflow = "";
     }
 
@@ -130,18 +135,17 @@ import "swiper/css";
         setTimeout(() => {
             const nextIndex = pendingIndex;
             pendingIndex = null;
-
             applyImage(nextIndex);
 
             requestAnimationFrame(() => {
                 mainImg.classList.remove("is-fading");
                 isFading = false;
-
                 if (pendingIndex !== null) requestSwitch(pendingIndex);
             });
         }, 10);
     }
 
+    // Обработчики кликов
     thumbs.forEach((thumb, i) => {
         thumb.addEventListener("click", () => requestSwitch(i));
     });
@@ -180,43 +184,12 @@ import "swiper/css";
     zoomPrev?.addEventListener("click", () => requestSwitch(activeIndex - 1));
 
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && isZoomOpen()) {
-            closeZoom();
-        }
-        if (isZoomOpen() && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
+        if (e.key === "Escape" && isZoomOpen()) closeZoom();
+        if (isZoomOpen()) {
             if (e.key === "ArrowRight") requestSwitch(activeIndex + 1);
             if (e.key === "ArrowLeft") requestSwitch(activeIndex - 1);
         }
     });
-
-    let startX = 0;
-    let isDragging = false;
-    const SWIPE_THRESHOLD = 40;
-
-    function onPointerDown(e) {
-        if (!isZoomOpen()) return;
-        isDragging = true;
-        startX = e.clientX ?? (e.touches?.[0]?.clientX ?? 0);
-    }
-
-    function onPointerUp(e) {
-        if (!isZoomOpen() || !isDragging) return;
-        isDragging = false;
-
-        const endX = e.clientX ?? (e.changedTouches?.[0]?.clientX ?? 0);
-        const dx = endX - startX;
-
-        if (Math.abs(dx) < SWIPE_THRESHOLD) return;
-
-        if (dx < 0) requestSwitch(activeIndex + 1);
-        else requestSwitch(activeIndex - 1);
-    }
-
-    zoomImage?.addEventListener("mousedown", onPointerDown);
-    zoomImage?.addEventListener("mouseup", onPointerUp);
-
-    zoomImage?.addEventListener("touchstart", onPointerDown, { passive: true });
-    zoomImage?.addEventListener("touchend", onPointerUp);
 
     applyImage(activeIndex);
     updateThumbArrows();

@@ -49,77 +49,89 @@
     }
 }
 
+
+/* ============================================
+   BASE
+   ============================================ */
+@media (max-width: 768px) {
+    .container {
+        width: 97%;
+
+    }
+}
+
 /* ============================================
    HERO SECTION
    ============================================ */
 
- 
+
 @media (max-width: 1024px) {
-    .hero-section{
+    .hero-section {
         background-size: cover;
         background-position: right bottom;
     }
-  .hero-title {
-    font-size: 1.8rem;
-    width: 45vw; 
-  }
-  
-  .hero-logo {
-    width: 220px;
-  }
+
+    .hero-title {
+        font-size: 1.8rem;
+        width: 45vw;
+    }
+
+    .hero-logo {
+        width: 220px;
+    }
 }
 
- 
+
 @media (max-width: 768px) {
-  .hero-section {
-    min-height: 50vh;
-  }
+    .hero-section {
+        min-height: 50vh;
+    }
 
- 
-  .hero-section::before {
-    clip-path: polygon(0 0, 60% 0, 55% 100%, 0 100%);
-  }
 
-  .hero-title {
-    font-size: 1.5rem;
-    width: 55vw;
-  }
+    .hero-section::before {
+        clip-path: polygon(0 0, 60% 0, 55% 100%, 0 100%);
+    }
 
-  .hero-logo {
-    width: 180px;
-  }
+    .hero-title {
+        font-size: 1.5rem;
+        width: 55vw;
+    }
+
+    .hero-logo {
+        width: 180px;
+    }
 }
 
- 
+
 @media (max-width: 480px) {
-  .hero-section {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 500px;
-    text-align: center;
-  }
+    .hero-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 500px;
+        text-align: center;
+    }
 
-  .hero-section::before {
-    clip-path: none; 
-    background: rgba(255, 255, 255, 0.85); 
-  }
+    .hero-section::before {
+        clip-path: none;
+        background: rgba(255, 255, 255, 0.85);
+    }
 
-  .hero-content {
-    align-items: center; 
-    width: 100%;
-  }
+    .hero-content {
+        align-items: center;
+        width: 100%;
+    }
 
-  .hero-title {
-    width: 90vw;  
-    font-size: 1.4rem;
-    padding: 20px;
-  }
+    .hero-title {
+        width: 90vw;
+        font-size: 1.4rem;
+        padding: 20px;
+    }
 
-  .hero-logo {
-    width: 150px;
-    margin-bottom: 20px;
-  }
+    .hero-logo {
+        width: 150px;
+        margin-bottom: 20px;
+    }
 }
 
 /* ============================================
@@ -199,6 +211,8 @@
     .gallery-strip .thumb {
         height: 100px;
     }
+
+
 }
 
 /* ============================================
@@ -208,7 +222,7 @@
 @media (max-width: 992px) {
     .component-display {
         max-width: 90%;
-    
+
     }
 }
 
@@ -222,12 +236,14 @@
     .main-plan-img {
         height: 300px;
     }
-   .gallery-arrow{
-    display: none;
-   }
-   .gallery-wrapper{
-    padding: 10px 0;
-   }
+
+    .gallery-arrow {
+        display: none;
+    }
+
+    .gallery-wrapper {
+        padding: 10px 0;
+    }
 }
 
 @media (max-width: 480px) {
