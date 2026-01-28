@@ -8,7 +8,9 @@ body.dark-mode {
   background-color: #0f172a;
   color: #f9fafb;
 }
-
+.hero-section.dark-mode::before {
+  background-color: #E6E6E6;
+}
 .settings {
   position: fixed;
   bottom: 20px;
@@ -30,19 +32,18 @@ body.dark-mode {
   justify-content: center;
 
   border-radius: 50%;
-  background: #2564ebcb;
+  background:#141A37;
   color: rgba(255, 255, 255, 0.942);
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(37, 100, 235, 0.162);
+  box-shadow: 0 4px 12px rgba(37, 100, 235, 0.622);
   transition:
     transform 0.2s ease,
     background 0.2s;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .settings__toggle:hover {
   transform: scale(1.05);
-  background: #1d4ed8;
   opacity: 1;
 }
 
@@ -63,7 +64,7 @@ body.dark-mode {
   bottom: 65px;
   right: 0;
   width: 250px;
-  background: white;
+  background: rgb(255, 255, 255);
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 16px;
@@ -108,19 +109,18 @@ body.dark-mode .settings__inner {
   background: #f8fafc;
   cursor: pointer;
   font-size: 13px;
-  color: #475569;
+  color: #000000;
 }
 
 body.dark-mode .settings__btn {
   background: #334155;
-  border-color: #475569;
-  color: #e2e8f0;
+  border: none;
+  color: #f0e7e2;
 }
 
 .settings__btn.active {
-  background: #2563eb !important;
+  background: #161769 !important;
   color: white !important;
-  border-color: #2563eb;
 }
 
 .settings__close {

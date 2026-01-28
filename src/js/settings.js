@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggle = settings.querySelector('.settings__toggle');
     const panel = settings.querySelector('.settings__inner');
     const close = settings.querySelector('.settings__close');
+    const heroSection = document.querySelector('.hero-section');
 
     toggle.onclick = (e) => {
         e.stopPropagation();
@@ -23,8 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (btn.dataset.theme === 'dark') {
                 document.body.classList.add('dark-mode');
+                heroSection.classList.add('dark-mode');
             } else {
                 document.body.classList.remove('dark-mode');
+                heroSection.classList.remove('dark-mode');
             }
         };
     });
