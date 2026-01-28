@@ -145,7 +145,7 @@ import "swiper/css/free-mode";
         }, 10);
     }
 
-    // Обработчики кликов
+
     thumbs.forEach((thumb, i) => {
         thumb.addEventListener("click", () => requestSwitch(i));
     });

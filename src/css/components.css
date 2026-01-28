@@ -245,6 +245,7 @@
    align-items: center;
    justify-content: center;
    z-index: 9999;
+
  }
 
  .zoom-overlay.is-open {
@@ -255,11 +256,11 @@
    position: relative;
    max-width: 100svw;
    max-height: 100svh;
-   padding: 16px;
    box-sizing: border-box;
  }
 
  .zoom-image {
+  
    min-width: 80svw;
    min-height: 70svh;
    max-width: 100svw;
@@ -270,11 +271,9 @@
 
  .zoom-close {
    position: absolute;
-   right: 40px;
-   top: 40px;
+   right: 0;
    width: 36px;
    height: 36px;
-   border-radius: 50%;
    border: none;
    background: #000000d1;
    font-size: 18px;
@@ -291,8 +290,8 @@
    transform: translateY(-50%);
    background: none;
    border: none;
-   font-size: 28px;
-   width: 40px;
+   font-size: 48px;
+   width: 50px;
    height: 100%;
    cursor: pointer;
 
@@ -302,11 +301,11 @@
  }
 
  .zoom-arrow.prev {
-   left: -40px;
+   left: -50px;
  }
 
  .zoom-arrow.next {
-   right: -40px;
+   right: -50px;
  }
 
  .zoom-btn {

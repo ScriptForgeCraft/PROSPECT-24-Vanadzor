@@ -195,6 +195,17 @@
    ============================================ */
 
 @media (max-width: 992px) {
+
+    .zoom-image {
+        min-height: 100%;
+    }
+
+    .zoom-close {
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+    }
+
     .gallery-strip {
         grid-template-columns: repeat(2, 1fr);
     }
