@@ -5,6 +5,7 @@
 /* ============================================
    NAVBAR / HEADER
    ============================================ */
+ 
 
 @media (max-width: 992px) {
     .main-header {
@@ -18,6 +19,11 @@
     .burger-btn {
         display: flex;
     }
+
+    #documents {
+        scroll-margin-top: 10vh;
+    }
+
 }
 
 @media (max-width: 600px) {
