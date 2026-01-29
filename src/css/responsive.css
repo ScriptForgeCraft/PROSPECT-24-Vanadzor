@@ -10,6 +10,7 @@
 @media (max-width: 992px) {
     .main-header {
         padding: 0.8rem 2rem;
+        background-color: white;
     }
 
     .main-header__nav {
