@@ -9,7 +9,7 @@ body.dark-mode {
   color: #f9fafb;
 }
 .hero-section.dark-mode::before {
- background: rgba(209, 209, 209, 0.85);
+ background: rgb(246, 246, 246);
 }
 .settings {
   position: fixed;
