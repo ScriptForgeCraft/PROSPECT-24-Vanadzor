@@ -9,8 +9,7 @@
 
 @media (max-width: 992px) {
     .main-header {
-        padding: 0.8rem 2rem;
-        background-color: white;
+        padding: 0.4rem 2rem;
     }
 
     .main-header__nav {
@@ -117,6 +116,10 @@
         align-items: center;
         min-height: 500px;
         text-align: center;
+        
+    }
+   .main-header {
+        background-color: white;
     }
 
     .hero-section::before {
