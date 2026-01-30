@@ -9,6 +9,7 @@
     <meta name="description"
         content="Ներդրումային փաթեթ՝ ներառյալ տարածքի նկարագրություն, նախագծային նյութեր և ներբեռնվող փաստաթղթեր։">
     <meta name="robots" content="index, follow">
+    <link rel="preload" as="image" href="./images/full/1.webp">
     <link rel="stylesheet" href="/src/css/main.css">
     <script type="module" src="/src/js/main.js" defer></script>
 
@@ -23,7 +24,7 @@
             <!-- LOGO -->
             <a href="#hero" class="main-header__logo">
                 <div class="logo">
-                    <img src="/images/logo.png" alt="Լոգո">
+                    <img src="/images/logo.webp" alt="Լոգո" width="200" height="200">
                 </div>
             </a>
 
@@ -64,7 +65,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <div class="hero-logo">
-                        <img src="/images/logo.png" alt="Լոգո">
+                        <img src="/images/logo.webp" alt="Լոգո" width="600" height="600">
                     </div>
                     <h1 class="hero-title">ՊԵՏԱԿԱՆ ԳՈՒՅՔԻ
                         ՕՏԱՐՄԱՆ ՆԵՐԴՐՈՒՄԱՅԻՆ
@@ -85,8 +86,8 @@
                 <!-- MAIN IMAGE -->
                 <div class="component-image-wrapper">
                     <img id="mainPlanImg" class="main-plan-img zoom-btn" src="./images/full/1.webp"
-                        alt="Գլխավոր նախագծային պլանի պատկեր" loading="eager" decoding="async" width="1200"
-                        height="900">
+                        alt="Գլխավոր նախագծային պլանի պատկեր" fetchpriority="high" loading="eager" decoding="async"
+                        width="1200" height="900">
 
 
                     <button class="main-arrow prev" type="button" aria-label="Նախորդ պատկեր">‹</button>
@@ -449,8 +450,8 @@
                     <span class="price-value">500,000,000 ՀՀ դրամ</span>
                 </div>
                 <div class="valuation-images">
-                    <img src="https://picsum.photos/id/1047/500/600?grayscale" alt="ձախ պատկեր">
-                    <img src="https://picsum.photos/id/1049/500/600?grayscale" alt="աջ պատկեր">
+                    <img src="./images/full/1.webp" alt="ձախ պատկեր">
+                    <img src="./images/full/2.webp" alt="աջ պատկեր">
                 </div>
             </div>
         </section>
@@ -494,7 +495,7 @@
 
     <!-- Settings -->
     <div class="settings">
-        <button class="settings__toggle" type="button">
+        <button class="settings__toggle" type="button" aria-label="Կարգավորումներ">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="3" />
