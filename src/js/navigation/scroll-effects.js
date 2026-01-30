@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.main-header');
 
   const checkHeaderScroll = () => {
-    if (header && window.scrollY > 20) {
+    if (header && window.scrollY > 0) {
       header.classList.add('scrolled');
     }
     else if (header) {
