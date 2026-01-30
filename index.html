@@ -9,10 +9,16 @@
     <meta name="description"
         content="Ներդրումային փաթեթ՝ ներառյալ տարածքի նկարագրություն, նախագծային նյութեր և ներբեռնվող փաստաթղթեր։">
     <meta name="robots" content="index, follow">
-    <link rel="preload" as="image" href="./images/full/1.webp">
-    <link rel="stylesheet" href="/src/css/main.css">
-    <script type="module" src="/src/js/main.js" defer></script>
 
+    <link rel="preload" as="image" href="/images/full/1.webp">
+
+    <link rel="stylesheet" href="/src/css/main.css" media="print" onload="this.media='all'">
+
+    <noscript>
+        <link rel="stylesheet" href="/src/css/main.css">
+    </noscript>
+
+    <script type="module" src="/src/js/main.js" defer></script>
 </head>
 
 <body>
@@ -85,7 +91,7 @@
             <div class="component-display">
                 <!-- MAIN IMAGE -->
                 <div class="component-image-wrapper">
-                    <img id="mainPlanImg" class="main-plan-img zoom-btn" src="./images/full/1.webp"
+                    <img id="mainPlanImg" class="main-plan-img zoom-btn" src="/images/full/1.webp"
                         alt="Գլխավոր նախագծային պլանի պատկեր" fetchpriority="high" decoding="async" width="1200"
                         height="900">
 
@@ -128,33 +134,32 @@
                         <div class="gallery-track swiper-wrapper">
 
                             <div class="swiper-slide">
-                                <img class="thumb is-active" src="./images/thumbs/2.webp"
-                                    data-full="./images/full/2.webp" alt="Պատկեր 1" loading="lazy" decoding="async"
-                                    width="800" height="600">
+                                <img class="thumb is-active" src="/images/thumbs/2.webp" data-full="/images/full/2.webp"
+                                    alt="Պատկեր 1" loading="lazy" decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
-                                <img class="thumb" src="./images/thumbs/3.webp" data-full="./images/full/3.webp"
+                                <img class="thumb" src="/images/thumbs/3.webp" data-full="/images/full/3.webp"
                                     alt="Պատկեր 2" loading="lazy" decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
-                                <img class="thumb" src="./images/thumbs/4.webp" data-full="./images/full/4.webp"
+                                <img class="thumb" src="/images/thumbs/4.webp" data-full="/images/full/4.webp"
                                     alt="Պատկեր 3" loading="lazy" decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
-                                <img class="thumb" src="./images/thumbs/5.webp" data-full="./images/full/5.webp"
+                                <img class="thumb" src="/images/thumbs/5.webp" data-full="/images/full/5.webp"
                                     alt="Պատկեր 4" loading="lazy" decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
-                                <img class="thumb" src="./images/thumbs/6.webp" data-full="./images/full/6.webp"
+                                <img class="thumb" src="/images/thumbs/6.webp" data-full="/images/full/6.webp"
                                     alt="Պատկեր 5" loading="lazy" decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
-                                <img class="thumb" src="./images/thumbs/7.webp" data-full="./images/full/7.webp"
+                                <img class="thumb" src="/images/thumbs/7.webp" data-full="/images/full/7.webp"
                                     alt="Պատկեր 6" loading="lazy" decoding="async" width="800" height="600">
                             </div>
 
@@ -450,8 +455,10 @@
                     <span class="price-value">500,000,000 ՀՀ դրամ</span>
                 </div>
                 <div class="valuation-images">
-                    <img src="./images/full/1.webp" alt="ձախ պատկեր">
-                    <img src="./images/full/2.webp" alt="աջ պատկեր">
+                    <img src="/images/full/1.webp" alt="ձախ պատկեր" loading="lazy" decoding="async" width="800"
+                        height="600">
+                    <img src="/images/full/2.webp" alt="աջ պատկեր" loading="lazy" decoding="async" width="800"
+                        height="600">
                 </div>
             </div>
         </section>
