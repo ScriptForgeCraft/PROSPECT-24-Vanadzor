@@ -158,7 +158,7 @@
 @media (max-width: 1080px) {
     .split-view {
         grid-template-columns: 1fr;
-        padding: 10px;
+        padding: var(--mobile-padding);
     }
 
     .block {
@@ -174,7 +174,7 @@
 
 @media (max-width: 600px) {
     .size-block {
-        padding: 10px;
+        padding: var(--mobile-padding);
     }
 
     .size-block ul {
@@ -189,7 +189,7 @@
 
 @media (max-width: 992px) {
     .valuation-content {
-        padding: 10px;
+        padding: var(--mobile-padding);
     }
 
     .price-value {
@@ -200,7 +200,7 @@
 
 @media (max-width: 600px) {
     .price-box {
-        padding: 10px;
+        padding: var(--mobile-padding);
         text-align: center;
     }
 
@@ -255,7 +255,7 @@
 
 @media (max-width: 992px) {
     .component-display {
-        padding: 10px;
+        padding: var(--mobile-padding);
     }
 }
 
@@ -275,7 +275,7 @@
     }
 
     .gallery-wrapper {
-        padding: 10px 0;
+        padding: var(--mobile-padding) 0;
     }
 }
 

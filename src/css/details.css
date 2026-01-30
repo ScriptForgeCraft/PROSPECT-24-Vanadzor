@@ -5,7 +5,7 @@
  .split-view {
    display: grid;
    grid-template-columns: 1fr 400px;
-   padding: 24px;
+   padding: var(--desktop-padding);
    gap: 4rem;
  }
 

@@ -7,7 +7,7 @@
    flex-direction: column;
    justify-content: center;
    gap: 10px;
-   padding: 24px;
+   padding: var(--desktop-padding);
    margin: 0 auto;
  }
 
