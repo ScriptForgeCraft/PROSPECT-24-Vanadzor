@@ -219,14 +219,19 @@
 
 @media (max-width: 992px) {
 
+    .zoom-arrow {
+        width: 50px;
+        height: 80px;
+    }
+
     .zoom-image {
         min-height: 100%;
     }
 
     .zoom-close {
-        width: 20px;
-        height: 20px;
-        font-size: 14px;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
     }
 
     .gallery-strip {
@@ -235,6 +240,30 @@
 }
 
 @media (max-width: 768px) {
+ 
+    .zoom-controls {
+        bottom: 16px;
+        right: 16px;
+        gap: 6px;
+    }
+
+
+
+    .zoom-btn-ctrl {
+        width: 44px;
+        height: 44px;
+    }
+
+    .zoom-btn-ctrl svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .zoom-arrow {
+        width: 40px;
+        height: 70px;
+    }
+
     .gallery-strip .thumb {
         flex: 0 0 calc(50% - 6px);
         height: 110px;
@@ -246,6 +275,25 @@
         height: 100px;
     }
 
+    .zoom-arrow {
+        width: 25px;
+        height: 60px;
+    }
+
+    .zoom-controls {
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .zoom-btn-ctrl {
+        width: 40px;
+        height: 40px;
+    }
+
+    .zoom-btn-ctrl svg {
+        width: 18px;
+        height: 18px;
+    }
 
 }
 

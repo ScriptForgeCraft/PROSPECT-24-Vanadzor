@@ -22,12 +22,25 @@ import "swiper/css/free-mode";
     const zoomPrev = zoomOverlay?.querySelector(".zoom-arrow.prev");
     const zoomNext = zoomOverlay?.querySelector(".zoom-arrow.next");
     const zoomBtn = document.querySelector(".zoom-btn");
+    const zoomInBtn = document.querySelector(".zoom-in");
+    const zoomOutBtn = document.querySelector(".zoom-out");
 
     let activeIndex = thumbs.findIndex(t => t.classList.contains("is-active"));
     if (activeIndex < 0) activeIndex = 0;
 
     let pendingIndex = null;
     let isFading = false;
+
+    // Zoom state
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let isDraggingZoom = false;
+    let startDragX = 0;
+    let startDragY = 0;
+
+    const MIN_SCALE = 1;
+    const MAX_SCALE = 5;
 
     const swiper = new Swiper(".gallery-strip.swiper", {
         modules: [FreeMode],
@@ -74,12 +87,79 @@ import "swiper/css/free-mode";
         return !!zoomOverlay && zoomOverlay.classList.contains("is-open");
     }
 
+    function updateZoomButtons() {
+        if (!zoomInBtn || !zoomOutBtn) return;
+
+        if (scale >= MAX_SCALE) {
+            zoomInBtn.classList.add("at-limit");
+            zoomInBtn.disabled = true;
+        } else {
+            zoomInBtn.classList.remove("at-limit");
+            zoomInBtn.disabled = false;
+        }
+
+        if (scale <= MIN_SCALE) {
+            zoomOutBtn.classList.add("at-limit");
+            zoomOutBtn.disabled = true;
+        } else {
+            zoomOutBtn.classList.remove("at-limit");
+            zoomOutBtn.disabled = false;
+        }
+    }
+
+    function resetZoomTransform() {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        if (zoomImage) {
+            zoomImage.style.transformOrigin = "center center";
+            zoomImage.style.transform = `scale(1) translate(0px, 0px)`;
+            zoomImage.style.cursor = "default";
+        }
+        updateZoomButtons();
+    }
+
+    function constrainTranslation() {
+        if (!zoomImage || scale <= 1) {
+            translateX = 0;
+            translateY = 0;
+            return;
+        }
+
+        const rect = zoomImage.getBoundingClientRect();
+        const containerRect = zoomImage.parentElement.getBoundingClientRect();
+
+        const scaledWidth = rect.width;
+        const scaledHeight = rect.height;
+
+        const maxTranslateX = Math.max(0, (scaledWidth - containerRect.width) / 2);
+        const maxTranslateY = Math.max(0, (scaledHeight - containerRect.height) / 2);
+
+        translateX = Math.max(-maxTranslateX, Math.min(maxTranslateX, translateX));
+        translateY = Math.max(-maxTranslateY, Math.min(maxTranslateY, translateY));
+    }
+
+    function applyZoomTransform() {
+        if (!zoomImage) return;
+
+        constrainTranslation();
+
+        zoomImage.style.transformOrigin = "center center";
+        zoomImage.style.transform = `scale(${scale}) translate(${translateX / scale}px, ${translateY / scale}px)`;
+   
+    
+
+        updateZoomButtons();
+    }
+
     function openZoom() {
         if (!zoomOverlay || !zoomImage) return;
-        zoomImage.src = mainImg.src;
+        const largeSrc = thumbs[activeIndex]?.dataset.large || mainImg.dataset.large || mainImg.src;
+        zoomImage.src = largeSrc;
         zoomOverlay.classList.add("is-open");
         zoomOverlay.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
+        resetZoomTransform();
     }
 
     function closeZoom() {
@@ -87,6 +167,7 @@ import "swiper/css/free-mode";
         zoomOverlay.classList.remove("is-open");
         zoomOverlay.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
+        resetZoomTransform();
     }
 
     function applyImage(index) {
@@ -97,7 +178,13 @@ import "swiper/css/free-mode";
         if (!fullSrc) return;
 
         mainImg.src = fullSrc;
-        if (isZoomOpen() && zoomImage) zoomImage.src = fullSrc;
+        mainImg.dataset.large = thumbs[index]?.dataset.large || fullSrc;
+
+        if (isZoomOpen() && zoomImage) {
+            const largeSrc = thumbs[index]?.dataset.large || fullSrc;
+            zoomImage.src = largeSrc;
+            resetZoomTransform();
+        }
 
         setActiveThumb(index);
         preloadNeighbors(index);
@@ -127,7 +214,86 @@ import "swiper/css/free-mode";
         }, 10);
     }
 
+    function handleZoomWheel(e) {
+        if (!isZoomOpen()) return;
+        e.preventDefault();
 
+        const delta = e.deltaY > 0 ? -0.3 : 0.3;
+        const newScale = Math.min(Math.max(MIN_SCALE, scale + delta), MAX_SCALE);
+
+        if (newScale === 1) {
+            resetZoomTransform();
+            return;
+        }
+
+        const rect = zoomImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const imgX = (x - centerX - translateX) / scale;
+        const imgY = (y - centerY - translateY) / scale;
+
+        scale = newScale;
+
+        translateX = x - centerX - imgX * scale;
+        translateY = y - centerY - imgY * scale;
+
+        applyZoomTransform();
+    }
+
+    function handleZoomDragStart(e) {
+        if (scale <= 1) return;
+
+        isDraggingZoom = true;
+        startDragX = (e.clientX || e.touches?.[0]?.clientX) - translateX;
+        startDragY = (e.clientY || e.touches?.[0]?.clientY) - translateY;
+        if (zoomImage) zoomImage.style.cursor = "grabbing";
+
+        e.preventDefault();
+    }
+
+    function handleZoomDragMove(e) {
+        if (!isDraggingZoom || scale <= 1) return;
+        e.preventDefault();
+
+        const clientX = e.clientX || e.touches?.[0]?.clientX;
+        const clientY = e.clientY || e.touches?.[0]?.clientY;
+
+        translateX = clientX - startDragX;
+        translateY = clientY - startDragY;
+
+        applyZoomTransform();
+    }
+
+    function handleZoomDragEnd(e) {
+        if (!isDraggingZoom) return;
+
+        isDraggingZoom = false;
+        if (zoomImage && scale > 1) zoomImage.style.cursor = "grab";
+    }
+
+    function zoomIn() {
+        if (scale >= MAX_SCALE) return;
+
+        scale = Math.min(scale + 0.5, MAX_SCALE);
+        applyZoomTransform();
+    }
+
+    function zoomOut() {
+        if (scale <= MIN_SCALE) return;
+
+        scale = Math.max(scale - 0.5, MIN_SCALE);
+        if (scale === 1) {
+            resetZoomTransform();
+        } else {
+            applyZoomTransform();
+        }
+    }
+
+    // Main image events
     thumbs.forEach((thumb, i) => thumb.addEventListener("click", () => requestSwitch(i)));
 
     btnMainNext?.addEventListener("click", () => requestSwitch(activeIndex + 1));
@@ -139,20 +305,70 @@ import "swiper/css/free-mode";
     zoomBtn?.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); openZoom(); });
     zoomClose?.addEventListener("click", closeZoom);
 
+    zoomInBtn?.addEventListener("click", (e) => { e.stopPropagation(); zoomIn(); });
+    zoomOutBtn?.addEventListener("click", (e) => { e.stopPropagation(); zoomOut(); });
+
     zoomOverlay?.addEventListener("click", (e) => {
-        if (e.target === zoomOverlay || e.target.id === "zoomOverlay") closeZoom();
+        if (e.target === zoomOverlay || e.target.classList.contains('zoom-container')) {
+            closeZoom();
+        }
     });
 
     zoomNext?.addEventListener("click", (e) => { e.stopPropagation(); requestSwitch(activeIndex + 1); });
     zoomPrev?.addEventListener("click", (e) => { e.stopPropagation(); requestSwitch(activeIndex - 1); });
 
+    // Zoom events
+    if (zoomImage) {
+        zoomImage.addEventListener("mousedown", handleZoomDragStart);
+        zoomImage.addEventListener("mousemove", handleZoomDragMove);
+        zoomImage.addEventListener("mouseup", handleZoomDragEnd);
+        zoomImage.addEventListener("mouseleave", handleZoomDragEnd);
+
+        zoomImage.addEventListener("wheel", handleZoomWheel, { passive: false });
+
+        zoomImage.addEventListener("touchstart", handleZoomDragStart, { passive: false });
+        zoomImage.addEventListener("touchmove", handleZoomDragMove, { passive: false });
+        zoomImage.addEventListener("touchend", handleZoomDragEnd);
+
+        zoomImage.addEventListener("load", () => {
+            if (scale > 1) {
+                applyZoomTransform();
+            }
+        });
+    }
+
+    // Keyboard navigation
     document.addEventListener("keydown", (e) => {
         if (!isZoomOpen()) return;
-        if (e.key === "Escape") closeZoom();
-        if (e.key === "ArrowRight") requestSwitch(activeIndex + 1);
-        if (e.key === "ArrowLeft") requestSwitch(activeIndex - 1);
+
+        switch (e.key) {
+            case "Escape":
+                closeZoom();
+                break;
+            case "ArrowRight":
+                requestSwitch(activeIndex + 1);
+                break;
+            case "ArrowLeft":
+                requestSwitch(activeIndex - 1);
+                break;
+            case "+":
+            case "=":
+                zoomIn();
+                break;
+            case "-":
+            case "_":
+                zoomOut();
+                break;
+        }
     });
 
+    window.addEventListener("resize", () => {
+        if (isZoomOpen() && scale > 1) {
+            applyZoomTransform();
+        }
+    });
+
+    // Main image swipe
     let startX = 0;
     let isDragging = false;
     const SWIPE_THRESHOLD = 40;
@@ -177,11 +393,6 @@ import "swiper/css/free-mode";
     mainImg.addEventListener("mouseup", onPointerUp);
     mainImg.addEventListener("touchstart", onPointerDown, { passive: true });
     mainImg.addEventListener("touchend", onPointerUp);
-
-    zoomImage?.addEventListener("mousedown", onPointerDown);
-    zoomImage?.addEventListener("mouseup", onPointerUp);
-    zoomImage?.addEventListener("touchstart", onPointerDown, { passive: true });
-    zoomImage?.addEventListener("touchend", onPointerUp);
 
     applyImage(activeIndex);
     updateThumbArrows();

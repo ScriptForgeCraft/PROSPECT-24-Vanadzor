@@ -76,6 +76,8 @@
                 </div>
             </div>
         </section>
+
+
         <!-- Section 2: Components -->
         <section id="components" class="container">
             <div class="header-block">
@@ -88,9 +90,8 @@
                 <!-- MAIN IMAGE -->
                 <div class="component-image-wrapper">
                     <img id="mainPlanImg" class="main-plan-img zoom-btn" src="/images/full/1.webp"
-                        alt="Գլխավոր պատկեր" fetchpriority="high" decoding="async" width="1200"
-                        height="900">
-
+                        data-full="/images/full/1.webp" data-large="/images/large/1.webp" data-index="0"
+                        alt="Գլխավոր պատկեր" fetchpriority="high" decoding="async" width="1200" height="900">
 
                     <button class="main-arrow prev" type="button" aria-label="Նախորդ պատկեր">‹</button>
                     <button class="main-arrow next" type="button" aria-label="Հաջորդ պատկեր">›</button>
@@ -120,55 +121,55 @@
                     </div>
                 </div>
 
-
                 <!-- THUMBNAILS (SWIPER) -->
                 <div class="gallery-wrapper">
-
                     <button class="gallery-arrow prev" type="button" aria-label="Նախորդ">‹</button>
 
                     <div class="gallery-strip swiper">
                         <div class="gallery-track swiper-wrapper">
-
                             <div class="swiper-slide">
-                                <img class="thumb is-active" src="/images/thumbs/2.webp" data-full="/images/full/2.webp"
-                                    alt="Պատկեր 1" loading="lazy" decoding="async" width="800" height="600">
+                                <img class="thumb is-active" src="/images/thumbs/1.webp" data-full="/images/full/1.webp"
+                                    data-large="/images/large/1.webp" data-index="0" alt="Պատկեր 1" loading="lazy"
+                                    decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
-                                <img class="thumb" src="/images/thumbs/3.webp" data-full="/images/full/3.webp"
-                                    alt="Պատկեր 2" loading="lazy" decoding="async" width="800" height="600">
+                                <img class="thumb" src="/images/thumbs/2.webp" data-full="/images/full/2.webp"
+                                    data-large="/images/large/2.webp" data-index="1" alt="Պատկեր 2" loading="lazy"
+                                    decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/4.webp" data-full="/images/full/4.webp"
-                                    alt="Պատկեր 3" loading="lazy" decoding="async" width="800" height="600">
+                                    data-large="/images/large/4.webp" data-index="2" alt="Պատկեր 3" loading="lazy"
+                                    decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/5.webp" data-full="/images/full/5.webp"
-                                    alt="Պատկեր 4" loading="lazy" decoding="async" width="800" height="600">
+                                    data-large="/images/large/5.webp" data-index="3" alt="Պատկեր 4" loading="lazy"
+                                    decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/6.webp" data-full="/images/full/6.webp"
-                                    alt="Պատկեր 5" loading="lazy" decoding="async" width="800" height="600">
+                                    data-large="/images/large/6.webp" data-index="4" alt="Պատկեր 5" loading="lazy"
+                                    decoding="async" width="800" height="600">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/7.webp" data-full="/images/full/7.webp"
-                                    alt="Պատկեր 6" loading="lazy" decoding="async" width="800" height="600">
+                                    data-large="/images/large/7.webp" data-index="5" alt="Պատկեր 6" loading="lazy"
+                                    decoding="async" width="800" height="600">
                             </div>
-
                         </div>
                     </div>
 
-                    <button class="gallery-arrow next" aria-label="Հաջորդ">›</button>
-
+                    <button class="gallery-arrow next" type="button" aria-label="Հաջորդ">›</button>
                 </div>
             </div>
         </section>
-
-
+ 
         <!-- Section 3: Details & Documents -->
         <section id="details" class="container">
             <div class="header-block">
@@ -484,50 +485,68 @@
                 <img class="zoom-image" id="zoomImage" alt="դիտում" width="1400" height="1200" />
                 <button class="zoom-arrow prev" type="button" aria-label="Նախորդ">‹</button>
                 <button class="zoom-arrow next" type="button" aria-label="Հաջորդ">›</button>
-            </div>
-        </div>
-    </main>
 
-
-
-
-    <footer class="footer">
-        <p>&copy; 2025 PROSPECT 24</p>
-    </footer>
-
-
-    <!-- Settings -->
-    <div class="settings">
-        <button class="settings__toggle" type="button" aria-label="Կարգավորումներ">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3" />
-                <path
-                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-            </svg>
-        </button>
-
-        <div class="settings__inner is-hidden">
-            <button class="settings__close" type="button">✕</button>
-
-            <div class="settings__group">
-                <span class="settings__label">ՏԵՔՍՏԻ ՉԱՓ</span>
-                <div class="settings__actions">
-                    <button type="button" data-size="0.85" class="settings__btn">A-</button>
-                    <button type="button" data-size="1" class="settings__btn active">A</button>
-                    <button type="button" data-size="1.2" class="settings__btn">A+</button>
-                </div>
-            </div>
-
-            <div class="settings__group">
-                <span class="settings__label">ԳՈՒՆԱՅԻՆ ԹԵՄԱ</span>
-                <div class="settings__actions">
-                    <button type="button" data-theme="light" class="settings__btn active">Լուսավոր</button>
-                    <button type="button" data-theme="dark" class="settings__btn">Մութ</button>
+                <div class="zoom-controls">
+                    <button class="zoom-btn-ctrl zoom-in" type="button" aria-label="Увеличить"
+                        title="Увеличить (+ или колесико мыши)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                        </svg>
+                    </button>
+                    <button class="zoom-btn-ctrl zoom-out" type="button" aria-label="Уменьшить"
+                        title="Уменьшить (- или колесико мыши)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
-    </div>
+
+
+
+        <footer class="footer">
+            <p>&copy; 2025 PROSPECT 24</p>
+        </footer>
+
+
+        <!-- Settings -->
+        <div class="settings">
+            <button class="settings__toggle" type="button" aria-label="Կարգավորումներ">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                </svg>
+            </button>
+
+            <div class="settings__inner is-hidden">
+                <button class="settings__close" type="button">✕</button>
+
+                <div class="settings__group">
+                    <span class="settings__label">ՏԵՔՍՏԻ ՉԱՓ</span>
+                    <div class="settings__actions">
+                        <button type="button" data-size="0.85" class="settings__btn">A-</button>
+                        <button type="button" data-size="1" class="settings__btn active">A</button>
+                        <button type="button" data-size="1.2" class="settings__btn">A+</button>
+                    </div>
+                </div>
+
+                <div class="settings__group">
+                    <span class="settings__label">ԳՈՒՆԱՅԻՆ ԹԵՄԱ</span>
+                    <div class="settings__actions">
+                        <button type="button" data-theme="light" class="settings__btn active">Լուսավոր</button>
+                        <button type="button" data-theme="dark" class="settings__btn">Մութ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 </body>
 

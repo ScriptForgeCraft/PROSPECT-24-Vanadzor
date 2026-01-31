@@ -27,6 +27,10 @@
   transform: translateY(-100%);
 }
 
+.main-header--hidden .mobile-menu {
+  transform: translateY(-100%);
+}
+
 .main-header__inner {
   display: flex;
   justify-content: space-between;

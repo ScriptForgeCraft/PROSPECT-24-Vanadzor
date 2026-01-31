@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const burger = document.querySelector(".burger-btn");
   const menu = document.querySelector(".mobile-menu");
+
   let startScrollPos = 0;
 
   burger.addEventListener("click", () => {

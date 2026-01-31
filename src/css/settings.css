@@ -8,12 +8,12 @@ body.dark-mode {
   background-color: #0f172a;
   color: #f9fafb;
 }
- 
+
 .settings {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 10000;
+  z-index: 1000;
   font-family: sans-serif;
 }
 
@@ -30,7 +30,7 @@ body.dark-mode {
   justify-content: center;
 
   border-radius: 50%;
-  background:#141A37;
+  background: #141A37;
   color: rgba(255, 255, 255, 0.942);
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(37, 100, 235, 0.622);
@@ -130,10 +130,12 @@ body.dark-mode .settings__btn {
   color: #94a3b8;
   cursor: pointer;
 }
+
 @media (max-width: 768px) {
   .settings__toggle {
     width: 35px;
     height: 35px;
+
     & svg {
       width: 20px;
       height: 20px;
