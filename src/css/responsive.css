@@ -240,7 +240,7 @@
 }
 
 @media (max-width: 768px) {
- 
+
     .zoom-controls {
         bottom: 16px;
         right: 16px;
@@ -305,9 +305,18 @@
     .component-display {
         padding: var(--mobile-padding);
     }
+
+    .caption-bg {
+        padding: 5px;
+    }
 }
 
 @media (max-width: 768px) {
+
+    .caption-bg {
+        padding: 3px;
+    }
+
     .main-arrow {
         width: 36px;
         height: 36px;
@@ -329,7 +338,11 @@
 
 @media (max-width: 480px) {
     .component-display {
-        gap: 24px;
+        gap: 0;
+    }
+
+    .caption-bg {
+        padding: 0;
     }
 
     .main-plan-img {
