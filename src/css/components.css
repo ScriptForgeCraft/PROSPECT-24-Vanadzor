@@ -27,13 +27,12 @@
 
 .caption-bg {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   right: 0;
   backdrop-filter: blur(6px);
   background: linear-gradient(180deg, #25324296 0%, #161c2aaa 100%);
   padding: 10px;
-
   & .doc-item {
     border-radius: 6px;
     background-color: #ffffff31;
@@ -289,12 +288,12 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.49);
   border: none;
   color: white;
   font-size: 48px;
   width: 60px;
-  height: 100px;
+  height: 10%;
   cursor: pointer;
   transition: all 0.2s;
   z-index: 10001;
