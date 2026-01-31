@@ -42,6 +42,57 @@ import "swiper/css/free-mode";
     const MIN_SCALE = 1;
     const MAX_SCALE = 5;
 
+    // Background preload   
+    const preloadedSet = new Set();
+
+    function preloadImage(src) {
+        if (!src || preloadedSet.has(src)) return;
+        preloadedSet.add(src);
+
+        const img = new Image();
+        img.src = src;
+    }
+
+    function preloadNeighbors(index) {
+        const neighbors = [index - 1, index + 1];
+        neighbors.forEach(i => {
+            const thumb = thumbs[i];
+            if (!thumb) return;
+            preloadImage(thumb.dataset.full);
+            preloadImage(thumb.dataset.large);
+        });
+    }
+
+
+    function scheduleBackgroundPreload(currentIndex) {
+        const toLoad = [];
+        thumbs.forEach((thumb, i) => {
+            if (i === currentIndex || i === currentIndex - 1 || i === currentIndex + 1) return;
+            const large = thumb.dataset.large;
+            const full = thumb.dataset.full;
+            if (large) toLoad.push(large);
+            if (full) toLoad.push(full);
+        });
+
+        function loadNext(items, idx) {
+            if (idx >= items.length) return;
+
+            requestIdleCallback((deadline) => {
+                let current = idx;
+                while (current < items.length && deadline.timeRemaining() > 1) {
+                    preloadImage(items[current]);
+                    current++;
+                }
+                if (current < items.length) {
+                    loadNext(items, current);
+                }
+            }, { timeout: 2000 });
+        }
+
+        loadNext(toLoad, 0);
+    }
+
+
     const swiper = new Swiper(".gallery-strip.swiper", {
         modules: [FreeMode],
         slidesPerView: 4,
@@ -65,17 +116,6 @@ import "swiper/css/free-mode";
     function setActiveThumb(index) {
         thumbs.forEach(t => t.classList.remove("is-active"));
         thumbs[index]?.classList.add("is-active");
-    }
-
-    function preloadImage(src) {
-        if (!src) return;
-        const img = new Image();
-        img.src = src;
-    }
-
-    function preloadNeighbors(index) {
-        preloadImage(thumbs[index - 1]?.dataset.full);
-        preloadImage(thumbs[index + 1]?.dataset.full);
     }
 
     function updateThumbArrows() {
@@ -146,8 +186,6 @@ import "swiper/css/free-mode";
 
         zoomImage.style.transformOrigin = "center center";
         zoomImage.style.transform = `scale(${scale}) translate(${translateX / scale}px, ${translateY / scale}px)`;
-   
-    
 
         updateZoomButtons();
     }
@@ -396,4 +434,5 @@ import "swiper/css/free-mode";
 
     applyImage(activeIndex);
     updateThumbArrows();
+    scheduleBackgroundPreload(activeIndex);
 })();
