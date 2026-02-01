@@ -141,3 +141,14 @@
 .mobile-menu a:hover {
   color: grey;
 }
+
+
+.main-header.scrolled {
+  padding: .4rem 4.5rem;
+}
+
+.logo.scrolled img {
+  width: auto;
+  height: 50px;
+
+}
