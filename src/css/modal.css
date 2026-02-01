@@ -45,12 +45,19 @@
 
 .btn-close {
     background: #000000b1;
-
     color: #fff;
     border: none;
-    padding: 8px 18px;
+    padding: 0 18px;
     border-radius: 4px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & svg {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 .modal-body {
@@ -62,16 +69,3 @@
     width: 100%;
     height: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

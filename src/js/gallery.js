@@ -24,6 +24,7 @@ import "swiper/css/free-mode";
     const zoomBtn = document.querySelector(".zoom-btn");
     const zoomInBtn = document.querySelector(".zoom-in");
     const zoomOutBtn = document.querySelector(".zoom-out");
+    const zoomResetBtn = document.querySelector(".zoom-reset");
 
     let activeIndex = thumbs.findIndex(t => t.classList.contains("is-active"));
     if (activeIndex < 0) activeIndex = 0;
@@ -128,7 +129,15 @@ import "swiper/css/free-mode";
     }
 
     function updateZoomButtons() {
-        if (!zoomInBtn || !zoomOutBtn) return;
+        if (!zoomInBtn || !zoomOutBtn || !zoomResetBtn) return;
+
+        if (scale > 1) {
+            zoomResetBtn.classList.remove("at-limit");
+            zoomResetBtn.disabled = false;
+        } else {
+            zoomResetBtn.classList.add("at-limit");
+            zoomResetBtn.disabled = true;
+        }
 
         if (scale >= MAX_SCALE) {
             zoomInBtn.classList.add("at-limit");
@@ -221,7 +230,6 @@ import "swiper/css/free-mode";
         if (isZoomOpen() && zoomImage) {
             const largeSrc = thumbs[index]?.dataset.large || fullSrc;
             zoomImage.src = largeSrc;
-            resetZoomTransform();
         }
 
         setActiveThumb(index);
@@ -345,7 +353,7 @@ import "swiper/css/free-mode";
 
     zoomInBtn?.addEventListener("click", (e) => { e.stopPropagation(); zoomIn(); });
     zoomOutBtn?.addEventListener("click", (e) => { e.stopPropagation(); zoomOut(); });
-
+    zoomResetBtn?.addEventListener("click", (e) => { e.stopPropagation(); resetZoomTransform(); });
     zoomOverlay?.addEventListener("click", (e) => {
         if (e.target === zoomOverlay || e.target.classList.contains('zoom-container')) {
             closeZoom();

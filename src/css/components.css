@@ -33,6 +33,7 @@
   backdrop-filter: blur(6px);
   background: linear-gradient(180deg, #25324296 0%, #161c2aaa 100%);
   padding: 10px;
+
   & .doc-item {
     border-radius: 6px;
     background-color: #ffffff31;
@@ -245,15 +246,15 @@
 }
 
 .zoom-image {
-  padding: 20px;
+  padding: 0 20px;
   min-height: 70svh;
+  width: 100%;
   max-width: auto;
-  max-height: auto;
+  max-height: 100svh;
   object-fit: contain;
   display: block;
   user-select: none;
   transition: transform 0.2s ease-out;
-
 }
 
 .zoom-close {
@@ -298,10 +299,10 @@
   transition: all 0.2s;
   z-index: 10001;
   backdrop-filter: blur(10px);
- 
+
 }
 
- 
+
 .zoom-arrow.prev {
   left: -5px;
   border-radius: 0 8px 8px 0;
@@ -314,7 +315,7 @@
 
 
 .zoom-arrow:active {
-  transform:translateX(-1%) translateY(-50%) scale(0.95);
+  transform: translateX(-1%) translateY(-50%) scale(0.95);
 }
 
 
@@ -389,7 +390,11 @@
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-
+.zoom-btn-ctrl.at-limit:hover {
+  transform: none;
+  background: rgba(0, 0, 0, 0.85);
+  border-color: rgba(255, 255, 255, 0.3);
+}
 
 .swiper {
   overflow: hidden;
