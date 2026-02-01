@@ -52,13 +52,20 @@ import "swiper/css/free-mode";
     const DOUBLE_TAP_DELAY = 300;
     const DOUBLE_TAP_DISTANCE = 30;
 
- 
+    // Swipe state (inside zoom)
     let zoomSwipeStartX = 0;
     let zoomSwipeStartY = 0;
     let zoomSwipeTracking = false;
     const ZOOM_SWIPE_THRESHOLD = 40;
     const ZOOM_SWIPE_LOCK_AXIS_THRESHOLD = 10;
     let zoomSwipeAxis = null;
+
+    // Pinch state
+    let isPinching = false;
+    let pinchStartDist = 0;
+    let pinchStartScale = 1;
+    let pinchCenterX = 0;
+    let pinchCenterY = 0;
 
     const preloadedSet = new Set();
 
@@ -79,7 +86,6 @@ import "swiper/css/free-mode";
             preloadImage(thumb.dataset.large);
         });
     }
-
 
     function scheduleBackgroundPreload(currentIndex) {
         const toLoad = [];
@@ -108,7 +114,6 @@ import "swiper/css/free-mode";
 
         loadNext(toLoad, 0);
     }
-
 
     const swiper = new Swiper(".gallery-strip.swiper", {
         modules: [FreeMode],
@@ -306,7 +311,6 @@ import "swiper/css/free-mode";
         applyZoomTransform();
     }
 
-    // --- Double-tap to zoom ---
     function handleDoubleTap(clientX, clientY) {
         if (!zoomImage) return;
 
@@ -329,28 +333,57 @@ import "swiper/css/free-mode";
 
         scale = targetScale;
 
- 
         translateX = x - centerX - imgX * scale;
         translateY = y - centerY - imgY * scale;
 
         applyZoomTransform();
     }
 
+    function getPinchDist(touches) {
+        return Math.hypot(
+            touches[0].clientX - touches[1].clientX,
+            touches[0].clientY - touches[1].clientY
+        );
+    }
+
+    function getPinchCenter(touches) {
+        return {
+            x: (touches[0].clientX + touches[1].clientX) / 2,
+            y: (touches[0].clientY + touches[1].clientY) / 2
+        };
+    }
+
     function handleZoomTouchStart(e) {
-        if (e.touches.length > 1) return; 
+        if (e.touches.length === 2) {
+            isPinching = true;
+            zoomSwipeTracking = false;
+            isDraggingZoom = false;
+
+            pinchStartDist = getPinchDist(e.touches);
+            pinchStartScale = scale;
+
+            const center = getPinchCenter(e.touches);
+            pinchCenterX = center.x;
+            pinchCenterY = center.y;
+
+            e.preventDefault();
+            return;
+        }
+
+        if (e.touches.length > 2) return;
 
         const touch = e.touches[0];
         const clientX = touch.clientX;
         const clientY = touch.clientY;
         const now = Date.now();
 
-         
+
         const timeDiff = now - lastTapTime;
         const distX = Math.abs(clientX - lastTapX);
         const distY = Math.abs(clientY - lastTapY);
 
         if (timeDiff < DOUBLE_TAP_DELAY && distX < DOUBLE_TAP_DISTANCE && distY < DOUBLE_TAP_DISTANCE) {
-            lastTapTime = 0;  
+            lastTapTime = 0;
             e.preventDefault();
             handleDoubleTap(clientX, clientY);
             return;
@@ -378,6 +411,43 @@ import "swiper/css/free-mode";
     }
 
     function handleZoomTouchMove(e) {
+
+        if (e.touches.length === 2 && isPinching) {
+            e.preventDefault();
+
+            const currentDist = getPinchDist(e.touches);
+            const ratio = currentDist / pinchStartDist;
+            const newScale = Math.min(Math.max(MIN_SCALE, pinchStartScale * ratio), MAX_SCALE);
+
+            if (newScale <= MIN_SCALE) {
+                resetZoomTransform();
+                return;
+            }
+
+            if (zoomImage) {
+                const rect = zoomImage.getBoundingClientRect();
+                const x = pinchCenterX - rect.left;
+                const y = pinchCenterY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const imgX = (x - centerX - translateX) / scale;
+                const imgY = (y - centerY - translateY) / scale;
+
+                scale = newScale;
+
+                translateX = x - centerX - imgX * scale;
+                translateY = y - centerY - imgY * scale;
+            } else {
+                scale = newScale;
+            }
+
+            applyZoomTransform();
+            return;
+        }
+
+
         if (e.touches.length > 1) return;
         if (!zoomSwipeTracking) return;
 
@@ -404,21 +474,27 @@ import "swiper/css/free-mode";
     }
 
     function handleZoomTouchEnd(e) {
+
+        if (isPinching) {
+            isPinching = false;
+            e.preventDefault();
+            return;
+        }
+
         if (!zoomSwipeTracking) return;
         zoomSwipeTracking = false;
 
         if (isDraggingZoom) {
             isDraggingZoom = false;
             if (zoomImage && scale > 1) zoomImage.style.cursor = "grab";
-            return; // was a pan, not a swipe
+            return;
         }
 
-        // Only handle horizontal swipe when at scale 1 (not zoomed)
         if (scale <= 1 && zoomSwipeAxis === 'x' && Math.abs(dragDistX) >= ZOOM_SWIPE_THRESHOLD) {
             if (dragDistX < 0) {
-                requestSwitch(activeIndex + 1); // swipe left → next
+                requestSwitch(activeIndex + 1);
             } else {
-                requestSwitch(activeIndex - 1); // swipe right → prev
+                requestSwitch(activeIndex - 1);
             }
         }
 
@@ -426,7 +502,7 @@ import "swiper/css/free-mode";
         dragDistY = 0;
     }
 
-
+    // --- Mouse handlers (desktop) ---
     function handleZoomMouseDown(e) {
         if (scale <= 1) return;
 
@@ -473,7 +549,6 @@ import "swiper/css/free-mode";
         }
     }
 
-    // Main image events
     thumbs.forEach((thumb, i) => thumb.addEventListener("click", () => requestSwitch(i)));
 
     btnMainNext?.addEventListener("click", () => requestSwitch(activeIndex + 1));
@@ -497,20 +572,18 @@ import "swiper/css/free-mode";
     zoomNext?.addEventListener("click", (e) => { e.stopPropagation(); requestSwitch(activeIndex + 1); });
     zoomPrev?.addEventListener("click", (e) => { e.stopPropagation(); requestSwitch(activeIndex - 1); });
 
-    // Zoom events
     if (zoomImage) {
-  
         zoomImage.addEventListener("mousedown", handleZoomMouseDown);
         zoomImage.addEventListener("mousemove", handleZoomMouseMove);
         zoomImage.addEventListener("mouseup", handleZoomMouseUp);
         zoomImage.addEventListener("mouseleave", handleZoomMouseUp);
 
-        zoomImage.addEventListener("wheel", handleZoomWheel, { passive: false });
 
+        zoomImage.addEventListener("wheel", handleZoomWheel, { passive: false });
 
         zoomImage.addEventListener("touchstart", handleZoomTouchStart, { passive: false });
         zoomImage.addEventListener("touchmove", handleZoomTouchMove, { passive: false });
-        zoomImage.addEventListener("touchend", handleZoomTouchEnd);
+        zoomImage.addEventListener("touchend", handleZoomTouchEnd, { passive: false });
 
         zoomImage.addEventListener("load", () => {
             if (scale > 1) {
@@ -550,7 +623,6 @@ import "swiper/css/free-mode";
         }
     });
 
-    // Main image swipe
     let startX = 0;
     let isDragging = false;
     const SWIPE_THRESHOLD = 40;
@@ -576,6 +648,7 @@ import "swiper/css/free-mode";
     mainImg.addEventListener("touchstart", onPointerDown, { passive: true });
     mainImg.addEventListener("touchend", onPointerUp);
 
+    // --- Init ---
     applyImage(activeIndex);
     updateThumbArrows();
     scheduleBackgroundPreload(activeIndex);
