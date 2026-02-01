@@ -29,6 +29,7 @@
 }
 
 body.dark-mode {
+  transition: all .3s ease;
   --panel-bg: #1e293b;
   --panel-border: #334155;
   --panel-shadow: rgba(0, 0, 0, 0.3);

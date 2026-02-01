@@ -1,6 +1,6 @@
 .hero-section {
   min-height: 60vh;
-  padding-top: 5vh;
+  padding-top: 5%;
   background:  url("/images/bg.webp");
   background-size: contain;
   background-position: right bottom;
@@ -28,6 +28,7 @@
   height: auto;
   margin: 0 auto 20px;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
+
 
 }
 

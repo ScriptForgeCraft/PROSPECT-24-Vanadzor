@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const logoContainer = document.querySelector(".logo");
 
   const checkHeaderScroll = () => {
-    if (header && window.scrollY > 220) {
+    if (header && window.scrollY > 0) {
       header.classList.add('scrolled');
       logo.src = "/images/logo.webp";
       logoContainer.classList.add("scrolled");
