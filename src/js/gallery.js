@@ -39,11 +39,27 @@ import "swiper/css/free-mode";
     let isDraggingZoom = false;
     let startDragX = 0;
     let startDragY = 0;
+    let dragDistX = 0;
+    let dragDistY = 0;
 
     const MIN_SCALE = 1;
     const MAX_SCALE = 5;
 
-    // Background preload   
+    // Double-tap state
+    let lastTapTime = 0;
+    let lastTapX = 0;
+    let lastTapY = 0;
+    const DOUBLE_TAP_DELAY = 300;
+    const DOUBLE_TAP_DISTANCE = 30;
+
+ 
+    let zoomSwipeStartX = 0;
+    let zoomSwipeStartY = 0;
+    let zoomSwipeTracking = false;
+    const ZOOM_SWIPE_THRESHOLD = 40;
+    const ZOOM_SWIPE_LOCK_AXIS_THRESHOLD = 10;
+    let zoomSwipeAxis = null;
+
     const preloadedSet = new Set();
 
     function preloadImage(src) {
@@ -290,31 +306,149 @@ import "swiper/css/free-mode";
         applyZoomTransform();
     }
 
-    function handleZoomDragStart(e) {
+    // --- Double-tap to zoom ---
+    function handleDoubleTap(clientX, clientY) {
+        if (!zoomImage) return;
+
+        if (scale > 1) {
+            resetZoomTransform();
+            return;
+        }
+
+        const rect = zoomImage.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const targetScale = 3;
+
+        const imgX = (x - centerX - translateX) / scale;
+        const imgY = (y - centerY - translateY) / scale;
+
+        scale = targetScale;
+
+ 
+        translateX = x - centerX - imgX * scale;
+        translateY = y - centerY - imgY * scale;
+
+        applyZoomTransform();
+    }
+
+    function handleZoomTouchStart(e) {
+        if (e.touches.length > 1) return; 
+
+        const touch = e.touches[0];
+        const clientX = touch.clientX;
+        const clientY = touch.clientY;
+        const now = Date.now();
+
+         
+        const timeDiff = now - lastTapTime;
+        const distX = Math.abs(clientX - lastTapX);
+        const distY = Math.abs(clientY - lastTapY);
+
+        if (timeDiff < DOUBLE_TAP_DELAY && distX < DOUBLE_TAP_DISTANCE && distY < DOUBLE_TAP_DISTANCE) {
+            lastTapTime = 0;  
+            e.preventDefault();
+            handleDoubleTap(clientX, clientY);
+            return;
+        }
+
+        lastTapTime = now;
+        lastTapX = clientX;
+        lastTapY = clientY;
+
+        zoomSwipeStartX = clientX;
+        zoomSwipeStartY = clientY;
+        zoomSwipeTracking = true;
+        zoomSwipeAxis = null;
+        dragDistX = 0;
+        dragDistY = 0;
+
+        if (scale > 1) {
+            isDraggingZoom = true;
+            startDragX = clientX - translateX;
+            startDragY = clientY - translateY;
+            if (zoomImage) zoomImage.style.cursor = "grabbing";
+        }
+
+        e.preventDefault();
+    }
+
+    function handleZoomTouchMove(e) {
+        if (e.touches.length > 1) return;
+        if (!zoomSwipeTracking) return;
+
+        e.preventDefault();
+
+        const touch = e.touches[0];
+        const clientX = touch.clientX;
+        const clientY = touch.clientY;
+
+        dragDistX = clientX - zoomSwipeStartX;
+        dragDistY = clientY - zoomSwipeStartY;
+
+        if (!zoomSwipeAxis) {
+            if (Math.abs(dragDistX) > ZOOM_SWIPE_LOCK_AXIS_THRESHOLD || Math.abs(dragDistY) > ZOOM_SWIPE_LOCK_AXIS_THRESHOLD) {
+                zoomSwipeAxis = Math.abs(dragDistX) > Math.abs(dragDistY) ? 'x' : 'y';
+            }
+        }
+
+        if (scale > 1 && isDraggingZoom) {
+            translateX = clientX - startDragX;
+            translateY = clientY - startDragY;
+            applyZoomTransform();
+        }
+    }
+
+    function handleZoomTouchEnd(e) {
+        if (!zoomSwipeTracking) return;
+        zoomSwipeTracking = false;
+
+        if (isDraggingZoom) {
+            isDraggingZoom = false;
+            if (zoomImage && scale > 1) zoomImage.style.cursor = "grab";
+            return; // was a pan, not a swipe
+        }
+
+        // Only handle horizontal swipe when at scale 1 (not zoomed)
+        if (scale <= 1 && zoomSwipeAxis === 'x' && Math.abs(dragDistX) >= ZOOM_SWIPE_THRESHOLD) {
+            if (dragDistX < 0) {
+                requestSwitch(activeIndex + 1); // swipe left → next
+            } else {
+                requestSwitch(activeIndex - 1); // swipe right → prev
+            }
+        }
+
+        dragDistX = 0;
+        dragDistY = 0;
+    }
+
+
+    function handleZoomMouseDown(e) {
         if (scale <= 1) return;
 
         isDraggingZoom = true;
-        startDragX = (e.clientX || e.touches?.[0]?.clientX) - translateX;
-        startDragY = (e.clientY || e.touches?.[0]?.clientY) - translateY;
+        startDragX = e.clientX - translateX;
+        startDragY = e.clientY - translateY;
         if (zoomImage) zoomImage.style.cursor = "grabbing";
 
         e.preventDefault();
     }
 
-    function handleZoomDragMove(e) {
+    function handleZoomMouseMove(e) {
         if (!isDraggingZoom || scale <= 1) return;
         e.preventDefault();
 
-        const clientX = e.clientX || e.touches?.[0]?.clientX;
-        const clientY = e.clientY || e.touches?.[0]?.clientY;
-
-        translateX = clientX - startDragX;
-        translateY = clientY - startDragY;
+        translateX = e.clientX - startDragX;
+        translateY = e.clientY - startDragY;
 
         applyZoomTransform();
     }
 
-    function handleZoomDragEnd(e) {
+    function handleZoomMouseUp(e) {
         if (!isDraggingZoom) return;
 
         isDraggingZoom = false;
@@ -365,16 +499,18 @@ import "swiper/css/free-mode";
 
     // Zoom events
     if (zoomImage) {
-        zoomImage.addEventListener("mousedown", handleZoomDragStart);
-        zoomImage.addEventListener("mousemove", handleZoomDragMove);
-        zoomImage.addEventListener("mouseup", handleZoomDragEnd);
-        zoomImage.addEventListener("mouseleave", handleZoomDragEnd);
+  
+        zoomImage.addEventListener("mousedown", handleZoomMouseDown);
+        zoomImage.addEventListener("mousemove", handleZoomMouseMove);
+        zoomImage.addEventListener("mouseup", handleZoomMouseUp);
+        zoomImage.addEventListener("mouseleave", handleZoomMouseUp);
 
         zoomImage.addEventListener("wheel", handleZoomWheel, { passive: false });
 
-        zoomImage.addEventListener("touchstart", handleZoomDragStart, { passive: false });
-        zoomImage.addEventListener("touchmove", handleZoomDragMove, { passive: false });
-        zoomImage.addEventListener("touchend", handleZoomDragEnd);
+
+        zoomImage.addEventListener("touchstart", handleZoomTouchStart, { passive: false });
+        zoomImage.addEventListener("touchmove", handleZoomTouchMove, { passive: false });
+        zoomImage.addEventListener("touchend", handleZoomTouchEnd);
 
         zoomImage.addEventListener("load", () => {
             if (scale > 1) {
