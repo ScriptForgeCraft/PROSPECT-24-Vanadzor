@@ -52,7 +52,7 @@ body.dark-mode {
    ═══════════════════════════════════════════ */
 .settings {
   position: fixed;
-  bottom: 4.5%;
+  bottom: 4.5vh;
   right: -10px;
   z-index: 1000;
   font-family: 'Segoe UI', system-ui, sans-serif;
@@ -135,9 +135,9 @@ body.dark-mode {
    ═══════════════════════════════════════════ */
 .settings__inner {
   position: absolute;
-  top: 50%;
-  right: 46px;
-  transform: translateY(-50%) translateX(calc(100% + 16px));
+  bottom: 0;
+  right: 47px;
+  transform: translateX(calc(100% + 16px));
   width: 240px;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
@@ -154,7 +154,7 @@ body.dark-mode {
 
 /* ─── Panel visible ─── */
 .settings.is-open .settings__inner {
-  transform: translateY(-50%) translateX(0);
+  transform: translateX(0);
   opacity: 1;
   pointer-events: auto;
 }
@@ -283,7 +283,7 @@ body.dark-mode {
 
   .settings__inner {
     width: 215px;
-    right: 32px;
+    right: 40px;
     padding: 18px 15px 15px;
   }
 
