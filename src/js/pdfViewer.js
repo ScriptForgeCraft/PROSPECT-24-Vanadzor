@@ -17,18 +17,8 @@ function viewPDF(filePath, title) {
     const isGoogleDrive = filePath.includes('drive.google.com');
     
     if (isMobileDevice() && !isGoogleDrive) {
-        // Пробуем несколько вариантов для надежности
         const fullUrl = window.location.origin + filePath;
-        
-        // Вариант 1: Google Docs Viewer
-        iframe.src = `https://docs.google.com/viewer?url=${encodeURIComponent(fullUrl)}&embedded=true`;
-        
-        setTimeout(() => {
-            if (!iframe.contentWindow || iframe.contentWindow.length === 0) {
-                iframe.src = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(fullUrl)}`;
-            }
-        }, 3000);
-        
+        iframe.src = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(fullUrl)}`;
         downloadLink.href = filePath;
         downloadLink.style.display = 'inline-block';
     } else {
