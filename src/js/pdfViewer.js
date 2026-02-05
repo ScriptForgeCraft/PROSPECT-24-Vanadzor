@@ -17,8 +17,10 @@ function viewPDF(filePath, title) {
     const isGoogleDrive = filePath.includes('drive.google.com');
     
     if (isMobileDevice() && !isGoogleDrive) {
-        iframe.src = `https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + filePath)}&embedded=true`;
-        downloadLink.style.display = 'none';
+        const fullUrl = window.location.origin + filePath;
+        iframe.src = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(fullUrl)}`;
+        downloadLink.href = filePath;
+        downloadLink.style.display = 'inline-block';
     } else {
         iframe.src = filePath;
         if (isGoogleDrive) {
