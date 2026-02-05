@@ -171,11 +171,11 @@
  }
 
  .doc-item::after {
-   content: "👁 Դիտել";
+   content: "Դիտել";
    position: absolute;
    right: 66px;
    top: 50%;
-   transform: translateY(-50%) translateX(10px);
+   transform: translateY(-50%) translateX(20px);
    opacity: 0;
    font-size: 0.85em;
    color: var(--accent-hover);
@@ -187,7 +187,7 @@
 
  .doc-item:hover::after {
    opacity: 1;
-   transform: translateY(-50%) translateX(0);
+   transform: translateY(-50%) translateX(10px);
  }
 
  .doc-item:hover {
