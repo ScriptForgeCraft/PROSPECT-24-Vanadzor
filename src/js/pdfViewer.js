@@ -1,3 +1,7 @@
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 function viewPDF(filePath, title) {
     if (!filePath) return;
 
@@ -8,15 +12,21 @@ function viewPDF(filePath, title) {
     const header = document.querySelector(".main-header");
 
     titleEl.textContent = title || 'Փաստաթուղթ';
-    iframe.src = filePath;
     header.classList.add("main-header--hidden");
 
     const isGoogleDrive = filePath.includes('drive.google.com');
-    if (isGoogleDrive) {
+    
+    if (isMobileDevice() && !isGoogleDrive) {
+        iframe.src = `https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + filePath)}&embedded=true`;
         downloadLink.style.display = 'none';
     } else {
-        downloadLink.href = filePath;
-        downloadLink.style.display = 'inline-block';
+        iframe.src = filePath;
+        if (isGoogleDrive) {
+            downloadLink.style.display = 'none';
+        } else {
+            downloadLink.href = filePath;
+            downloadLink.style.display = 'inline-block';
+        }
     }
 
     modal.style.display = 'block';
