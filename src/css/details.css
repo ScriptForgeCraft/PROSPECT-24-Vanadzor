@@ -166,14 +166,17 @@
 }
 
 .doc-item::after {
-  content: "Դիտել";
+  content: "👁 Դիտել";
+  background-color: #262b35;
+  padding: 5px 10px;
+  border-radius: 6px;
   position: absolute;
   right: 66px;
   top: 50%;
   transform: translateY(-50%) translateX(20px);
   opacity: 0;
   font-size: 0.85em;
-  color: var(--accent-hover);
+  color: white;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
