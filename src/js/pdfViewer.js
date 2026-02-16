@@ -1,5 +1,6 @@
 
 
+
 class PDFModal {
     constructor() {
         this.modal = document.getElementById('pdf-modal');
@@ -24,9 +25,18 @@ class PDFModal {
         return /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(navigator.userAgent);
     }
 
+    isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    }
+
     attachEventListeners() {
         document.querySelectorAll('.btn-close').forEach(btn => {
-            btn.addEventListener('click', () => this.close());
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.close();
+            });
         });
         this.modal.addEventListener('click', (e) => {
             if (e.target === this.modal) {
@@ -46,6 +56,7 @@ class PDFModal {
 
             target.addEventListener('click', (event) => {
                 event.stopPropagation();
+                event.preventDefault();
                 const file = target.dataset.file;
                 const title = target.dataset.title;
 
@@ -61,8 +72,25 @@ class PDFModal {
         document.querySelectorAll('.doc-download').forEach(link => {
             link.addEventListener('click', (event) => {
                 event.stopPropagation();
+
+                if (this.isIOS()) {
+                    event.preventDefault();
+                    const filename = link.getAttribute('download') || this.getFilenameFromUrl(link.href);
+                    this.downloadFileIOS(link.href, filename);
+                }
             });
         });
+
+        if (this.downloadLink) {
+            this.downloadLink.addEventListener('click', (event) => {
+                if (this.isIOS()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const filename = this.getFilenameFromUrl(this.downloadLink.href);
+                    this.downloadFileIOS(this.downloadLink.href, filename);
+                }
+            });
+        }
 
         this.iframe.addEventListener('load', () => {
             this.hideLoading();
@@ -89,8 +117,12 @@ class PDFModal {
             const isTablet = this.isTabletDevice();
 
             if ((isMobile || isTablet) && !isGoogleDrive) {
-                const fullUrl = this.getFullUrl(filePath);
-                this.iframe.src = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(fullUrl)}`;
+                if (this.isIOS()) {
+                    this.iframe.src = filePath;
+                } else {
+                    const fullUrl = this.getFullUrl(filePath);
+                    this.iframe.src = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(fullUrl)}`;
+                }
             } else {
                 this.iframe.src = filePath;
             }
@@ -152,11 +184,42 @@ class PDFModal {
 
         const errorMsg = document.createElement('div');
         errorMsg.className = 'pdf-error-message';
-        errorMsg.innerHTML = `
-        <p>Փաստաթուղթը չի կարողացել բեռնվել</p>
-        <button class="retry-btn" onclick="location.reload()">Կրկին փորձել</button>
-    `;
+        const p = document.createElement('p');
+        p.textContent = "Փաստաթուղթը չի կարողացել բեռնվել";
+        const btn = document.createElement('button');
+        btn.className = 'retry-btn';
+        btn.textContent = "Կրկին փորձել";
+        btn.onclick = () => location.reload();
+        errorMsg.appendChild(p);
+        errorMsg.appendChild(btn);
         this.modalBody.appendChild(errorMsg);
+    }
+
+    async downloadFileIOS(url, filename) {
+        try {
+            const response = await fetch(url);
+            const blob = await response.blob();
+            const file = new File([blob], filename, { type: blob.type || 'application/pdf' });
+
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                await navigator.share({ files: [file] });
+            } else {
+                window.open(url, '_blank');
+            }
+        } catch (error) {
+            if (error.name !== 'AbortError') {
+                window.open(url, '_blank');
+            }
+        }
+    }
+
+    getFilenameFromUrl(url) {
+        try {
+            const path = new URL(url, window.location.origin).pathname;
+            return decodeURIComponent(path.split('/').pop()) || 'document.pdf';
+        } catch {
+            return 'document.pdf';
+        }
     }
 
     getFullUrl(path) {
