@@ -234,3 +234,35 @@ iframe {
   transform: translateY(0);
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
+
+
+.modal-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 8px 16px 0;
+    background: #1e1e1e; /* подберите под ваш стиль */
+    border-bottom: 2px solid #333;
+}
+
+.modal-tab {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    font-size: 14px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.modal-tab:hover {
+    color: #fff;
+}
+
+.modal-tab.active {
+    color: #fff;
+    border-bottom-color: #4a9eff; /* цвет акцента */
+    font-weight: 600;
+}

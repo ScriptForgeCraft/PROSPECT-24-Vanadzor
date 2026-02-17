@@ -518,11 +518,13 @@
 
                     <div class="doc-row">
 
-                        <div class="doc-item" data-file="./files/Prospect 24_Vanadzor_Banak 8.pdf"
-                            data-title="Գնահատում">
+                        <div class="doc-item" data-files='[
+        {"file": "./files/Վանաձոր Բանակի փ. 8-4.pdf", "title": "Վանաձոր Բանակի փ. 8-4"},
+        {"file": "./files/Վանաձոր Բանակի փ.8-11.pdf", "title": "Վանաձոր Բանակի փ.8-11"}
+    ]' data-title="Գնահատում">
                             <span>Գնահատում</span>
                             <a class="doc-download" href="./files/Գնահատում.zip" download
-                                aria-label="Ներբեռնել PDF փաստաթուղթ 12">
+                                aria-label="Ներбеռнел PDF փаuтаθugth 12">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="w-4 h-4">
@@ -530,10 +532,12 @@
                                     <polyline points="7 10 12 15 17 10"></polyline>
                                     <line x1="12" x2="12" y1="15" y2="3"></line>
                                 </svg>
-
                             </a>
                         </div>
                     </div>
+
+
+
                 </div>
                 <div class="valuation-images">
                     <img src="/images/valuation/left.webp" alt="ձախ պատկեր" loading="lazy" decoding="async" width="800"
@@ -548,6 +552,7 @@
         <div id="pdf-modal" class="modal">
 
             <div class="modal-content">
+
                 <div class="modal-header">
                     <h3 id="modal-title">Փաստաթուղթ</h3>
                     <div class="modal-controls">
@@ -565,6 +570,7 @@
                             </svg></button>
                     </div>
                 </div>
+                <div class="modal-tabs" id="modal-tabs" style="display:none;"></div>
                 <div class="modal-body">
                     <iframe id="pdf-frame"></iframe>
                 </div>
