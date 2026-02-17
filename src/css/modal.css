@@ -56,12 +56,10 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgb(255, 255, 255),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgb(255, 255, 255),
+      transparent);
 }
 
 #modal-title {
@@ -237,32 +235,43 @@ iframe {
 
 
 .modal-tabs {
-    display: flex;
-    gap: 4px;
-    padding: 8px 16px 0;
-    background: #1e1e1e; /* подберите под ваш стиль */
-    border-bottom: 2px solid #333;
+  display: flex;
+  gap: 4px;
+  padding: 8px 16px 0;
+  background: #1e1e1e;
+  border-bottom: 2px solid #333;
 }
 
 .modal-tab {
-    padding: 8px 16px;
-    border: none;
-    background: transparent;
-    color: #aaa;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    font-size: 14px;
-    transition: all 0.2s;
-    white-space: nowrap;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #aaa;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  font-size: 14px;
+  transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .modal-tab:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .modal-tab.active {
-    color: #fff;
-    border-bottom-color: #4a9eff; /* цвет акцента */
-    font-weight: 600;
+  color: #fff;
+  border-bottom-color: #4a9eff;
+  font-weight: 600;
+}
+
+@media (max-width: 440px) {
+  .modal-tabs {
+    gap: 24px;
+
+  }
+  .modal-tab {
+    font-size: 12px;
+  }
+
 }
