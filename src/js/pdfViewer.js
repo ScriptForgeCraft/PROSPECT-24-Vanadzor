@@ -54,9 +54,11 @@ class PDFModal {
                 event.stopPropagation();
                 event.preventDefault();
 
-                const dataFiles = item.dataset.files;
-                const dataFile = item.dataset.file;
-                const dataTitle = item.dataset.title || 'Փаuтаθugth';
+                const button = item.querySelector('button[data-file]');
+
+                const dataFiles = button?.dataset.files || item.dataset.files;
+                const dataFile = button?.dataset.file || item.dataset.file;
+                const dataTitle = button?.dataset.title || item.dataset.title || 'Փաստաթուղթ';
 
                 if (dataFiles) {
                     try {
