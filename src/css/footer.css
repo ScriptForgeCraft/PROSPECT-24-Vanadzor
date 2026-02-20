@@ -51,8 +51,8 @@
 }
 
 .contact-icon {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     border: 1px solid #1e2a3a;
     border-radius: 8px;
     display: flex;
@@ -65,8 +65,8 @@
 }
 
 .contact-icon svg {
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
 
 }
 
@@ -79,7 +79,7 @@
 }
 
 .contact-label {
-    font-size: .6rem;
+    font-size: .7rem;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -87,7 +87,7 @@
 }
 
 .contact-value {
-    font-size: .8rem;
+    font-size: .85rem;
     color: #d1d5db;
     line-height: 1.5;
     cursor: pointer;
@@ -119,7 +119,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: .85rem;
+    font-size: .9rem;
     color: #9ca3af;
     text-decoration: none;
     transition: color 0.2s;
@@ -177,8 +177,8 @@
 }
 
 .social-btn svg {
-    width: 17px;
-    height: 17px;
+    width: 19px;
+    height: 19px;
 }
 
 /* ─── BOTTOM BAR ─── */
