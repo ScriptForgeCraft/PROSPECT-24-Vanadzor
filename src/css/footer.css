@@ -3,7 +3,7 @@
     background: #111827;
     color: #9ca3af;
     border-top: 1px solid #1e2a3a;
-    margin-top: 24px;
+    margin-top: 44px;
 }
 
 .footer-content {
@@ -129,12 +129,6 @@
     color: #ffffff;
 }
 
-.footer-links li a::before {
-    content: '→';
-    font-size: 13px;
-    color: #374151;
-    transition: color 0.2s;
-}
 
 .footer-links li a:hover::before {
     color: #3b82f6;
