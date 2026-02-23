@@ -12,6 +12,12 @@ class PDFModal {
 
     init() {
         this.attachEventListeners();
+        const row = document.querySelector('.doc-row-all');
+        if (row) {
+            row.querySelector('svg')?.addEventListener('click', () => {
+                row.querySelector('.btn-download-all')?.click();
+            });
+        }
     }
 
     isMobileDevice() {
@@ -331,3 +337,4 @@ function debounce(func, wait) {
         timeout = setTimeout(later, wait);
     };
 }
+
