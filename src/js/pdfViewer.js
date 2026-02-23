@@ -78,7 +78,9 @@ class PDFModal {
         document.querySelectorAll('.doc-download').forEach(link => {
             link.addEventListener('click', (event) => {
                 event.stopPropagation();
-
+                const loadingSvg = link.querySelector('svg');
+                loadingSvg.classList.add('loading');
+                setTimeout(() => loadingSvg.classList.remove('loading'), 500);
                 if (this.isIOS()) {
                     event.preventDefault();
                     const filename = link.getAttribute('download') || this.getFilenameFromUrl(link.href);

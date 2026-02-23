@@ -248,3 +248,29 @@
   padding: 5px 0;
   padding-left: 10px;
 }
+
+
+
+
+
+
+@keyframes colorSweep {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.doc-row svg.loading {
+ background-color: rgba(10, 2, 97, 0.363);
+ color: rgb(220, 220, 220);
+ opacity: 1;
+ animation: colorSweep 1.2s ease-in-out infinite;
+}
