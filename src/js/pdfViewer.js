@@ -39,6 +39,46 @@ class PDFModal {
     );
   }
 
+  // ─── NEW: Office file helpers ─────────────────────────────────────────────────
+
+  getFileType(filePath) {
+    const clean = filePath.split("?")[0].split("#")[0];
+    const ext = clean.split(".").pop().toLowerCase();
+    if (ext === "pdf") return "pdf";
+    if (["xlsx", "xls", "xlsm", "xlsb"].includes(ext)) return "excel";
+    if (["docx", "doc"].includes(ext)) return "word";
+    if (["pptx", "ppt"].includes(ext)) return "powerpoint";
+    return "other";
+  }
+
+  isOfficeFile(filePath) {
+    const t = this.getFileType(filePath);
+    return ["excel", "word", "powerpoint"].includes(t);
+  }
+
+  isOneDriveUrl(filePath) {
+    return (
+      filePath.includes("1drv.ms") ||
+      filePath.includes("onedrive.live.com")
+    );
+  }
+
+  getOfficeViewerUrl(filePath) {
+    const isGoogleDrive = filePath.includes("drive.google.com");
+
+    if (isGoogleDrive) {
+      const match = filePath.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      if (match) {
+        return `https://drive.google.com/file/d/${match[1]}/preview`;
+      }
+    }
+
+    const fullUrl = this.getFullUrl(filePath);
+    return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fullUrl)}`;
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────────
+
   attachEventListeners() {
     document.querySelectorAll(".btn-close").forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -132,6 +172,25 @@ class PDFModal {
       this.titleEl.textContent = title;
       this.showLoading();
 
+      if (this.isOneDriveUrl(filePath)) {
+        this.iframe.src = filePath;
+        this.downloadLink.href = "./files/investment-calculation.xlsx";
+        this.downloadLink.setAttribute("download", "Ներդրումային Հաշվարկ.xlsx");
+        this.downloadLink.style.display = "inline-flex";
+        this.showModal();
+        return;
+      }
+      // ────────────────────────────────────────────────────────────────────────
+
+      if (this.isOfficeFile(filePath)) {
+        this.iframe.src = this.getOfficeViewerUrl(filePath);
+        this.downloadLink.href = filePath;
+        this.downloadLink.style.display = "inline-flex";
+        this.showModal();
+        return;
+      }
+      // ────────────────────────────────────────────────────────────────────────
+
       const isGoogleDrive = filePath.includes("drive.google.com");
       const isMobile = this.isMobileDevice();
       const isTablet = this.isTabletDevice();
@@ -150,9 +209,7 @@ class PDFModal {
 
       if (isGoogleDrive) {
         const previewUrl = filePath;
-
         const match = previewUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
-
         if (match) {
           const fileId = match[1];
           const downloadUrl = `https://drive.usercontent.google.com/u/0/uc?id=${fileId}&export=download`;
@@ -178,6 +235,26 @@ class PDFModal {
 
     const existingError = this.modalBody.querySelector(".pdf-error-message");
     if (existingError) existingError.remove();
+
+    // ─── NEW: OneDrive embed ─────────────────────────────────────────────────
+    if (this.isOneDriveUrl(filePath)) {
+      this.iframe.src = filePath;
+      this.downloadLink.href = "./files/investment-calculation.xlsx";
+      this.downloadLink.setAttribute("download", "Ներդրումային Հաշվարկ.xlsx");
+      this.downloadLink.style.display = "inline-flex";
+      return;
+    }
+    // ────────────────────────────────────────────────────────────────────────
+
+    // ─── NEW: Office файл ────────────────────────────────────────────────────
+    if (this.isOfficeFile(filePath)) {
+      this.iframe.src = this.getOfficeViewerUrl(filePath);
+      this.downloadLink.href = filePath;
+      this.downloadLink.style.display = "inline-flex";
+      return;
+    }
+    // ────────────────────────────────────────────────────────────────────────
+
 
     const isGoogleDrive = filePath.includes("drive.google.com");
     const isMobile = this.isMobileDevice();
@@ -286,7 +363,7 @@ class PDFModal {
     p.textContent = "Փաստաթուղթը չհաջողվեց բեռնել։";
     const btn = document.createElement("button");
     btn.className = "retry-btn";
-    btn.textContent = "Խնդրում ենք նորից փորձեք։";
+    btn.textContent = "Խնդրում ենք նորից փորձել։";
     btn.onclick = () => location.reload();
     errorMsg.appendChild(p);
     errorMsg.appendChild(btn);
