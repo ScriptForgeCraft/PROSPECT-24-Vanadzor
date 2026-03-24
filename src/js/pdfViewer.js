@@ -107,13 +107,11 @@ class PDFModal {
         iframe.tabIndex = -1;
         iframe.loading = "lazy";
         
-        // Exact styling as #pdf-frame so Excel displays correctly
         iframe.style.width = "100%";
         iframe.style.height = "100%";
-        iframe.style.background = "#ffffff";
+        iframe.style.background = "#1E1E1E";
         iframe.style.border = "none";
         
-        // Hide visually but keep in DOM so it can render fully in the background
         iframe.style.position = "absolute";
         iframe.style.visibility = "hidden";
         iframe.style.top = "-9999px";
