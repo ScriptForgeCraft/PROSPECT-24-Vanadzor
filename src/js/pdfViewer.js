@@ -18,6 +18,13 @@ class PDFModal {
         row.querySelector(".btn-download-all")?.click();
       });
     }
+
+    // Preload Office/OneDrive viewers after main page load to speed up opening
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        this.preloadOfficeViewers();
+      }, 3000);
+    });
   }
 
   isMobileDevice() {
@@ -75,6 +82,42 @@ class PDFModal {
 
     const fullUrl = this.getFullUrl(filePath);
     return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fullUrl)}`;
+  }
+
+  preloadOfficeViewers() {
+    const preloadUrls = new Set();
+    document.querySelectorAll(".doc-item").forEach((item) => {
+      const button = item.querySelector("button[data-file]");
+      const dataFile = button?.dataset.file || item.dataset.file;
+      if (dataFile) {
+        if (this.isOneDriveUrl(dataFile)) {
+          preloadUrls.add(dataFile);
+        } else if (this.isOfficeFile(dataFile)) {
+          preloadUrls.add(this.getOfficeViewerUrl(dataFile));
+        }
+      }
+    });
+
+    if (preloadUrls.size === 0) return;
+
+    const hiddenContainer = document.createElement("div");
+    hiddenContainer.style.position = "absolute";
+    hiddenContainer.style.width = "0";
+    hiddenContainer.style.height = "0";
+    hiddenContainer.style.visibility = "hidden";
+    hiddenContainer.style.pointerEvents = "none";
+    hiddenContainer.style.overflow = "hidden";
+    hiddenContainer.style.zIndex = "-1";
+    document.body.appendChild(hiddenContainer);
+
+    preloadUrls.forEach((url) => {
+      const iframe = document.createElement("iframe");
+      iframe.src = url;
+      iframe.tabIndex = -1;
+      // Use low priority loading attributes to prevent blocking main thread
+      iframe.loading = "lazy";
+      hiddenContainer.appendChild(iframe);
+    });
   }
 
   // ─────────────────────────────────────────────────────────────────────────────
