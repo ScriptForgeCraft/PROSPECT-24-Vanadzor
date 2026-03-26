@@ -64,9 +64,9 @@ import "swiper/css/zoom";
     const preloadedSet = new Set();
 
     function isMobileDevice() {
-        return window.innerWidth < 960 ||
-            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        return window.innerWidth <= 480;
     }
+
 
     let zoomSwiper = null;
 
