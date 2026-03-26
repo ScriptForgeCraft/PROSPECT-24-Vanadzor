@@ -88,7 +88,7 @@
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
-  height: 40px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -101,6 +101,7 @@
 .doc-btn:hover {
   background: #2c2c2c;
   color: #ffffff;
+
 }
 
 /* active / press */
