@@ -230,16 +230,25 @@ import "swiper/css/zoom";
     }
 
 
+    function primeZoomTransition(duration) {
+        const el = zoomContainer?.querySelector('.swiper-zoom-container');
+        if (!el) return;
+        el.style.transitionProperty      = 'transform';
+        el.style.transitionDuration      = `${duration}ms`;
+        el.style.transitionTimingFunction = 'ease-out';
+        setTimeout(() => { el.style.transitionProperty = el.style.transitionDuration = el.style.transitionTimingFunction = ''; }, duration + 50);
+    }
 
     function setSwiperZoom(newScale, transitionDuration = 300) {
         if (!zoomSwiper || !zoomSwiper.zoom) return;
 
         currentScale = Math.min(Math.max(MIN_SCALE, newScale), MAX_SCALE);
 
+        primeZoomTransition(transitionDuration);
+
         if (currentScale === 1) {
             zoomSwiper.zoom.out();
         } else {
-
             zoomSwiper.zoom.in(currentScale);
         }
 
@@ -249,6 +258,7 @@ import "swiper/css/zoom";
     function resetZoomTransform() {
         currentScale = 1;
         if (zoomSwiper && zoomSwiper.zoom) {
+            primeZoomTransition(300);
             zoomSwiper.zoom.out();
         }
         updateZoomButtons();
