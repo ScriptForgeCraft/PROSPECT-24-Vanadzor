@@ -67,6 +67,22 @@ import "swiper/css/zoom";
         return window.innerWidth <= 480;
     }
 
+    let currentlyMobile = isMobileDevice();
+
+    function updateThumbSources() {
+        const isMobile = isMobileDevice();
+        currentlyMobile = isMobile;
+        thumbs.forEach((thumb) => {
+            let src = thumb.getAttribute("src");
+            if (!src) return;
+            if (isMobile && src.includes("/images/thumbs/")) {
+                thumb.src = src.replace("/images/thumbs/", "/images/thumbs_mobile/");
+            } else if (!isMobile && src.includes("/images/thumbs_mobile/")) {
+                thumb.src = src.replace("/images/thumbs_mobile/", "/images/thumbs/");
+            }
+        });
+    }
+
 
     let zoomSwiper = null;
 
@@ -386,10 +402,13 @@ import "swiper/css/zoom";
         const prevIndex = activeIndex;
         activeIndex = index;
 
-        // On mobile use the small thumb; on desktop use the medium "full" image
+        // Restore exactly how mainImg behaved originally:
+        // On mobile, use the original medium thumb (/images/thumbs/...)
+        // On desktop, use the full image (/images/full/...)
+        const originalThumbSrc = thumbs[index]?.dataset.full ? thumbs[index].dataset.full.replace("/full/", "/thumbs/") : thumbs[index]?.src;
         const mainSrc = isMobileDevice()
-            ? (thumbs[index]?.src || thumbs[index]?.dataset.full)
-            : (thumbs[index]?.dataset.full || thumbs[index]?.src);
+            ? (originalThumbSrc || thumbs[index]?.dataset.full)
+            : (thumbs[index]?.dataset.full || originalThumbSrc);
         if (!mainSrc) return;
 
         mainImg.src = mainSrc;
@@ -723,6 +742,12 @@ import "swiper/css/zoom";
     });
 
     window.addEventListener("resize", () => {
+        const isMobileNow = isMobileDevice();
+        if (isMobileNow !== currentlyMobile) {
+            updateThumbSources();
+            applyImage(activeIndex);
+        }
+
         if (isZoomOpen() && zoomSwiper) {
             zoomSwiper.update();
         }
@@ -753,6 +778,7 @@ import "swiper/css/zoom";
     mainImg.addEventListener("touchstart", onPointerDown, { passive: true });
     mainImg.addEventListener("touchend", onPointerUp);
 
+    updateThumbSources();
     applyImage(activeIndex);
     updateThumbArrows();
     scheduleBackgroundPreload(activeIndex);
