@@ -13,14 +13,15 @@
         gtag('config', 'G-T4P2LSV2E8');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/images/favicon.jpg">
-    <title>Վանաձոր | Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <title data-i18n="meta.title">Վանաձոր | Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք</title>
     <meta name="robots" content="index, follow">
     <link rel="preload" as="image" href="/images/full/0.webp" fetchpriority="high">
     <link rel="preload" as="image" href="/images/bg.webp" fetchpriority="high">
 
     <!-- ===== OPEN GRAPH ===== -->
-    <meta property="og:title" content="Վանաձոր | Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք" />
+    <meta property="og:title" content="Վանաձոր | Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք"
+        data-i18n-attr="content:meta.title" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://vanadzor.pages.dev/" />
     <meta property="og:image" content="https://vanadzor.pages.dev/images/preview.jpg" />
@@ -29,7 +30,8 @@
 
     <!-- ===== TWITTER ===== -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Վանաձոր | Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք" />
+    <meta name="twitter:title" content="Վանաձոր | Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք"
+        data-i18n-attr="content:meta.title" />
     <meta name="twitter:description" content="" />
     <meta name="twitter:image" content="https://vanadzor.pages.dev/images/preview.jpg" />
     <meta property="og:description" content="" />
@@ -37,6 +39,8 @@
 
 
     <link rel="stylesheet" href="/src/css/main.css">
+    <link rel="stylesheet" href="/src/css/i18n.css">
+    <script type="module" src="/src/js/i18n.js" defer></script>
     <script type="module" src="/src/js/main.js" defer></script>
 </head>
 
@@ -50,22 +54,33 @@
             <a href="#hero" class="main-header__logo">
                 <div class="logo">
                     <img id="headerLogo" src="/images/Prospect24-logo.jpg" alt="Լոգո" width="200" height="200"
-                        fetchpriority="high">
+                        fetchpriority="high" data-i18n-attr="alt:common.logo">
                 </div>
             </a>
 
 
             <!-- Desktop NAV -->
-            <nav class="main-header__nav" aria-label="Հիմնական նավիգացիա">
+            <nav class="main-header__nav" aria-label="Հիմնական նավիգացիա"
+                data-i18n-attr="aria-label:nav.desktopLabel">
                 <ul>
-                    <li><a href="#components">Փաթեթի բաղադրիչներ</a></li>
-                    <li><a href="#details">Փաստաթղթեր</a></li>
-                    <li><a href="#valuation">Գնահատում</a></li>
+                    <li><a href="#components" data-i18n="nav.components">Փաթեթի բաղադրիչներ</a></li>
+                    <li><a href="#details" data-i18n="nav.documents">Փաստաթղթեր</a></li>
+                    <li><a href="#valuation" data-i18n="nav.valuation">Գնահատում</a></li>
                 </ul>
             </nav>
 
+            <div class="language-switcher" aria-label="Լեզվի ընտրություն"
+                data-i18n-attr="aria-label:language.switcherLabel">
+                <button type="button" class="language-switcher__btn active" data-lang="hy" aria-pressed="true"
+                    aria-label="Հայերեն" data-i18n-attr="aria-label:language.hyLabel">HY</button>
+                <button type="button" class="language-switcher__btn" data-lang="ru" aria-pressed="false"
+                    aria-label="Русский" data-i18n-attr="aria-label:language.ruLabel">RU</button>
+                <button type="button" class="language-switcher__btn" data-lang="en" aria-pressed="false"
+                    aria-label="English" data-i18n-attr="aria-label:language.enLabel">EN</button>
+            </div>
+
             <!-- BURGER BUTTON -->
-            <button class="burger-btn" aria-label="Բացել մենյուն">
+            <button class="burger-btn" aria-label="Բացել մենյուն" data-i18n-attr="aria-label:nav.menuOpen">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -74,11 +89,11 @@
         </div>
 
         <!-- MOBILE MENU -->
-        <nav class="mobile-menu" aria-label="Բջջային նավիգացիա">
+        <nav class="mobile-menu" aria-label="Բջջային նավիգացիա" data-i18n-attr="aria-label:nav.mobileLabel">
             <ul>
-                <li><a href="#components">Փաթեթի բաղադրիչներ</a></li>
-                <li><a href="#documents">Փաստաթղթեր</a></li>
-                <li><a href="#valuation">Գնահատում</a></li>
+                <li><a href="#components" data-i18n="nav.components">Փաթեթի բաղադրիչներ</a></li>
+                <li><a href="#documents" data-i18n="nav.documents">Փաստաթղթեր</a></li>
+                <li><a href="#valuation" data-i18n="nav.valuation">Գնահատում</a></li>
             </ul>
         </nav>
 
@@ -91,9 +106,10 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <div class="hero-logo">
-                        <img src="/images/logo.webp" alt="Լոգո" width="600" height="600" fetchpriority="high">
+                        <img src="/images/logo.webp" alt="Լոգո" width="600" height="600" fetchpriority="high"
+                            data-i18n-attr="alt:common.logo">
                     </div>
-                    <h1 class="hero-title">ՊԵՏԱԿԱՆ ԳՈՒՅՔԻ
+                    <h1 class="hero-title" data-i18n="hero.title">ՊԵՏԱԿԱՆ ԳՈՒՅՔԻ
                         ՕՏԱՐՄԱՆ ՆԵՐԴՐՈՒՄԱՅԻՆ
                         ՓԱԹԵԹ</h1>
 
@@ -105,8 +121,8 @@
         <!-- Section 2: Components -->
         <section id="components" class="container">
             <div class="header-block">
-                <h1 class="h1-bold-white">ՆԵՐԴՐՈՒՄԱՅԻՆ ՓԱԹԵԹԻ ԲԱՂԱԴՐԻՉՆԵՐ</h1>
-                <p class="location-text">
+                <h1 class="h1-bold-white" data-i18n="components.title">ՆԵՐԴՐՈՒՄԱՅԻՆ ՓԱԹԵԹԻ ԲԱՂԱԴՐԻՉՆԵՐ</h1>
+                <p class="location-text" data-i18n="components.location">
                     Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք
                 </p>
             </div>
@@ -115,10 +131,13 @@
                 <div class="component-image-wrapper">
                     <img id="mainPlanImg" class="main-plan-img zoom-btn" src="/images/full/0.webp"
                         data-full="/images/full/0.webp" data-large="/images/large/1.webp" data-index="0"
-                        alt="Գլխավոր պատկեր" fetchpriority="high" decoding="async" width="1200" height="900">
+                        alt="Գլխավոր պատկեր" fetchpriority="high" decoding="async" width="1200" height="900"
+                        data-i18n-attr="alt:gallery.mainImage">
 
-                    <button class="main-arrow prev" type="button" aria-label="Նախորդ պատկեր">‹</button>
-                    <button class="main-arrow next" type="button" aria-label="Հաջորդ պատկեր">›</button>
+                    <button class="main-arrow prev" type="button" aria-label="Նախորդ պատկեր"
+                        data-i18n-attr="aria-label:gallery.previousImage">‹</button>
+                    <button class="main-arrow next" type="button" aria-label="Հաջորդ պատկեր"
+                        data-i18n-attr="aria-label:gallery.nextImage">›</button>
 
                     <div class="image-caption">
                         <div class="caption-bg">
@@ -126,13 +145,15 @@
                                 <div class="doc-item">
                                     <button type="button"
                                         data-file="https://drive.google.com/file/d/1dmLYIX5_gBJ7YUh9U23-2N-V4FxWXNxt/preview"
-                                        data-title="Էսքիզային առաջադրանք">
-                                        <span>Էսքիզային առաջադրանք</span>
+                                        data-title="Էսքիզային առաջադրանք"
+                                        data-i18n-attr="data-title:docs.sketchTask">
+                                        <span data-i18n="docs.sketchTask">Էսքիզային առաջադրանք</span>
                                     </button>
 
                                     <a class="doc-download"
                                         href="https://drive.google.com/uc?id=1dmLYIX5_gBJ7YUh9U23-2N-V4FxWXNxt&export=download"
-                                        download aria-label="Ներբեռնել PDF փաստաթուղթ 1">
+                                        download aria-label="Ներբեռնել PDF փաստաթուղթ 1"
+                                        data-i18n-attr="aria-label:download.pdf1">
                                         <svg class="download-ico" viewBox="0 0 24 24">
                                             <path d="M12 3v10m0 0l4-4m-4 4L8 9M5 21h14" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -147,116 +168,118 @@
 
                 <!-- THUMBNAILS (SWIPER) -->
                 <div class="gallery-wrapper">
-                    <button class="gallery-arrow prev" type="button" aria-label="Նախորդ">‹</button>
+                    <button class="gallery-arrow prev" type="button" aria-label="Նախորդ"
+                        data-i18n-attr="aria-label:gallery.previous">‹</button>
 
                     <div class="gallery-strip swiper">
                         <div class="gallery-track swiper-wrapper">
                             <div class="swiper-slide">
                                 <img class="thumb is-active" src="/images/thumbs/0.webp" data-full="/images/full/0.webp"
                                     data-large="/images/large/0.webp" data-index="0" alt="Պատկեր 1" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image1">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/1.webp" data-full="/images/full/1.webp"
                                     data-large="/images/large/1.webp" data-index="1" alt="Պատկեր 2" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image2">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/2.webp" data-full="/images/full/2.webp"
                                     data-large="/images/large/2.webp" data-index="2" alt="Պատկեր 3" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image3">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/3.webp" data-full="/images/full/3.webp"
                                     data-large="/images/large/3.webp" data-index="3" alt="Պատկեր 4" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image4">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/4.webp" data-full="/images/full/4.webp"
                                     data-large="/images/large/4.webp" data-index="4" alt="Պատկեր 5" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image5">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/5.webp" data-full="/images/full/5.webp"
                                     data-large="/images/large/5.webp" data-index="5" alt="Պատկեր 6" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image6">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/6.webp" data-full="/images/full/6.webp"
                                     data-large="/images/large/6.webp" data-index="6" alt="Պատկեր 7" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image7">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/7.webp" data-full="/images/full/7.webp"
                                     data-large="/images/large/7.webp" data-index="7" alt="Պատկեր 8" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image8">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/8.webp" data-full="/images/full/8.webp"
                                     data-large="/images/large/8.webp" data-index="8" alt="Պատկեր 9" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image9">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/9.webp" data-full="/images/full/9.webp"
                                     data-large="/images/large/9.webp" data-index="9" alt="Պատկեր 10" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image10">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/10.webp" data-full="/images/full/10.webp"
                                     data-large="/images/large/10.webp" data-index="10" alt="Պատկեր 11" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image11">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/11.webp" data-full="/images/full/11.webp"
                                     data-large="/images/large/11.webp" data-index="11" alt="Պատկեր 12" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image12">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/12.webp" data-full="/images/full/12.webp"
                                     data-large="/images/large/12.webp" data-index="12" alt="Պատկեր 13" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image13">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/13.webp" data-full="/images/full/13.webp"
                                     data-large="/images/large/13.webp" data-index="13" alt="Պատկեր 14" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image14">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/14.webp" data-full="/images/full/14.webp"
                                     data-large="/images/large/14.webp" data-index="14" alt="Պատկեր 15" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image15">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/15.webp" data-full="/images/full/15.webp"
                                     data-large="/images/large/15.webp" data-index="15" alt="Պատկեր 16" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image16">
                             </div>
 
                             <div class="swiper-slide">
                                 <img class="thumb" src="/images/thumbs/16.webp" data-full="/images/full/16.webp"
                                     data-large="/images/large/16.webp" data-index="16" alt="Պատկեր 17" loading="lazy"
-                                    decoding="async" width="800" height="600">
+                                    decoding="async" width="800" height="600" data-i18n-attr="alt:gallery.image17">
                             </div>
 
                         </div>
                     </div>
 
-                    <button class="gallery-arrow next" type="button" aria-label="Հաջորդ">›</button>
+                    <button class="gallery-arrow next" type="button" aria-label="Հաջորդ"
+                        data-i18n-attr="aria-label:gallery.next">›</button>
                 </div>
             </div>
         </section>
@@ -264,19 +287,19 @@
         <!-- Section 3: Details & Documents -->
         <section id="details" class="container">
             <div class="header-block">
-                <h1 class="h1-bold-white">ՄԱՐԶ ԼՈՌԻ, ՀԱՄԱՅՆՔ ՎԱՆԱՁՈՐ ՎԱՆԱՁՈՐ Ք. ԲԱՆԱԿԻ ՓՈՂՈՑ </h1>
+                <h1 class="h1-bold-white" data-i18n="details.title">ՄԱՐԶ ԼՈՌԻ, ՀԱՄԱՅՆՔ ՎԱՆԱՁՈՐ ՎԱՆԱՁՈՐ Ք. ԲԱՆԱԿԻ ՓՈՂՈՑ </h1>
             </div>
             <div class="split-view">
                 <article class="text-content">
 
                     <div class="info-block">
                         <div class="content-block">
-                            <p class="left-shadow">1․ Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8-4
+                            <p class="left-shadow" data-i18n="details.point1">1․ Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8-4
                                 հիվանդանոցային համալիրի
                                 մասնաշենքեր հասցեում գոյություն ունի ենթակայան 27 քմ մակերեսով, որը ենթակա է վերազինման
                                 և սպասարկելու է Բանակի փողոց 8/11 հասցեի գույքերին։
                             </p>
-                            <p class="left-shadow">2․ Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք
+                            <p class="left-shadow" data-i18n="details.point2">2․ Մարզ Լոռի, համայնք Վանաձոր Վանաձոր ք. Բանակի փողոց 8/11 շենք
                                 հասցեում գտնվող
                                 շինությունները
                                 վերկառուցվելու են և օգտագործվելու են որպես հասարակական կառույցներ։ Գոյություն
@@ -285,26 +308,26 @@
                                 2200մ2։</p>
 
                             <div class="block">
-                                <p class="bold-white">Իրականացվելու է նաև նոր կառուցապատում հետևյալ նկարագրությամբ։
+                                <p class="bold-white" data-i18n="details.newConstructionIntro">Իրականացվելու է նաև նոր կառուցապատում հետևյալ նկարագրությամբ։
                                 </p>
-                                <p>ՀՀ Լոռու մարզ, համայնք Վանաձոր, ք. Վանաձոր, Բանակի փողոց 8/11 հասցեում առաջարկվում է
+                                <p data-i18n="details.newConstructionBody">ՀՀ Լոռու մարզ, համայնք Վանաձոր, ք. Վանաձոր, Բանակի փողոց 8/11 հասցեում առաջարկվում է
                                     կառուցվել է 7 նոր մասնաշենք՝ 4 տիպային հատակագծով։ Տարածքում առկա շինություններից
                                     երեքը կարող են վերակառուցվել և օգտագործվել որպես հասարակական կառույցներ։</p>
                             </div>
                             <div class="block">
-                                <p class="bold-white">Նախատեսվող հարկաչափերը և նախագծվող շենքերի չափերը՝</p>
+                                <p class="bold-white" data-i18n="details.buildingSizesTitle">Նախատեսվող հարկաչափերը և նախագծվող շենքերի չափերը՝</p>
                                 <ul>
-                                    <li>1-ին տիպային մասնաշենքից 1 հատ՝ 23,5x17,0 մ, Կառուցապատման մակերես՝ 400 մ²
+                                    <li data-i18n="details.buildingSize1">1-ին տիպային մասնաշենքից 1 հատ՝ 23,5x17,0 մ, Կառուցապատման մակերես՝ 400 մ²
                                     </li>
-                                    <li>2-րդ տիպային մասնաշենքից 3 հատ՝ (30*17 մ) X*3, Կառուցապատման մակերես՝ 1530 մ²
+                                    <li data-i18n="details.buildingSize2">2-րդ տիպային մասնաշենքից 3 հատ՝ (30*17 մ) X*3, Կառուցապատման մակերես՝ 1530 մ²
                                     </li>
-                                    <li>3-րդ տիպային մասնաշենքից 2 հատ՝ (17x 36.5 մ) *2, Կառուցապատման մակերես՝ 1240 մ²
+                                    <li data-i18n="details.buildingSize3">3-րդ տիպային մասնաշենքից 2 հատ՝ (17x 36.5 մ) *2, Կառուցապատման մակերես՝ 1240 մ²
                                     </li>
-                                    <li>4-րդ մասնաշենքից 1 հատ՝ 41,25x17.0 մ և 28,25x17.0 մ, Կառուցապատման մակերես՝
+                                    <li data-i18n="details.buildingSize4">4-րդ մասնաշենքից 1 հատ՝ 41,25x17.0 մ և 28,25x17.0 մ, Կառուցապատման մակերես՝
                                         1181 մ²
                                     </li>
-                                    <li>Թենիսի կորտ 18.0x30.5մ, պարիսպի h=1.8մ, երկարությունը՝ 876մ</li>
-                                    <li>Ստորգետնյա ավտոկայանատեղի 226 մեքենայի համար՝ 8540 մ²</li>
+                                    <li data-i18n="details.buildingSize5">Թենիսի կորտ 18.0x30.5մ, պարիսպի h=1.8մ, երկարությունը՝ 876մ</li>
+                                    <li data-i18n="details.buildingSize6">Ստորգետնյա ավտոկայանատեղի 226 մեքենայի համար՝ 8540 մ²</li>
                                 </ul>
                             </div>
                         </div>
@@ -313,16 +336,17 @@
 
                 <aside id="documents" class="document-content">
                     <div class="document-header">
-                        <p class="bold-white">Փաստաթղթեր</p>
+                        <p class="bold-white" data-i18n="nav.documents">Փաստաթղթեր</p>
                     </div>
                     <div class="document-list">
 
                         <div class="doc-row">
-                            <div class="doc-item" data-file="./files/վկայական.pdf" data-title="Վկայական">
-                                <span>Վկայական</span>
+                            <div class="doc-item" data-file="./files/վկայական.pdf" data-title="Վկայական"
+                                data-i18n-attr="data-title:docs.certificate">
+                                <span data-i18n="docs.certificate">Վկայական</span>
 
                                 <a class="doc-download" href="./files/վկայական.pdf" download
-                                    aria-label="Ներբեռնել PDF փաստաթուղթ 1">
+                                    aria-label="Ներբեռնել PDF փաստաթուղթ 1" data-i18n-attr="aria-label:download.pdf1">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="w-4 h-4">
@@ -335,11 +359,12 @@
                         </div>
 
                         <div class="doc-row">
-                            <div class="doc-item" data-file="./files/հողամասի հատակագիծ.pdf" data-title="Սխեմա">
-                                <span>Սխեմա</span>
+                            <div class="doc-item" data-file="./files/հողամասի հատակագիծ.pdf" data-title="Սխեմա"
+                                data-i18n-attr="data-title:docs.scheme">
+                                <span data-i18n="docs.scheme">Սխեմա</span>
 
                                 <a class="doc-download" href="./files/հողամասի հատակագիծ.pdf" download
-                                    aria-label="Ներբեռնել PDF փաստաթուղթ 2">
+                                    aria-label="Ներբեռնել PDF փաստաթուղթ 2" data-i18n-attr="aria-label:download.pdf2">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="w-4 h-4">
@@ -354,11 +379,12 @@
 
 
                         <div class="doc-row">
-                            <div class="doc-item" data-file="./files/Սեյսմիկ Վանաձոր.PDF" data-title="Սեյսմիկ">
-                                <span>Սեյսմիկ</span>
+                            <div class="doc-item" data-file="./files/Սեյսմիկ Վանաձոր.PDF" data-title="Սեյսմիկ"
+                                data-i18n-attr="data-title:docs.seismic">
+                                <span data-i18n="docs.seismic">Սեյսմիկ</span>
 
                                 <a class="doc-download" href="./files/Սեյսմիկ Վանաձոր.PDF" download
-                                    aria-label="Ներբեռնել PDF փաստաթուղթ 3">
+                                    aria-label="Ներբեռնել PDF փաստաթուղթ 3" data-i18n-attr="aria-label:download.pdf3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="w-4 h-4">
@@ -372,11 +398,12 @@
                         </div>
 
                         <div class="doc-row">
-                            <div class="doc-item" data-file="./files/Վեոլիա.pdf" data-title="Վեոլիա ջուր">
-                                <span>Վեոլիա ջուր</span>
+                            <div class="doc-item" data-file="./files/Վեոլիա.pdf" data-title="Վեոլիա ջուր"
+                                data-i18n-attr="data-title:docs.veoliaWater">
+                                <span data-i18n="docs.veoliaWater">Վեոլիա ջուր</span>
 
                                 <a class="doc-download" href="./files/Վեոլիա.pdf" download
-                                    aria-label="Ներբեռնել PDF փաստաթուղթ 5">
+                                    aria-label="Ներբեռնել PDF փաստաթուղթ 5" data-i18n-attr="aria-label:download.pdf5">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="w-4 h-4">
@@ -391,10 +418,11 @@
                         </div>
 
                         <div class="doc-row">
-                            <div class="doc-item" data-file="./files/ՀԷՑ Վանաձոր.pdf" data-title="ՀԷՑ">
-                                <span>ՀԷՑ</span>
+                            <div class="doc-item" data-file="./files/ՀԷՑ Վանաձոր.pdf" data-title="ՀԷՑ"
+                                data-i18n-attr="data-title:docs.ena">
+                                <span data-i18n="docs.ena">ՀԷՑ</span>
                                 <a class="doc-download" href="./files/ՀԷՑ Վանաձոր.pdf" download
-                                    aria-label="Ներբեռնել PDF փաստաթուղթ 6">
+                                    aria-label="Ներբեռնել PDF փաստաթուղթ 6" data-i18n-attr="aria-label:download.pdf6">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="w-4 h-4">
@@ -409,12 +437,13 @@
                         </div>
 
                         <div class="doc-row">
-                            <div class="doc-item" data-file="./files/Գազպրոմ.pdf" data-title="Գազպրոմ">
-                                <span>Գազպրոմ</span>
+                            <div class="doc-item" data-file="./files/Գազպրոմ.pdf" data-title="Գազպրոմ"
+                                data-i18n-attr="data-title:docs.gazprom">
+                                <span data-i18n="docs.gazprom">Գազպրոմ</span>
 
 
                                 <a class="doc-download" href="./files/Գազպրոմ.pdf" download
-                                    aria-label="Ներբեռնել PDF փաստաթուղթ 7">
+                                    aria-label="Ներբեռնել PDF փաստաթուղթ 7" data-i18n-attr="aria-label:download.pdf7">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="w-4 h-4">
@@ -429,12 +458,13 @@
 
                         <div class="doc-row">
                             <div class="doc-item" data-file="./files/ՆԱԽԱԳԾՄԱՆ ԹՈՒՅԼՏՎՈՒԹՅՈՒՆ.pdf"
-                                data-title="Նախագծման Թույլտվություն">
-                                <span>Նախագծման Թույլտվություն</span>
+                                data-title="Նախագծման Թույլտվություն"
+                                data-i18n-attr="data-title:docs.designPermit">
+                                <span data-i18n="docs.designPermit">Նախագծման Թույլտվություն</span>
 
 
                                 <a class="doc-download" href="./files/ՆԱԽԱԳԾՄԱՆ ԹՈՒՅԼՏՎՈՒԹՅՈՒՆ.pdf" download
-                                    aria-label="Ներբեռնել PDF փաստաթուղթ 8">
+                                    aria-label="Ներբեռնել PDF փաստաթուղթ 8" data-i18n-attr="aria-label:download.pdf8">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="w-4 h-4">
@@ -454,7 +484,8 @@
                         <div class="doc-row doc-row-all">
                             <a href="https://drive.google.com/uc?id=1mbV7krcHH_sld_W38p-XoTT3YDxVXzR7&export=download"
                                 download class="btn-download-all smart-download" aria-label="Ներբեռնել բոլորը"
-                                target="_blank" data-name="Vanadzor_all_documents.zip">
+                                target="_blank" data-name="Vanadzor_all_documents.zip"
+                                data-i18n="download.all" data-i18n-attr="aria-label:download.all">
                                 Ներբեռնել բոլորը
                             </a>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -473,7 +504,8 @@
             <div class="split-view-footer">
                 <div class="download-btns">
                     <a href="./files/տեղեկատվություն.pdf" download class="btn-download-alt"
-                        aria-label="Ներբեռնել PDF փաստաթուղթ 1">
+                        aria-label="Ներբեռնել PDF փաստաթուղթ 1" data-i18n="download.infoPdf"
+                        data-i18n-attr="aria-label:download.pdf1">
                         Ներբեռնել տեղեկատվությունը (.pdf)
                     </a>
                 </div>
@@ -484,22 +516,23 @@
         <!-- Section 4: Valuation -->
         <section id="valuation" class="container">
             <div class="header-block">
-                <h1 class="h1-bold-white">ՆԵՐԴՐՈՒՄԱՅԻՆ ՓԱԹԵԹԻ ԳՆԱՀԱՏՈՒՄ</h1>
+                <h1 class="h1-bold-white" data-i18n="valuation.title">ՆԵՐԴՐՈՒՄԱՅԻՆ ՓԱԹԵԹԻ ԳՆԱՀԱՏՈՒՄ</h1>
             </div>
             <div class="valuation-content">
                 <div class="price-box">
                     <div class="price-value">
                         <p>871 000 000</p>
-                        <p class="currency">ՀՀ դրամ</p>
+                        <p class="currency" data-i18n="valuation.currency">ՀՀ դրամ</p>
                     </div>
                     <div class="doc-row">
 
                         <div class="doc-item"
                             data-file="https://1drv.ms/x/c/99f7eb023f1e0cb6/IQTo6sGc6x6MTLKRt53VTKaJAQGrHn-qZhHlLFNBjMMT2yw"
-                            data-title="Բիզնես հաշվարկ">
-                            <span>Բիզնես հաշվարկ</span>
+                            data-title="Բիզնես հաշվարկ" data-i18n-attr="data-title:docs.businessCalculation">
+                            <span data-i18n="docs.businessCalculation">Բիզնես հաշվարկ</span>
                             <a class="doc-download" href="./files/investment-calculation.xlsx"
-                                download="Ներդրումային Հաշվարկ.xlsx" aria-label="Ներբեռնել PDF փաստաթուղթ 12">
+                                download="Ներդրումային Հաշվարկ.xlsx" aria-label="Ներբեռնել PDF փաստաթուղթ 12"
+                                data-i18n-attr="download:docs.investmentCalculationFile;aria-label:download.pdf12">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="w-4 h-4">
@@ -517,10 +550,12 @@
                         <div class="doc-item" data-files='[
         {"file": "./files/ք. Վանաձոր, Բանակի 8-4 հիմնական-signed.pdf", "title": "Վանաձոր Բանակի փ. 8-4"},
         {"file": "./files/ք. Վանաձոր, Բանակի 8-11 հիմնական-signed.pdf", "title": "Վանաձոր Բանակի փ.8-11"}
-    ]' data-title="Գնահատում">
-                            <span>Գնահատում</span>
+    ]' data-title="Գնահատում"
+                            data-i18n-attr="data-title:docs.valuationReport;data-files:docs.valuationFiles">
+                            <span data-i18n="docs.valuationReport">Գնահատում</span>
                             <a class="doc-download" href="./files/Գնահատում.zip" download
-                                aria-label="Ներբեռնել PDF փաստաթուղթ 13">
+                                aria-label="Ներբեռնել PDF փաստաթուղթ 13"
+                                data-i18n-attr="aria-label:download.pdf13">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="w-4 h-4">
@@ -538,10 +573,10 @@
                 <div class="valuation-images">
                     <img class="valuation-thumb" src="/images/valuation/left.webp"
                         data-large="/images/valuation/full/left.webp" alt="ձախ պատկեր" loading="lazy" decoding="async"
-                        width="800" height="600" style="cursor: pointer;">
+                        width="800" height="600" style="cursor: pointer;" data-i18n-attr="alt:gallery.valuationLeft">
                     <img class="valuation-thumb" src="/images/valuation/right.webp"
                         data-large="/images/valuation/full/right.webp" alt="աջ պատկեր" loading="lazy" decoding="async"
-                        width="800" height="600" style="cursor: pointer;">
+                        width="800" height="600" style="cursor: pointer;" data-i18n-attr="alt:gallery.valuationRight">
                 </div>
             </div>
         </section>
@@ -552,13 +587,14 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 id="modal-title">Փաստաթուղթ</h3>
+                    <h3 id="modal-title" data-i18n="docs.defaultDocument">Փաստաթուղթ</h3>
                     <div class="modal-controls">
 
 
                         <!-- Fullscreen Toggle -->
                         <button class="doc-btn fullscreen-toggle" type="button" aria-label="Fullscreen"
-                            title="Ամբողջ էկրանով">
+                            title="Ամբողջ էկրանով"
+                            data-i18n-attr="aria-label:modal.fullscreen;title:modal.fullscreen">
                             <!-- expand -->
                             <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -575,8 +611,9 @@
                             </svg>
                         </button>
 
-                        <a id="download-link" href="" download class="btn-action">Ներբեռնել</a>
-                        <button class="btn-close" type="button" aria-label="Փակել"><svg viewBox="0 0 24 24" fill="none"
+                        <a id="download-link" href="" download class="btn-action" data-i18n="download.single">Ներբեռնել</a>
+                        <button class="btn-close" type="button" aria-label="Փակել"
+                            data-i18n-attr="aria-label:modal.close"><svg viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -602,14 +639,19 @@
         <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true">
             <div class="zoom-container">
                 <div class="zoom-counter" id="zoomCounter"></div>
-                <button class="zoom-close" type="button" aria-label="Փակել">✕</button>
-                <img class="zoom-image" id="zoomImage" alt="դիտում" width="1400" height="1200" />
-                <button class="zoom-arrow prev" type="button" aria-label="Նախորդ"><span>‹</span></button>
-                <button class="zoom-arrow next" type="button" aria-label="Հաջորդ"><span>›</span></button>
+                <button class="zoom-close" type="button" aria-label="Փակել"
+                    data-i18n-attr="aria-label:modal.close">✕</button>
+                <img class="zoom-image" id="zoomImage" alt="դիտում" width="1400" height="1200"
+                    data-i18n-attr="alt:gallery.zoomView" />
+                <button class="zoom-arrow prev" type="button" aria-label="Նախորդ"
+                    data-i18n-attr="aria-label:gallery.previous"><span>‹</span></button>
+                <button class="zoom-arrow next" type="button" aria-label="Հաջորդ"
+                    data-i18n-attr="aria-label:gallery.next"><span>›</span></button>
 
                 <div class="zoom-controls">
                     <button class="zoom-btn-ctrl zoom-in" type="button" aria-label="Մեծացնել"
-                        title="Մեծացնել (+ կամ մկնիկի անիվ)">
+                        title="Մեծացնել (+ կամ մկնիկի անիվ)"
+                        data-i18n-attr="aria-label:zoom.in;title:zoom.inTitle">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="M21 21l-4.35-4.35"></path>
@@ -618,7 +660,8 @@
                         </svg>
                     </button>
                     <button class="zoom-btn-ctrl zoom-out" type="button" aria-label="Փոքրացնել"
-                        title="Փոքրացնել (- կամ մկնիկի անիվ)">
+                        title="Փոքրացնել (- կամ մկնիկի անիվ)"
+                        data-i18n-attr="aria-label:zoom.out;title:zoom.outTitle">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="M21 21l-4.35-4.35"></path>
@@ -626,7 +669,8 @@
                         </svg>
                     </button>
 
-                    <button class="zoom-btn-ctrl zoom-reset" type="button" aria-label="Վերականգնել" title="Վերականգնել">
+                    <button class="zoom-btn-ctrl zoom-reset" type="button" aria-label="Վերականգնել" title="Վերականգնել"
+                        data-i18n-attr="aria-label:zoom.reset;title:zoom.reset">
                         <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M18,28A12,12,0,1,0,6,16v6.2L2.4,18.6,1,20l6,6,6-6-1.4-1.4L8,22.2V16H8A10,10,0,1,1,18,26Z">
@@ -644,7 +688,8 @@
 
     <!-- Settings -->
     <div class="settings">
-        <button class="settings__toggle" type="button" aria-label="Կարգավորումներ">
+        <button class="settings__toggle" type="button" aria-label="Կարգավորումներ"
+            data-i18n-attr="aria-label:settings.open">
             <svg viewBox="-19.04 0 75.803 75.803" xmlns="http://www.w3.org/2000/svg" fill="#000000">
                 <g stroke-width="0"></g>
                 <g stroke-linecap="round" stroke-linejoin="round"></g>
@@ -662,7 +707,7 @@
 
 
             <div class="settings__group">
-                <span class="settings__label">ՏԵՔՍՏԻ ՉԱՓ</span>
+                <span class="settings__label" data-i18n="settings.textSize">ՏԵՔՍՏԻ ՉԱՓ</span>
                 <div class="settings__actions">
                     <button type="button" data-size="0.85" class="settings__btn">A-</button>
                     <button type="button" data-size="1" class="settings__btn active">A</button>
@@ -671,10 +716,11 @@
             </div>
 
             <div class="settings__group">
-                <span class="settings__label">ԳՈՒՆԱՅԻՆ ԹԵՄԱ</span>
+                <span class="settings__label" data-i18n="settings.colorTheme">ԳՈՒՆԱՅԻՆ ԹԵՄԱ</span>
                 <div class="settings__actions">
-                    <button type="button" data-theme="light" class="settings__btn active">Լուսավոր</button>
-                    <button type="button" data-theme="dark" class="settings__btn">Մութ</button>
+                    <button type="button" data-theme="light" class="settings__btn active"
+                        data-i18n="settings.light">Լուսավոր</button>
+                    <button type="button" data-theme="dark" class="settings__btn" data-i18n="settings.dark">Մութ</button>
                 </div>
             </div>
         </div>
@@ -684,7 +730,7 @@
         <div class="footer-content">
 
             <div class="footer-section">
-                <h4>Կապ մեզ հետ</h4>
+                <h4 data-i18n="footer.contact">Կապ մեզ հետ</h4>
                 <div class="contact-group">
 
                     <div class="contact-block">
@@ -696,9 +742,11 @@
                             </svg>
                         </div>
                         <div class="contact-text">
-                            <span class="contact-label">Հասցե</span>
+                            <span class="contact-label" data-i18n="footer.addressLabel">Հասցե</span>
                             <span class="contact-value" role="button" tabindex="0" aria-label="Պատճենել հասցեն"
-                                data-text="Երևան, 0010, Տիգրան Մեծի պող. 4" title="Սեղմեք պատճենելու համար">
+                                data-text="Երևան, 0010, Տիգրան Մեծի պող. 4" title="Սեղմեք պատճենելու համար"
+                                data-i18n="footer.addressValue"
+                                data-i18n-attr="aria-label:footer.copyAddress;title:footer.copyTitle;data-text:footer.addressValue">
                                 Երևան, 0010, Տիգրան Մեծի պող. 4
                             </span>
                         </div>
@@ -713,9 +761,10 @@
                             </svg>
                         </div>
                         <div class="contact-text">
-                            <span class="contact-label">Հեռախոս</span>
+                            <span class="contact-label" data-i18n="footer.phoneLabel">Հեռախոս</span>
                             <span class="contact-value" role="button" tabindex="0" aria-label="Պատճենել հեռախոսահամարը"
-                                data-number="+37411527300" title="Սեղմեք պատճենելու համար">
+                                data-number="+37411527300" title="Սեղմեք պատճենելու համար"
+                                data-i18n-attr="aria-label:footer.copyPhone;title:footer.copyTitle">
                                 (+37411) 52 73 00
                             </span>
                         </div>
@@ -730,9 +779,10 @@
                             </svg>
                         </div>
                         <div class="contact-text">
-                            <span class="contact-label">Էլ. փոստ</span>
+                            <span class="contact-label" data-i18n="footer.emailLabel">Էլ. փոստ</span>
                             <span class="contact-value" role="button" tabindex="0" aria-label="Պատճենել էլ. փոստը"
-                                data-text="info@spm.am" title="Սեղմեք պատճենելու համար">
+                                data-text="info@spm.am" title="Սեղմեք պատճենելու համար"
+                                data-i18n-attr="aria-label:footer.copyEmail;title:footer.copyTitle">
                                 info@spm.am
                             </span>
                         </div>
@@ -742,16 +792,16 @@
             </div>
 
             <div class="footer-section">
-                <h4>Հղումներ</h4>
+                <h4 data-i18n="footer.links">Հղումներ</h4>
                 <ul class="footer-links">
-                    <li><a href="#components">Փաթեթի բաղադրիչներ</a></li>
-                    <li><a href="#details">Փաստաթղթեր</a></li>
-                    <li><a href="#valuation">Գնահատում</a></li>
+                    <li><a href="#components" data-i18n="nav.components">Փաթեթի բաղադրիչներ</a></li>
+                    <li><a href="#details" data-i18n="nav.documents">Փաստաթղթեր</a></li>
+                    <li><a href="#valuation" data-i18n="nav.valuation">Գնահատում</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h4>Սոցիալական Ցանցեր</h4>
+                <h4 data-i18n="footer.socialNetworks">Սոցիալական Ցանցեր</h4>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/RAstatepropertymanagement/" class="social-btn" title="Facebook"
                         aria-label="Facebook" target="_blank" rel="noopener noreferrer">
