@@ -2,6 +2,12 @@ const STORAGE_KEY = "prospect24_language";
 const DEFAULT_LANGUAGE = "hy";
 const SUPPORTED_LANGUAGES = ["hy", "ru", "en"];
 
+const languageLogos = {
+  hy: "/images/logo.webp",
+  ru: "/images/logo(ru).webp",
+  en: "/images/logo(en).webp",
+};
+
 const valuationFiles = {
   hy: [
     { file: "./files/ք. Վանաձոր, Բանակի 8-4 հիմնական-signed.pdf", title: "Վանաձոր Բանակի փ. 8-4" },
@@ -383,6 +389,11 @@ function getTranslation(key, lang = currentLanguage) {
   return translations[DEFAULT_LANGUAGE]?.[key] ?? "";
 }
 
+function getLanguageLogo(lang = currentLanguage) {
+  const safeLang = isSupportedLanguage(lang) ? lang : DEFAULT_LANGUAGE;
+  return languageLogos[safeLang] ?? languageLogos[DEFAULT_LANGUAGE];
+}
+
 function toAttributeValue(value) {
   if (Array.isArray(value) || (typeof value === "object" && value !== null)) {
     return JSON.stringify(value);
@@ -421,6 +432,12 @@ function applyCssText(lang) {
     "--i18n-loading-label",
     cssString(getTranslation("modal.loading", lang)),
   );
+}
+
+function applyLanguageLogos(lang) {
+  document.querySelectorAll("[data-i18n-logo]").forEach((image) => {
+    image.src = getLanguageLogo(lang);
+  });
 }
 
 function translateDynamicText(lang = currentLanguage) {
@@ -547,6 +564,7 @@ function applyLanguage(lang, options = {}) {
     button.setAttribute("aria-pressed", String(isActive));
   });
 
+  applyLanguageLogos(safeLang);
   applyCssText(safeLang);
   translateDynamicText(safeLang);
 
@@ -572,6 +590,7 @@ function initLanguageSwitcher() {
 window.prospectI18n = {
   applyLanguage,
   getLanguage: () => currentLanguage,
+  getLogoSrc: getLanguageLogo,
   t: getTranslation,
   translations,
 };
