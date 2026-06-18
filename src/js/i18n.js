@@ -11,15 +11,15 @@ const languageLogos = {
 const valuationFiles = {
   hy: [
     { file: "./files/ք. Վանաձոր, Բանակի 8-4 հիմնական-signed.pdf", title: "Վանաձոր Բանակի փ. 8-4" },
-    { file: "./files/ք. Վանաձոր, Բանակի 8-11 հիմնական-signed.pdf", title: "Վանաձոր Բանակի փ.8-11" },
+    { file: "./files/Վանաձոր, Բանակի 8-11.pdf", title: "Վանաձոր Բանակի փ.8-11" },
   ],
   ru: [
     { file: "./files/ք. Վանաձոր, Բանակի 8-4 հիմնական-signed.pdf", title: "Ванадзор, ул. Банаки 8-4" },
-    { file: "./files/ք. Վանաձոր, Բանակի 8-11 հիմնական-signed.pdf", title: "Ванадзор, ул. Банаки 8-11" },
+    { file: "./files/Վանաձոր, Բանակի 8-11.pdf", title: "Ванадзор, ул. Банаки 8-11" },
   ],
   en: [
     { file: "./files/ք. Վանաձոր, Բանակի 8-4 հիմնական-signed.pdf", title: "Vanadzor, Banaki St. 8-4" },
-    { file: "./files/ք. Վանաձոր, Բանակի 8-11 հիմնական-signed.pdf", title: "Vanadzor, Banaki St. 8-11" },
+    { file: "./files/Վանաձոր, Բանակի 8-11.pdf", title: "Vanadzor, Banaki St. 8-11" },
   ],
 };
 
@@ -46,7 +46,7 @@ function makeImageTranslations(lang) {
 
 function makePdfTranslations(lang) {
   return Object.fromEntries(
-    [1, 2, 3, 5, 6, 7, 8, 12, 13].map((index) => [
+    [1, 2, 3, 5, 6, 7, 8, 9, 12, 13].map((index) => [
       `download.pdf${index}`,
       `${pdfLabels[lang]} ${index}`,
     ]),
@@ -104,6 +104,7 @@ const translations = {
     "docs.ena": "ՀԷՑ",
     "docs.gazprom": "Գազպրոմ",
     "docs.designPermit": "Նախագծման Թույլտվություն",
+    "docs.article60Restriction": "60-րդ հոդվածի սահմանափակում",
     "docs.businessCalculation": "Բիզնես հաշվարկ",
     "docs.investmentCalculationFile": "Ներդրումային Հաշվարկ.xlsx",
     "docs.valuationReport": "Գնահատում",
@@ -205,6 +206,7 @@ const translations = {
     "docs.ena": "Электрические сети Армении",
     "docs.gazprom": "Газпром",
     "docs.designPermit": "Разрешение на проектирование",
+    "docs.article60Restriction": "Ограничение по статье 60",
     "docs.businessCalculation": "Бизнес-расчет",
     "docs.investmentCalculationFile": "Инвестиционный расчет.xlsx",
     "docs.valuationReport": "Оценка",
@@ -306,6 +308,7 @@ const translations = {
     "docs.ena": "Electric Networks of Armenia",
     "docs.gazprom": "Gazprom",
     "docs.designPermit": "Design permit",
+    "docs.article60Restriction": "Article 60 restriction",
     "docs.businessCalculation": "Business calculation",
     "docs.investmentCalculationFile": "Investment Calculation.xlsx",
     "docs.valuationReport": "Valuation",
