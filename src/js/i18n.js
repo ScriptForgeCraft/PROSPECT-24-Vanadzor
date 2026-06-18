@@ -426,6 +426,22 @@ function cssString(value) {
   return `"${String(value).replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
 }
 
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function getDownloadProgressPercent(text) {
+  const cleanText = text.trim();
+
+  for (const lang of SUPPORTED_LANGUAGES) {
+    const label = getTranslation("download.progress", lang);
+    const match = cleanText.match(new RegExp(`^${escapeRegExp(label)}\\s*(\\d+)%$`));
+    if (match) return match[1];
+  }
+
+  return null;
+}
+
 function applyCssText(lang) {
   document.documentElement.style.setProperty(
     "--i18n-view-label",
@@ -445,9 +461,13 @@ function applyLanguageLogos(lang) {
 
 function translateDynamicText(lang = currentLanguage) {
   document.querySelectorAll(".smart-download").forEach((element) => {
-    const progressMatch = element.textContent.trim().match(/^Ներբեռնում\.\.\.\s*(\d+)%$/);
-    if (progressMatch) {
-      element.textContent = `${getTranslation("download.progress", lang)} ${progressMatch[1]}%`;
+    const progress = getDownloadProgressPercent(element.textContent);
+
+    if (progress !== null) {
+      const nextText = `${getTranslation("download.progress", lang)} ${progress}%`;
+      if (element.textContent !== nextText) {
+        element.textContent = nextText;
+      }
     }
   });
 
@@ -456,7 +476,10 @@ function translateDynamicText(lang = currentLanguage) {
     : null;
 
   if (toast?.textContent.trim() === "✓ Պատճենված") {
-    toast.textContent = `✓ ${getTranslation("footer.copied", lang)}`;
+    const nextText = `✓ ${getTranslation("footer.copied", lang)}`;
+    if (toast.textContent !== nextText) {
+      toast.textContent = nextText;
+    }
   }
 }
 
