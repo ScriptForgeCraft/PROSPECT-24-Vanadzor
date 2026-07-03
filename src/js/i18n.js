@@ -46,7 +46,7 @@ function makeImageTranslations(lang) {
 
 function makePdfTranslations(lang) {
   return Object.fromEntries(
-    [1, 2, 3, 5, 6, 7, 8, 9, 12, 13].map((index) => [
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13].map((index) => [
       `download.pdf${index}`,
       `${pdfLabels[lang]} ${index}`,
     ]),
@@ -100,6 +100,7 @@ const translations = {
     "docs.certificate": "Վկայական",
     "docs.scheme": "Սխեմա",
     "docs.seismic": "Սեյսմիկ",
+    "docs.governmentDecision": "կառավարության որոշում",
     "docs.veoliaWater": "Վեոլիա ջուր",
     "docs.ena": "ՀԷՑ",
     "docs.gazprom": "Գազպրոմ",
@@ -202,6 +203,7 @@ const translations = {
     "docs.certificate": "Свидетельство",
     "docs.scheme": "Схема",
     "docs.seismic": "Сейсмика",
+    "docs.governmentDecision": "Решение правительства",
     "docs.veoliaWater": "Веолия Вода",
     "docs.ena": "Электрические сети Армении",
     "docs.gazprom": "Газпром",
@@ -304,6 +306,7 @@ const translations = {
     "docs.certificate": "Certificate",
     "docs.scheme": "Scheme",
     "docs.seismic": "Seismic",
+    "docs.governmentDecision": "Government decision",
     "docs.veoliaWater": "Veolia Water",
     "docs.ena": "Electric Networks of Armenia",
     "docs.gazprom": "Gazprom",
